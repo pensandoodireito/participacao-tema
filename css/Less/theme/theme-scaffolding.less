@@ -1,0 +1,246 @@
+#barra-brasil .brasil-flag {
+    height: 32px;
+}
+body {
+    font-family: @font-family-opensans;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+    color: @text-color;
+    background-color: #fff;
+}
+// Links
+a {
+    color: @link-color-blue;
+    text-decoration: none;
+    &:hover, &:focus {
+        color: @link-hover-color-blue;
+        text-decoration: underline;
+    }
+    &:focus {
+        .tab-focus();
+    }
+}
+// Classes genérias
+// Imagens adaptativas
+.img-adptive {
+    width: 100%;
+}
+// Botão Leia +
+.btn-leiamais {
+    width: 100%;
+    height: 24px;
+    background-color: #828480;
+    border: 0;
+    color: #fff;
+    font-family: @font-family-opensans;
+    &:hover {
+        background-color: #ababab;
+    }
+}
+// ---------------------------------------------------------------
+/* Tamanhos de Fontes */
+
+.fontsize-xs {
+    font-size: 8px;
+}
+.fontsize-sm {
+    font-size: 11px;
+}
+.fontsize-md {
+    font-size: 14px;
+}
+.fontsize-lg {
+    font-size: 18px;
+}
+.fontsize-xl {
+    font-size: 21px;
+}
+.fontsize-xxl {
+    font-size: 24px;
+}
+// ---------------------------------------------------------------
+/* Dividers */
+
+.divider-top {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #e7ca1d;
+}
+.divider-right {
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #e7ca1d;
+}
+.divider-bottom {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e7ca1d;
+}
+.divider-left {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #e7ca1d;
+}
+
+
+// ---------------------------------------------------------------
+/* Cores genéricas */
+
+.red { color: @text-color-red;}
+.white { color: #fff;}
+
+
+// ---------------------------------------------------------------
+ /* Rolagens */
+ 
+ .rol-vert {
+     display: block;
+     overflow: auto;
+     overflow-x: hidden;
+ }
+ .rol-hor {
+     display: block;
+     overflow: auto;
+     overflow-y: hidden;
+ }
+ .rol-hor-vert {
+     display: block;
+     overflow: auto;
+ }
+ //  Linhas 
+ 
+ .line-1 {
+     height: 60px;
+ }
+ .line-2 {
+     height: 110px;
+ }
+ .line-3 {
+     height: 130px;
+ }
+ .line-4 {
+     height: 170px;
+ }
+ .line-5 {
+     height: 230px;
+ }
+ .line-6 {
+     height: 290px;
+ }
+ .line-7 {
+     height: 350px;
+ }
+ .line-8 {
+     height: 410px;
+ }
+ .line-9 {
+     height: 470px;
+ }
+ .line-10 {
+     height: 530px;
+ }
+ .line-11 {
+     height: 590px;
+ }
+ .line-12 {
+     height: 650px;
+ }
+ .line-13 {
+     height: 710px;
+ }
+ .line-14 {
+     height: 770px;
+ }
+ .line-15 {
+     height: 830px;
+ }
+ .line-16 {
+     height: 890px;
+ }
+ .height-full {
+     height: 100%;
+     min-height: 100%;
+ }
+
+ //Força tamanhos
+ .width-auto {
+     width: auto;
+ }
+ .width-grid-1 {
+     width: 60px;
+ }
+ .width-grid-2 {
+     width: 140px;
+ }
+ .width-grid-3 {
+     width: 220px;
+ }
+ .width-grid-4 {
+     width: 300px;
+ }
+ .width-grid-5 {
+     width: 380px;
+ }
+ .width-grid-6 {
+     width: 460px;
+ }
+ .width-grid-7 {
+     width: 540px;
+ }
+ .width-grid-8 {
+     width: 620px;
+ }
+ .width-grid-9 {
+     width: 700px;
+ }
+ .width-grid-10 {
+     width: 780px;
+ }
+ .width-grid-11 {
+     width: 860px;
+ }
+ .width-grid-12 {
+     width: 940px;
+ }
+ // ---------------------------------------------------------------
+ //Cursores
+ .cursor-default {
+     &:hover {
+         cursor: default;
+     }
+ }
+ .cursor-pointer {
+     &:hover {
+         cursor: pointer;
+     }
+ }
+ .cursor-help {
+     &:hover {
+         cursor: help;
+     }
+ }
+ .cursor-text {
+     &:hover {
+         cursor: text;
+     }
+ }
+ .cursor-move {
+     &:hover {
+         cursor: move;
+     }
+ }
+ .cursor-wait {
+     &:hover {
+         cursor: wait;
+     }
+ }
+ .cursor-progress {
+     &:hover {
+         cursor: progress;
+     }
+ }
+ .cursor-crosshair {
+     &:hover {
+         cursor: crosshair;
+     }
+ }

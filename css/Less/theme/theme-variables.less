@@ -1,0 +1,118 @@
+// Variables
+// --------------------------------------------------
+
+// Body
+@body-bg-pd:               #e8e8e8;
+//** Global text color on `<body>`.
+@text-color:            @gray-dark;
+
+@text-color-red:  #bc3f38;
+
+// Cores do pensando Direito
+@color-vermelho-pd:     #521e1b;
+@color-blue-pd:     #1d608b;
+
+//** Global textual link color.
+@link-color-pd:            @color-vermelho-pd;
+@link-color-blue:          @color-blue-pd;
+//** Link hover color set via `darken()` function.
+@link-hover-color-pd:      lighten(@link-color-pd, 15%);
+@link-hover-color-blue:      lighten(@link-color-blue, 15%);
+
+
+// Caminhos para imagens
+@image-path-pd: 		"../images";
+@image-path-structure-pd: "structure";
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-family-amatic:  		      "amatic","opensans",Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-roboto:  		      "roboto","opensans",Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-verdana:  		      Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-opensans:  		  "opensans", "open_sanscondensed_light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-opensans-condensed:  "open_sanscondensed_light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-monospace:   		  Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base-opensas:        @font-family-opensans;
+
+@font-size-base:          15px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 3.0)); // ~45px
+@font-size-h2:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h3:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h4:            ceil((@font-size-base * 1.7)); // ~24px
+//@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.428571429; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+
+// Headings
+@headings-font-family:    @font-family-opensans;
+@headings-font-weight:    normal;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+
+// Font Paths
+// -------------------------- /
+
+
+// Font opensans (global)
+@opensans-font-path:  "../fonts/opensans";
+
+// Font opensans (condensed-light)
+@opensans-condensed-light-font-path:  "opensanscondensed_light";
+
+// Font opensans (condensed-light-italic)
+@opensans-condensed-light-italic-font-path:  "opensanscondensed_lightitalic";
+
+// Font opensans (condensed-bold)
+@opensans-condensed-bold-font-path:   "opensanscondensed_bold";
+
+// Font robotoslab (global)
+@robotoslab-font-path:  "../fonts/roboto";
+
+// Font amatic (global)
+@amatic-font-path:  "../fonts/amatic";
+
+
+// ícones 
+// Font glyphicons (altereda por conta da estrutura de pastas)
+@icon-font-path: "../fonts/glyphicons/";
+// Font awesome
+@fa-font-path:  "../fonts/fontawesome";
+
+
+
+//
+// Borders
+@border-radius-base:        0;
+@border-radius-large:       6px;
+@border-radius-small:       3px;
+
+
+//
+// Margins e paddings
+
+// ---------------------------------------------------------------
+@margin-xs:   5px;
+@margin-sm:  10px;
+@margin-md:  15px;
+@margin-lg:  30px;
+@margin-xl:  50px;
+
+// ---------------------------------------------------------------
+
+@margin-scale-xs: 0.75;
+@margin-scale-sm: 0.75;
+@margin-scale-md: 1;
+@margin-scale-lg: 1.5;
+
+
