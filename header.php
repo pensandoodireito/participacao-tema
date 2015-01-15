@@ -10,7 +10,7 @@
     <meta name="application-name" content="">
     <meta name="msapplication-TileColor" content="">
     <link rel="shortcut icon" href="images/favicon-pd.jpg">
-    <title>Portal do Projeto Pensando o Direito - Marco civil da intenet</title>
+    <title><?php get_bloginfo('title'); ?> - <?php get_bloginfo('description'); ?></title>
 
     <!-- styles gerais do portal -->
     <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet">

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-2">
-                <img src="images/structure/logo-pd-gray.png" class="img-responsive"
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/structure/logo-pd-gray.png" class="img-responsive"
                      alt="Logo: Projeto Pensando o Direito">
             </div>
             <div class="col-sm-5 footer-menu">
@@ -28,20 +28,20 @@
             <div class="col-sm-5">
                 <ul class="list-inline mt-sm">
                     <li>
-                        <a href=""><img src="images/logos/ipea.png" class="img-responsive" alt="Ipea">
+                        <a href=""><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/ipea.png" class="img-responsive" alt="Ipea">
                         </a>
                     </li>
                     <li>
-                        <a href=""><img src="images/logos/pnud.png" class="img-responsive" alt="PNUD">
+                        <a href=""><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/pnud.png" class="img-responsive" alt="PNUD">
                         </a>
                     </li>
                     <li>
-                        <a href=""><img src="images/logos/sal.png" class="img-responsive"
+                        <a href=""><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/sal.png" class="img-responsive"
                                         alt="Secretaria de assuntos legislativos">
                         </a>
                     </li>
                     <li>
-                        <a href=""><img src="images/logos/mj.png" class="img-responsive" alt="Ministério da Justiça">
+                        <a href=""><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/mj.png" class="img-responsive" alt="Ministério da Justiça">
                         </a>
                     </li>
                 </ul>
