@@ -1,0 +1,19 @@
+/*
+Theme Name: Pensando o Direito
+Theme URI: https://github.com/pensandoodireito/pensandoodireito-tema
+Author: Pensando o Direito
+Author URI: http://pensandoodireito.mj.gov.br/
+Description: Tema para WordPress para o portal Pensando o Direito
+Version: 0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: participação, marco civil, internet, legislação, secretaria de assuntos legislativos
+Text Domain: pensandoodireito
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+@import url("css/bootstrap.min.css");
+@import url("css/site-global.css");
+@import url("css/theme-debates.css");
