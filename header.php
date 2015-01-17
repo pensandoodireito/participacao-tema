@@ -65,10 +65,10 @@
                             </div>
                         </form>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Notícias</a></li>
-                            <li><a href="#">Editais</a></li>
-                            <li><a href="#">Parceiros</a></li>
-                            <li><a href="#">Fale conosco</a></li>
+                            <li><a href="http://participacao.mj.gov.br/pensandoodireito/noticias/">Notícias</a></li>
+                            <li><a href="http://participacao.mj.gov.br/pensandoodireito/editais/">Editais</a></li>
+                            <li><a href="http://participacao.mj.gov.br/pensandoodireito/parceiros/">Parceiros</a></li>
+                            <li><a href="http://participacao.mj.gov.br/pensandoodireito/contato/">Fale conosco</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -83,25 +83,23 @@
         <ul class="navegacao-destaque-list">
             <li class="navegacao-destaque-item">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="#">Conheça o projeto</a></h5>
+                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
 
-                    <p><a href="#">Conheça também a Secretaria de Assuntos Legislativos (SAL)</a>
-                    </p>
+                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">Criado para promover a democratização do processo de elaboração legislativa.</a></p>
                 </div>
             </li>
             <li class="navegacao-destaque-item">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="#">Publicações</a></h5>
+                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">Publicações</a></h5>
 
-                    <p><a href="#">Conheça também a Secretaria de Assuntos Legislativos (SAL)</a>
-                    </p>
+                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">Conheça as publicações da Série Pensando o Direito.</a></p>
                 </div>
             </li>
             <li class="navegacao-destaque-item">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="#">Debates</a></h5>
+                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">Debates</a></h5>
 
-                    <p><a href="#">Sua participação é muito importante</a>
+                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">Conheça os debates já realizados.</a>
                     </p>
                 </div>
             </li>
