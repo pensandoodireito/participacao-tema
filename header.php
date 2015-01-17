@@ -18,8 +18,8 @@
     <!-- HTML5Shim e Respond.js oferecem suporte HTML5 e media queries para o IE8 -->
     <!-- AVISO: Respond.js não funciona localmente ("//file:...") -->
     <!--[if lt IE 9]>
-    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/html5shiv.min.js"></script>
-    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/respond.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js"></script>
     <![endif]-->
 </head>
 
