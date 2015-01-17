@@ -4,7 +4,7 @@
         <div class="col-sm-3">
             <div class="tuto-pass">
                 <div class="text-center">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/tuto/tuto-01.png" class="img-responsive" alt="Cadastre-se no site">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/tuto/tuto-01.png" class="img-responsive" alt="Cadastre-se no site">
                     <p class="font-amatic h5">Cadastre-se no site</p>
                 </div>
                 <div class="tuto-text">
@@ -15,7 +15,7 @@
         <div class="col-sm-3">
             <div class="tuto-pass">
                 <div class="text-center">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/tuto/tuto-02.png" class="img-responsive" alt="Confirme o cadastro">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/tuto/tuto-02.png" class="img-responsive" alt="Confirme o cadastro">
                     <p class="font-amatic h5">Confirme o cadastro</p>
                 </div>
                 <div class="tuto-text">
@@ -26,7 +26,7 @@
         <div class="col-sm-3">
             <div class="tuto-pass">
                 <div class="text-center">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/tuto/tuto-03.png" class="img-responsive" alt="Escolha">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/tuto/tuto-03.png" class="img-responsive" alt="Escolha">
                     <p class="font-amatic h5">Escolha </p>
                 </div>
                 <div class="tuto-text">
@@ -37,7 +37,7 @@
         <div class="col-sm-3">
             <div class="tuto-pass">
                 <div class="text-center">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/tuto/tuto-04.png" class="img-responsive" alt="Cadastre-se no site">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/tuto/tuto-04.png" class="img-responsive" alt="Cadastre-se no site">
                     <p class="font-amatic h5">Pronto! </p>
                 </div>
                 <div class="tuto-text">
