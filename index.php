@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="mt-sm text-center">
-                        <button type="button" class="btn btn-danger font-roboto">Participe deste debate!</button>
+                        <a href="<?php echo site_url("/dadospessoais"); ?>" class="btn btn-danger font-roboto">Participe deste debate!</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="mt-sm text-center">
-                        <button type="button" class="btn btn-danger font-roboto">Participe deste debate!</button>
+                        <a href="<?php echo site_url("/marcocivil"); ?>" class="btn btn-danger font-roboto">Participe deste debate!</a>
                     </div>
                 </div>
             </div>
