@@ -10,7 +10,7 @@
     <meta name="application-name" content="">
     <meta name="msapplication-TileColor" content="">
     <link rel="shortcut icon" href="images/favicon-pd.jpg">
-    <title><?php get_bloginfo('title'); ?> - <?php get_bloginfo('description'); ?></title>
+    <title><?php echo get_bloginfo('title'); ?> - <?php echo get_bloginfo('description'); ?></title>
 
     <!-- styles gerais do portal -->
     <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet">
