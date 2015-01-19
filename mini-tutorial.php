@@ -1,3 +1,4 @@
+<div class="container mt-md">
 <div id="mini-tuto">
     <h4 class="font-roboto red">Como participar?</h4>
     <div class="row">
@@ -45,6 +46,6 @@
                 </div>
             </div>
         </div>
-
+    </div>
     </div>
 </div>

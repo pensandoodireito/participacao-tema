@@ -6,7 +6,7 @@
 #debates .debate-item .description {
   margin: 20px -20px -20px -20px;
   padding: 10px 20px 20px 20px;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
 }
 #debates .debate-item .description a,
