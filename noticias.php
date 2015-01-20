@@ -50,7 +50,8 @@
 							</script>
 						</div>
 						<div class="tab-pane" id="Facebook">
-							<p>facebook app</p>
+							<div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+							<div class="fb-post" data-href="https://www.facebook.com/projetopd/posts/784657694937329" data-width="auto"><div class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/projetopd/posts/784657694937329">Publicação</a> by <a href="https://www.facebook.com/projetopd">Pensando o Direito</a>.</div></div>
 						</div>
 					</div>
 				</div>
