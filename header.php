@@ -120,7 +120,7 @@
     <div class="container mt-sm">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="font-roboto red">Debates Públicos</h2>
+                <h2 class="font-roboto red"><a href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('description'); ?></a></h2>
             </div>
             <div class="col-md-6 text-right">
                 <p>
