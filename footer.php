@@ -1,3 +1,4 @@
+</div><!-- conteudo -->
 <div id="footer">
     <div class="container">
         <div class="row">
@@ -64,7 +65,7 @@
 
 <!-- Core da pagina -->
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/core-mci.js"></script>
-
+<?php wp_footer(); ?>
 
 </body>
 
