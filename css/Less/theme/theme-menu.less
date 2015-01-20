@@ -1,5 +1,4 @@
 #navegacao-top {
-    margin-right: -15px;
     .navbar {
         position: relative;
         border: 0px;
@@ -43,7 +42,7 @@
 // Navegação superior: Destaques
 #navegacao-destaque {
     z-index: 1;
-    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.30), 0px -2px 7px 0px rgba(0, 0, 0, 0.30);
+    box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.3);
     .clearfix();
     .navegacao-destaque-list {
         p {
@@ -52,6 +51,9 @@
             font-size: 12px;
             a {
                 color: @text-color;
+            }
+            @media(max-width: @screen-sm) {
+                display: none;
             }
         }
         h5 {
@@ -69,12 +71,20 @@
         ul, li {
             list-style-type: none;
         }
-        //li:first-child {} 
         .navegacao-destaque-item {
             cursor: pointer;
-            border-top: 5px solid #fff;
+            margin: 5px 0 0 0;
+            float: left;
+            width: 25%;
+            @media(max-width: @screen-sm) {
+                width: 50%;
+            }
+            @media(max-width:@screen-xs) {
+                width: 100%;
+            }
             &:hover {
                 border-top: 5px solid @text-color-red;
+                margin-top: 0 !important;
                 a {
                     color: #ff0e00;
                     text-decoration: none;
@@ -86,25 +96,19 @@
                     }
                 }
             }
-            float: left;
-            margin: 0px;
-            width: 25%;
-            @media(max-width: @screen-sm) {
-                width: 50%;
-            }
-            @media(max-width:@screen-xs) {
-                width: 100%;
-            }
             .navegacao-destaque-content {
-                // margin-left: 0 auto;
                 padding: 3% 5% 7% 9%;
             }
         }
         .navegacao-destaque-item.participe {
-          position: relative;
+            position: relative;
             background-color: @text-color-red;
             color: #fff;
             border-top: 5px solid @text-color-red;
+            margin-top: 0;
+            &:hover {
+                background-color: #ec4f46;
+            }
             a {
                 &:hover {
                     color: #fff600;
@@ -124,7 +128,7 @@
                 border-bottom: 10px solid transparent;
                 border-left: 10px solid #fff;
                 position: absolute;
-                top:29%;
+                top: 29%;
                 left: 0px;
             }
         }

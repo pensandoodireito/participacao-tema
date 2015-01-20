@@ -1,0 +1,46 @@
+@import "../theme-variables.less";
+@import "../../bootstrap/variables.less";
+@import "../../bootstrap/mixins.less";
+#marco-civil {
+    .apresenta-protecao {
+        .clearfix();
+        background: url("../images/bck-debates-marco-02.jpg") repeat top left #a58d37;
+        padding: 40px 20px;
+        .assinatura {
+            margin: 20px -20px -40px -20px;
+            padding: 10px 20px 20px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            a, a:hover {
+                color: #fff;
+            }
+            .realizacao {
+                width: 50%;
+                margin: 10px auto;
+            }
+        }
+    }
+    .temas {
+        position: relative;
+        background-color: #faf4d1;
+        padding: 40px 20px;
+        .titulo {
+            margin-top: 25%;
+            padding: 30px;
+            border-image-slice: 38 30 35 37;
+            border-image-width: 20px 20px 20px 20px;
+            border-image-outset: 0px 0px 0px 0px;
+            border-image-repeat: stretch stretch;
+            border-image-source: url("../images/teste.jpg");
+            background-color: #fff;
+            @media(max-width: 767px) {
+                 margin-top: 20px;
+            }
+        }
+    }
+    .detalhes-marco {
+        .clearfix();
+        background-color: #557a75;
+        padding:40px;
+    }
+}
