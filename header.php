@@ -125,7 +125,8 @@
         <div class="row">
             <div class="col-md-8">
                 <h2 class="font-roboto red"><a
-                        href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('description'); ?></a></h2>
+                        href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('title'); ?></a></h2>
+                <p><?php echo get_bloginfo('description'); ?></p>
             </div>
             <div class="col-md-4 text-right">
                 <p>

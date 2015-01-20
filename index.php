@@ -1,6 +1,5 @@
 <?php get_header(); ?>
         <div class="container">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet cursus metus, nec feugiat sablandit diam facilisis. </p>
             <div class="row mt-md" id="debates">
                 <div class="col-md-6">
                     <div class="debate-item protecao">
