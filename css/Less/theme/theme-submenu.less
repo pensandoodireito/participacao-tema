@@ -11,29 +11,46 @@
     padding: @panel-body-padding;
     &:extend(.clearfix all);
     >.menu {
-      a{
-        font-size: 12px;
-        font-weight: 600;
-      }
+        a {
+            font-size: 12px;
+            font-weight: 600;
+        }
         ul, li {
             list-style-type: none;
             padding: 0px;
+            margin: 0;
         }
+    }
+    &.vertical {
         li {
             margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid #d5d5d5;
         }
         li:last-child {
-           margin-bottom: 0;
+            margin-bottom: 0;
             padding-bottom: 0;
             border-bottom: 0;
+        }
+    }
+    &.horizontal {
+        li {
+            float: left;
+            width: auto;
+            border-right: 1px solid #d5d5d5;
+            margin-right: 20px;
+            padding-right: 20px;
+        }
+        li:last-child {
+            border-right: 0;
+            margin-right: 0;
+            padding-right: 0;
         }
     }
 }
 // Optional heading
 .panel-heading {
-    padding: 10px 15px;
+    padding: 8px;
     margin: 0px;
     border-bottom: 0;
     background-color: #bc3f38;
@@ -44,7 +61,7 @@
 .panel-title {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 18px;
+    font-size: 15px;
     font-family: @font-family-roboto;
     font-weight: 700;
     color: #fff;
