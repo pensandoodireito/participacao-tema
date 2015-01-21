@@ -1,5 +1,11 @@
 <?php
 
+add_theme_support( 'post-thumbnails' );
+
+add_image_size( 'noticia-destaque', 555, 290, true );
+add_image_size( 'noticia-lista', 214, 137, true );
+
+
 /**
  * Retorna o bloco de texto para usuários logados ou não, com
  * seus respectivos links de cadastro, login e logout.
