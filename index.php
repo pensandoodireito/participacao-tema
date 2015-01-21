@@ -1,14 +1,19 @@
 <?php get_header(); ?>
-<div class="container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet cursus metus, nec feugiat sablandit diam facilisis. </p>
-    <div class="row mt-md" id="debates">
-        <div class="col-md-6">
-            <div class="debate-item protecao">
-                <div class="text-center">
+        <div class="container">
+            <div class="row mt-md" id="debates">
+                <div class="col-md-6">
+                    <div class="debate-item protecao">
+                        <div class="text-center">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/protecao-w.png" class="img-adptive" alt="Proteção de Dados Pessoais">
                 </div>
                 <div class="description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet cursus metus, nec feugiat sablandit diam facilisis. </p>
+                        <?php
+                            $page_dadospessoais = get_page_by_title('Proteção de Dados Pessoais');
+
+                            if ($page_dadospessoais != null) {
+                                echo $page_dadospessoais->post_content;
+                            }
+                        ?>
                 </div>
             </div>
             <div class="mt-sm text-center">
@@ -21,7 +26,13 @@
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/marcocivil-b.png" class="img-adptive" alt="Proteção de Dados Pessoais">
                 </div>
                 <div class="description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet cursus metus, nec feugiat sablandit diam facilisis. </p>
+                        <?php
+                        $page_marcocivil = get_page_by_title('Marco Civil da Internet');
+
+                        if ($page_marcocivil != null) {
+                            echo $page_marcocivil->post_content;
+                        }
+                        ?>
                 </div>
             </div>
             <div class="mt-sm text-center">

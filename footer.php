@@ -8,41 +8,41 @@
             </div>
             <div class="col-sm-5 footer-menu">
                 <ul class="list-inline mt-sm">
-                    <li><a href="">CONHEÇA O PROJETO</a>
+                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">CONHEÇA O PROJETO</a>
                     </li>
-                    <li><a href="">DEBATES</a>
+                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">DEBATES</a>
                     </li>
-                    <li><a href="">PUBLICAÇÕES</a>
+                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">PUBLICAÇÕES</a>
                     </li>
                 </ul>
                 <ul class="list-inline footer-menu">
-                    <li><a href="">Notícias</a>
+                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/noticias/">Notícias</a>
                     </li>
-                    <li><a href="">Editais</a>
+                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/editais/">Editais</a>
                     </li>
-                    <li><a href="">Parceiros</a>
+                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/parceiros/">Parceiros</a>
                     </li>
-                    <li><a href="">Fale conosco</a>
+                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/contato/">Fale conosco</a>
                     </li>
                 </ul>
             </div>
             <div class="col-sm-5">
                 <ul class="list-inline mt-sm">
                     <li>
-                        <a href=""><img src="<?php echo get_template_directory_uri(); ?>/images/logos/ipea.png" class="img-responsive" alt="Ipea">
+                        <a href="http://www.ipea.gov.br/"><img src="<?php echo get_template_directory_uri(); ?>/images/logos/ipea.png" class="img-responsive" alt="Ipea">
                         </a>
                     </li>
                     <li>
-                        <a href=""><img src="<?php echo get_template_directory_uri(); ?>/images/logos/pnud.png" class="img-responsive" alt="PNUD">
+                        <a href="http://www.pnud.org.br/"><img src="<?php echo get_template_directory_uri(); ?>/images/logos/pnud.png" class="img-responsive" alt="PNUD">
                         </a>
                     </li>
                     <li>
-                        <a href=""><img src="<?php echo get_template_directory_uri(); ?>/images/logos/sal.png" class="img-responsive"
+                        <a href="http://pensandoodireito.mj.gov.br/"><img src="<?php echo get_template_directory_uri(); ?>/images/logos/sal.png" class="img-responsive"
                                         alt="Secretaria de assuntos legislativos">
                         </a>
                     </li>
                     <li>
-                        <a href=""><img src="<?php echo get_template_directory_uri(); ?>/images/logos/mj.png" class="img-responsive" alt="Ministério da Justiça">
+                        <a href="http://justica.gov.br/"><img src="<?php echo get_template_directory_uri(); ?>/images/logos/mj.png" class="img-responsive" alt="Ministério da Justiça">
                         </a>
                     </li>
                 </ul>
