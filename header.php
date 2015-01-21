@@ -110,11 +110,11 @@
             <li class="navegacao-destaque-item participe">
                 <div class="arrow-right"></div>
                 <div class="navegacao-destaque-content">
-                    <h5><a href="#">Participe!</a></h5>
+                    <h5><a href="<?php echo get_post_type_archive_link('pauta') ?>">Participe!</a></h5>
 
-                    <p><a href="#">Cadastre-se</a>
-                        <br/><a href="#">Já é cadastrado?</a>
+                    <p><?php echo pensando_get_logged_user(); ?>
                     </p>
+                    <p></p>
                 </div>
             </li>
         </ul>
@@ -130,8 +130,8 @@
             </div>
             <div class="col-md-4 text-right">
                 <p>
-                    <button type="button" class="btn btn-danger">Participe!</button>
-                    <strong class="mt-xs ml-md"><a href="#">Cadastre-se</a> | <a href="#">Já é cadastrado?</a></strong>
+                    <a href="<?php echo get_post_type_archive_link('pauta') ?>" class="btn btn-danger">Participe!</a>
+                    <strong class="mt-xs ml-md"><?php echo pensando_get_logged_user(); ?></strong>
                 </p>
             </div>
         </div>
