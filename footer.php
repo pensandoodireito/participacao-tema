@@ -54,8 +54,6 @@
         </div>
     </div>
 </div>
-<!-- Js da Barra Brasil -->
-<!--<script defer="defer" async="async" src="js/barra.js" type="text/javascript"></script>  -->
 
 <!-- jQuery -->
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery-2.1.1.min.js"></script>
