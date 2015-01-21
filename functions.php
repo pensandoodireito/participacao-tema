@@ -42,3 +42,21 @@ function pensando_get_participe_link() {
         return $link_delibera;
     }
 }
+
+/**
+ * Função para retornar o aviso de cadastro dentro do mini-tutorial
+ *
+ * @return string
+ */
+function pensando_get_cadastrase_minitutorial() {
+    if ( is_user_logged_in() ) {
+        $current_user = wp_get_current_user();
+
+        return 'Olá ' . $current_user->display_name . '!';
+    }
+    else {
+
+        return  'Se não é cadastrada(o): <a href="' . wp_registration_url() .'">cadastre-se</a>';
+    }
+
+}
