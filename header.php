@@ -42,18 +42,10 @@
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="menu-top">
-                            <form class="navbar-form navbar-right" role="search" id="busca">
-                                <div class="input-group busca-pd">
-                                    <input type="text" class="form-control" placeholder="Buscar no site"
-                                           name="srch-term"
-                                           id="srch-term">
 
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            <?php echo get_search_form(); ?>
+
+
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="http://participacao.mj.gov.br/pensandoodireito/noticias/">Notícias</a></li>
                                 <li><a href="http://participacao.mj.gov.br/pensandoodireito/editais/">Editais</a></li>
