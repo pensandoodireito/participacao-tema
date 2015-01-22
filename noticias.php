@@ -50,52 +50,91 @@
             <div class="col-sm-6 col-xs-12">
                 <div class="tabs-social">
                     <ul id="tabs" class="nav tabs-pd" data-tabs="tabs">
-                        <li class="active">
-                            <a href="#Twitter" data-toggle="tab" class="font-roboto">Twitter</a>
+                        <?php
 
-                            <div class="tab-arrow"></div>
-                        </li>
-                        <li>
-                            <a href="#Facebook" data-toggle="tab" class="font-roboto">Facebook</a>
+                        // TODO: Automatizar isso urgente!
 
-                            <div class="tab-arrow"></div>
-                        </li>
+                        $pensandoodireito_settings = get_option('pensandoodireito_settings');
+
+                        if (trim($pensandoodireito_settings['pensandoodireito_twitter_embed']) != "") { ?>
+
+                            <li class="active">
+                                <a href="#Twitter" data-toggle="tab" class="font-roboto">Twitter</a>
+
+                                <div class="tab-arrow"></div>
+                            </li>
+
+                        <?php }
+
+                        if (trim($pensandoodireito_settings['pensandoodireito_facebook_embed']) != "") { ?>
+
+                            <li>
+                                <a href="#Facebook" data-toggle="tab" class="font-roboto">Facebook</a>
+
+                                <div class="tab-arrow"></div>
+                            </li>
+
+                        <?php }
+
+                        if (trim($pensandoodireito_settings['pensandoodireito_identica_embed']) != "") { ?>
+
+                            <li>
+                                <a href="#Identica" data-toggle="tab" class="font-roboto">Identica</a>
+
+                                <div class="tab-arrow"></div>
+                            </li>
+
+                        <?php }
+
+                        if (trim($pensandoodireito_settings['pensandoodireito_diaspora_embed']) != "") { ?>
+
+                            <li>
+                                <a href="#Diaspora" data-toggle="tab" class="font-roboto">Diaspora</a>
+
+                                <div class="tab-arrow"></div>
+                            </li>
+
+                        <?php } ?>
+
                     </ul>
                     <div id="" class="tab-content">
+                        <?php
+
+                        // TODO: Automatizar isso urgente!
+
+                        $pensandoodireito_settings = get_option('pensandoodireito_settings');
+
+                        if (trim($pensandoodireito_settings['pensandoodireito_twitter_embed']) != "") { ?>
+
                         <div class="tab-pane active" id="Twitter">
-                            <a class="twitter-timeline" height="350" href="https://twitter.com/projetopd"
-                               data-widget-id="527542191929827328">Tweets do Projeto pensando o direito - @projetopd</a>
-                            <script>
-                                !function (d, s, id) {
-                                    var js, fjs = d.getElementsByTagName(s)[0],
-                                        p = /^http:/.test(d.location) ? 'http' : 'https';
-                                    if (!d.getElementById(id)) {
-                                        js = d.createElement(s);
-                                        js.id = id;
-                                        js.src = p + "://platform.twitter.com/widgets.js";
-                                        fjs.parentNode.insertBefore(js, fjs);
-                                    }
-                                }(document, "script", "twitter-wjs");
-                            </script>
+                            <?php echo $pensandoodireito_settings['pensandoodireito_twitter_embed'];  ?>
                         </div>
-                        <div class="tab-pane" id="Facebook">
-                            <div id="fb-root"></div>
-                            <script>(function (d, s, id) {
-                                    var js, fjs = d.getElementsByTagName(s)[0];
-                                    if (d.getElementById(id)) return;
-                                    js = d.createElement(s);
-                                    js.id = id;
-                                    js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-                                    fjs.parentNode.insertBefore(js, fjs);
-                                }(document, 'script', 'facebook-jssdk'));</script>
-                            <div class="fb-post" data-href="https://www.facebook.com/projetopd/posts/784657694937329"
-                                 data-width="auto">
-                                <div class="fb-xfbml-parse-ignore"><a
-                                        href="https://www.facebook.com/projetopd/posts/784657694937329">Publicação</a>
-                                    by <a href="https://www.facebook.com/projetopd">Pensando o Direito</a>.
-                                </div>
-                            </div>
+
+                        <?php }
+
+                        if (trim($pensandoodireito_settings['pensandoodireito_facebook_embed']) != "") { ?>
+
+                        <div class="tab-pane active" id="Facebook">
+                            <?php echo $pensandoodireito_settings['pensandoodireito_facebook_embed'];  ?>
                         </div>
+
+                        <?php }
+
+                        if (trim($pensandoodireito_settings['pensandoodireito_identica_embed']) != "") { ?>
+
+                        <div class="tab-pane active" id="Identica">
+                            <?php echo $pensandoodireito_settings['pensandoodireito_identica_embed'];  ?>
+                        </div>
+
+                        <?php }
+
+                        if (trim($pensandoodireito_settings['pensandoodireito_diaspora_embed'] != "")) { ?>
+
+                        <div class="tab-pane active" id="Diaspora">
+                            <?php echo $pensandoodireito_settings['pensandoodireito_diaspora_embed'];  ?>
+                        </div>
+
+                        <?php } ?>
                     </div>
                 </div>
             </div>

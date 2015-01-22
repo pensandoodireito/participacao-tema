@@ -66,3 +66,142 @@ function pensando_get_cadastrase_minitutorial() {
     }
 
 }
+
+add_action( 'admin_menu', 'pensandoodireito_add_admin_menu' );
+add_action( 'admin_init', 'pensandoodireito_settings_init' );
+
+/**
+ * Adiciona o link para a página de opções do tema no menu
+ */
+function pensandoodireito_add_admin_menu(  ) {
+
+    add_options_page( 'Tema Pensando o Direito', 'Tema Pensando o Direito', 'manage_options', 'pensandoodireito-tema', 'pensandoodireito_options_page' );
+
+}
+
+/**
+ * Inicia os campos das opções do tema
+ */
+function pensandoodireito_settings_init(  ) {
+
+    register_setting( 'pluginPage', 'pensandoodireito_settings' );
+
+    add_settings_section(
+        'pensandoodireito_pluginPage_section',
+        'Opções do tema Pensando o Direito',
+        'pensandoodireito_settings_section_callback',
+        'pluginPage'
+    );
+
+    add_settings_field(
+        'pensandoodireito_twitter_embed',
+        'Código do widget do Twitter (usar altura máxima de 350px)',
+        'pensandoodireito_twitter_render',
+        'pluginPage',
+        'pensandoodireito_pluginPage_section'
+    );
+
+    add_settings_field(
+        'pensandoodireito_facebook_embed',
+        'Código do widget do Facebook (usar altura máxima de 350px)',
+        'pensandoodireito_facebook_render',
+        'pluginPage',
+        'pensandoodireito_pluginPage_section'
+    );
+
+    add_settings_field(
+        'pensandoodireito_identica_embed',
+        'Código do widget do Identica (usar altura máxima de 350px)',
+        'pensandoodireito_identica_render',
+        'pluginPage',
+        'pensandoodireito_pluginPage_section'
+    );
+
+    add_settings_field(
+        'pensandoodireito_diaspora_embed',
+        'Código do widget do Diaspora (usar altura máxima de 350px)',
+        'pensandoodireito_diaspora_render',
+        'pluginPage',
+        'pensandoodireito_pluginPage_section'
+    );
+
+
+}
+
+/**
+ * Render do campo para o widget do Twitter
+ */
+function pensandoodireito_twitter_render(  ) {
+
+    $options = get_option( 'pensandoodireito_settings' );
+    ?>
+    <textarea cols='40' rows='5' name='pensandoodireito_settings[pensandoodireito_twitter_embed]'>
+        <?php echo $options['pensandoodireito_twitter_embed']; ?>
+    </textarea>
+<?php
+
+}
+
+
+function pensandoodireito_facebook_render(  ) {
+
+    $options = get_option( 'pensandoodireito_settings' );
+    ?>
+    <textarea cols='40' rows='5' name='pensandoodireito_settings[pensandoodireito_facebook_embed]'>
+        <?php echo $options['pensandoodireito_facebook_embed']; ?>
+    </textarea>
+<?php
+
+}
+
+
+function pensandoodireito_identica_render(  ) {
+
+    $options = get_option( 'pensandoodireito_settings' );
+    ?>
+    <textarea cols='40' rows='5' name='pensandoodireito_settings[pensandoodireito_identica_embed]'>
+        <?php echo $options['pensandoodireito_identica_embed']; ?>
+    </textarea>
+<?php
+
+}
+
+
+function pensandoodireito_diaspora_render(  ) {
+
+    $options = get_option( 'pensandoodireito_settings' );
+    ?>
+    <textarea cols='40' rows='5' name='pensandoodireito_settings[pensandoodireito_diaspora_embed]'>
+        <?php echo $options['pensandoodireito_diaspora_embed']; ?>
+    </textarea>
+<?php
+
+}
+
+
+function pensandoodireito_settings_section_callback(  ) {
+
+    echo 'Configurações do tema';
+
+}
+
+
+function pensandoodireito_options_page(  ) {
+
+    ?>
+    <form action='options.php' method='post'>
+
+        <h2>Pensando o Direito</h2>
+
+        <?php
+        settings_fields( 'pluginPage' );
+        do_settings_sections( 'pluginPage' );
+        submit_button();
+        ?>
+
+    </form>
+<?php
+
+}
+
+?>
