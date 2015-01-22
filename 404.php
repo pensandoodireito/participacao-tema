@@ -9,16 +9,16 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area container">
 		<main id="main" class="site-main" role="main">
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'twentyfifteen' ); ?></h1>
+					<h4 class="page-title red"><img src="<?php echo get_template_directory_uri(); ?>/images/structure/404.jpg"><strong><?php _e( 'Página não encontrada.', 'twentyfifteen' ); ?></strong></h4>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentyfifteen' ); ?></p>
+					<p><?php _e( 'Que tal encontrar o que você deseja com a busca?', 'twentyfifteen' ); ?></p>
 
 					<?php get_search_form(); ?>
 				</div><!-- .page-content -->
