@@ -114,7 +114,7 @@
 
                         if (trim($pensandoodireito_settings['pensandoodireito_facebook_embed']) != "") { ?>
 
-                        <div class="tab-pane active" id="Facebook">
+                        <div class="tab-pane" id="Facebook">
                             <?php echo $pensandoodireito_settings['pensandoodireito_facebook_embed'];  ?>
                         </div>
 
@@ -122,7 +122,7 @@
 
                         if (trim($pensandoodireito_settings['pensandoodireito_identica_embed']) != "") { ?>
 
-                        <div class="tab-pane active" id="Identica">
+                        <div class="tab-pane" id="Identica">
                             <?php echo $pensandoodireito_settings['pensandoodireito_identica_embed'];  ?>
                         </div>
 
@@ -130,7 +130,7 @@
 
                         if (trim($pensandoodireito_settings['pensandoodireito_diaspora_embed'] != "")) { ?>
 
-                        <div class="tab-pane active" id="Diaspora">
+                        <div class="tab-pane" id="Diaspora">
                             <?php echo $pensandoodireito_settings['pensandoodireito_diaspora_embed'];  ?>
                         </div>
 
