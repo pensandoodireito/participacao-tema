@@ -8,14 +8,14 @@
  */
 
 get_header(); ?>
-
+<div class="container">
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?></h1>
+				<h4 class="page-title"><?php printf( __( 'Resultados da pesquisa por: <strong class="red"> %s </strong>', 'twentyfifteen' ), get_search_query() ); ?></h4>
 			</header><!-- .page-header -->
 
 			<?php
@@ -49,5 +49,6 @@ get_header(); ?>
 
 		</main><!-- .site-main -->
 	</section><!-- .content-area -->
+</div>
 
 <?php get_footer(); ?>
