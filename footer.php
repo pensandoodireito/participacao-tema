@@ -62,7 +62,7 @@
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/bootstrap/bootstrap.min.js"></script>
 
 <!-- Core da pagina -->
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/core-mci.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/core.js"></script>
 <?php wp_footer(); ?>
 
 </body>
