@@ -69,3 +69,20 @@
         color: inherit;
     }
 }
+// Classes para fazer o men fixar-se no scroll da tela
+.menueixo-stick {
+    transition: width 0.5ms ease;
+    position: fixed;
+    top: 50px;
+    left: inherit;
+    width: 20%;
+    @media (min-width: 1200px){
+      width: 14%;  
+    }
+    @media (max-width: 995px) {
+        position: relative;
+        top: 0;
+        left: inherit;
+        width: 100%;
+    }
+}
