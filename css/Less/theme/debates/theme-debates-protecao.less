@@ -23,7 +23,6 @@
     .temas {
         position: relative;
         background: url("../images/bck-debates-prot-temas.jpg") no-repeat left top #22466d;
-      
         .titulo {
             text-indent: -90000px;
             background: url("../images/prot-temas.png") no-repeat left bottom;
@@ -53,4 +52,70 @@
             margin: 20px;
         }
     }
+}
+/* comentários no texto dos dados pessoais */
+
+.commentable-container {
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 700;
+    }
+    p {
+        &.commentable-section {
+            font-size: 18px;
+            padding: 20px;
+            color: #000;
+            &:hover {
+                background-color: #f6f6f6;
+                box-shadow: 0px 1px 6px 1px rgba(50, 50, 50, 0.31);
+            }
+            &:after {
+                top: 10%;
+            }
+        }
+    }
+    h1 {
+        font-family: @font-family-roboto;
+        text-align: center;
+        margin: 30px 0 15px;
+        padding: 30px 0 15px;
+        border-top: 1px solid #ccc;
+    }
+    h2 {
+        font-family: @font-family-roboto;
+        text-align: center;
+        margin: 30px 0 15px;
+        padding: 15px 0;
+    }
+    h3 {
+        font-weight: 700;
+        margin: 15px 0;
+        padding: 15px 0;
+    }
+    
+        
+        .comments {
+            font-size: 12px;
+            //li{ border-bottom: 1px solid #ccc;}
+            .comment {
+                background-color: #fff;
+                padding: 10px;
+                margin: 5px 10px;
+                
+            }
+        }
+        .comment-form {
+            &.active {
+                border-top: 1px solid #666;
+                box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+                margin-top: 5px;
+            }
+        }
+        .side-comment {
+            //top: -60px;
+            .add-comment {
+                background-color: @brand-primary !important;
+                
+            }
+        }
+    
 }
