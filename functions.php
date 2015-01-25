@@ -37,7 +37,7 @@ function pensando_get_participe_link() {
     $link_delibera = get_post_type_archive_link('pauta');
 
     if ($link_delibera == "") {
-        $page_participe = get_page_by_title( 'Participe' );
+        $page_participe = pensando_get_participe_page();
 
         if ($page_participe != null) {
             return get_page_link( $page_participe->ID );
@@ -47,6 +47,12 @@ function pensando_get_participe_link() {
     } else {
         return $link_delibera;
     }
+}
+
+function pensando_get_participe_page() {
+
+    return get_page_by_path( '/participe' );
+
 }
 
 /**
@@ -214,13 +220,10 @@ function pensandoodireito_formulario_registro($errors) {
     $nice_name = ( ! empty( $_POST['nice_name'] ) ) ? trim( $_POST['nice_name'] ) : '';
 
     ?>
-    <p>
         <label for="nice_name">Nome de apresentação</label>
-            <input type="text" name="nice_name" id="nice_name" class="input" value="<?php echo esc_attr( wp_unslash( $nice_name ) ); ?>" size="25" /><br/>
+            <input type="text" name="nice_name" id="nice_name" value="<?php echo esc_attr( wp_unslash( $nice_name ) ); ?>" size="25" /><br/>
         Esse nome será usado em todos os seus comentários públicos.
 
-    </p>
-    <p>
         <?php if ( $errmsg = $errors->get_error_message('termos_uso') ) { ?>
             <p class="error"><?php echo $errmsg ?></p>
         <?php } ?>
@@ -228,7 +231,6 @@ function pensandoodireito_formulario_registro($errors) {
         <label for="termos_uso">
             Li e aceito os <a href="#">termos de uso</a>
         </label>
-    </p>
 <?php
 }
 
@@ -258,7 +260,7 @@ add_action('wpmu_activate_user', 'pensandoodireito_salvar_campos_usuario', 10, 3
 function pensandoodireito_salvar_campos_usuario ($user_id, $password, $meta) {
 
     update_user_meta($user_id, 'nickname', $meta['nice_name']);
-    update_user_meta($user_id, 'display_name', $meta['nice_name']);
+    wp_update_user( array ('ID' => $user_id, 'display_name' => $meta['nice_name']));
 
 }
 
@@ -279,4 +281,13 @@ function pensandoodireito_validacao( $result ) {
     }
 
     return $result;
+}
+
+add_action( 'init', 'pensandoodireito_habilitar_resumo' );
+
+/**
+ * Habilitar resumo para páginas
+ */
+function pensandoodireito_habilitar_resumo() {
+    add_post_type_support( 'page', 'excerpt' );
 }
