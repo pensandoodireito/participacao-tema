@@ -204,4 +204,79 @@ function pensandoodireito_options_page(  ) {
 
 }
 
-?>
+add_action( 'signup_extra_fields', 'pensandoodireito_formulario_registro' );
+
+/**
+ * Inclusão de campos extras no registro do WordPress
+ */
+function pensandoodireito_formulario_registro($errors) {
+
+    $nice_name = ( ! empty( $_POST['nice_name'] ) ) ? trim( $_POST['nice_name'] ) : '';
+
+    ?>
+    <p>
+        <label for="nice_name">Nome de apresentação</label>
+            <input type="text" name="nice_name" id="nice_name" class="input" value="<?php echo esc_attr( wp_unslash( $nice_name ) ); ?>" size="25" /><br/>
+        Esse nome será usado em todos os seus comentários públicos.
+
+    </p>
+    <p>
+        <?php if ( $errmsg = $errors->get_error_message('termos_uso') ) { ?>
+            <p class="error"><?php echo $errmsg ?></p>
+        <?php } ?>
+        <input type="checkbox" name="termos_uso" id="termos_uso" class="checkbox" />
+        <label for="termos_uso">
+            Li e aceito os <a href="#">termos de uso</a>
+        </label>
+    </p>
+<?php
+}
+
+add_filter( 'add_signup_meta', 'pensandoodireito_salvar_meta' );
+
+/**
+ * Salva os campos extras
+ * @param $user_id
+ */
+function pensandoodireito_salvar_meta( $meta ) {
+    if ( ! empty( $_POST['nice_name'] ) ) {
+        $meta['nice_name'] = trim( $_POST['nice_name'] ) ;
+    }
+
+    return $meta;
+}
+
+add_action('wpmu_activate_user', 'pensandoodireito_salvar_campos_usuario', 10, 3 );
+
+/**
+ * Persiste os campos especiais salvos no signup
+ *
+ * @param $user_id
+ * @param $password
+ * @param $meta
+ */
+function pensandoodireito_salvar_campos_usuario ($user_id, $password, $meta) {
+
+    update_user_meta($user_id, 'nickname', $meta['nice_name']);
+    update_user_meta($user_id, 'display_name', $meta['nice_name']);
+
+}
+
+add_filter( 'wpmu_validate_user_signup', 'pensandoodireito_validacao', 10, 3 );
+
+/**
+ * Validação dos campos extras
+ *
+ * @param $errors
+ * @param $sanitized_user_login
+ * @param $user_email
+ * @return mixed
+ */
+function pensandoodireito_validacao( $result ) {
+
+    if ( !isset( $_POST['termos_uso']) || empty( $_POST['termos_uso'] ) ) {
+        $result['errors']->add( 'termos_uso', 'Você precisa aceitar os termos de uso para se registrar na plataforma.' );
+    }
+
+    return $result;
+}
