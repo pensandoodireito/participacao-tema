@@ -26,7 +26,7 @@ function pensando_get_logged_user() {
     }
     else {
 
-        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a class="simplemodal-login" href="' . wp_login_url() .'">Já é cadastrado?</a>';
+        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a data-target="#wp-login-modal" data-toggle="modal" href="' . wp_login_url() .'">Já é cadastrado?</a>';
 
     }
 }
@@ -297,19 +297,6 @@ add_action( 'init', 'pensandoodireito_habilitar_resumo' );
 function pensandoodireito_habilitar_resumo() {
     add_post_type_support( 'page', 'excerpt' );
 }
-
-add_action( 'login_enqueue_scripts', 'pensandoodireito_login_logo' );
-/**
- * Função para substituir o logo padrão da tela de login
- */
-function pensandoodireito_login_logo() { ?>
-    <style type="text/css">
-        body.login div#login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/pensandoodireito-login-logo.png);
-            padding-bottom: 30px;
-        }
-    </style>
-<?php }
 
 add_action( 'get_header', 'pensandoodireito_remover_style_signup' );
 
