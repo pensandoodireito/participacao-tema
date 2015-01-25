@@ -291,3 +291,16 @@ add_action( 'init', 'pensandoodireito_habilitar_resumo' );
 function pensandoodireito_habilitar_resumo() {
     add_post_type_support( 'page', 'excerpt' );
 }
+
+add_action( 'login_enqueue_scripts', 'pensandoodireito_login_logo' );
+/**
+ * Função para substituir o logo padrão da tela de login
+ */
+function pensandoodireito_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/pensandoodireito-login-logo.png);
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
