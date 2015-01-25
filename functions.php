@@ -280,3 +280,31 @@ function pensandoodireito_validacao( $result ) {
 
     return $result;
 }
+
+add_action( 'init', 'pensandoodireito_habilitar_resumo' );
+
+/**
+ * Habilitar resumo para páginas
+ */
+function pensandoodireito_habilitar_resumo() {
+    add_post_type_support( 'page', 'excerpt' );
+}
+
+add_action( 'login_enqueue_scripts', 'pensandoodireito_login_logo' );
+/**
+ * Função para substituir o logo padrão da tela de login
+ */
+function pensandoodireito_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/pensandoodireito-login-logo.png);
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+
+add_action( 'get_header', 'pensandoodireito_remover_style_signup' );
+
+function pensandoodireito_remover_style_signup() {
+    remove_action( 'wp_head', 'wpmu_signup_stylesheet' );
+}
