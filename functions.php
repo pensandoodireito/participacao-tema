@@ -310,3 +310,9 @@ function pensandoodireito_login_logo() { ?>
         }
     </style>
 <?php }
+
+add_action( 'get_header', 'pensandoodireito_remover_style_signup' );
+
+function pensandoodireito_remover_style_signup() {
+    remove_action( 'wp_head', 'wpmu_signup_stylesheet' );
+}
