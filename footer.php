@@ -55,14 +55,7 @@
     </div>
 </div>
 
-<!-- jQuery -->
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery-2.1.1.min.js"></script>
 
-<!-- Todos os js's do Bootstrap, compilados -->
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/bootstrap/bootstrap.min.js"></script>
-
-<!-- Core da pagina -->
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/core.js"></script>
 <?php wp_footer(); ?>
 
 </body>

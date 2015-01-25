@@ -5,6 +5,12 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'noticia-destaque', 555, 290, true );
 add_image_size( 'noticia-lista', 214, 137, true );
 
+function pensandoodireito_scripts() {
+    wp_enqueue_script( 'pensandoodireito', get_template_directory_uri() . '/js/pensandoodireito.js' , array('jquery'), false, true );
+    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js' , array('jquery'), false, true );
+}
+
+add_action( 'wp_enqueue_scripts', 'pensandoodireito_scripts' );
 
 /**
  * Retorna o bloco de texto para usuários logados ou não, com
@@ -20,7 +26,7 @@ function pensando_get_logged_user() {
     }
     else {
 
-        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a href="' . wp_login_url() .'">Já é cadastrado?</a>';
+        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a class="simplemodal-login" href="' . wp_login_url() .'">Já é cadastrado?</a>';
 
     }
 }
