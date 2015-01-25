@@ -32,6 +32,16 @@
             padding-bottom: 0;
             border-bottom: 0;
         }
+        ul li > ul {
+            margin-top: -16px;
+            padding-left: 20px;
+            margin-left: 10px;
+            border-left: 1px solid #d5d5d5;
+            border-top: 1px solid #fff;
+            li:first-child {
+                padding-top: 15px;
+            }
+        }
     }
     &.horizontal {
         li {
@@ -76,8 +86,8 @@
     top: 50px;
     left: inherit;
     width: 20%;
-    @media (min-width: 1200px){
-      width: 14%;  
+    @media (min-width: 1200px) {
+        width: 14%;
     }
     @media (max-width: 995px) {
         position: relative;
