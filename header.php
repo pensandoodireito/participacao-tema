@@ -27,7 +27,7 @@
         <div class="header-content">
             <div class="col-xs-3">
                 <div id="logo-principal">
-                    <a href="#">
+                    <a href="<?php echo network_home_url("/");  ?>">
                         <h1>Portal do Projeto Pensando o Direito</h1>
                     </a>
                 </div>

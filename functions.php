@@ -26,7 +26,7 @@ function pensando_get_logged_user() {
     }
     else {
 
-        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a data-target="#wp-login-modal" data-toggle="modal" href="' . wp_login_url() .'">Já é cadastrado?</a>';
+        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a data-target="#wp-login-modal" data-toggle="modal" href="' . wp_login_url($_SERVER['REQUEST_URI']) .'">Faça seu login</a>';
 
     }
 }
