@@ -230,13 +230,13 @@ function pensandoodireito_formulario_registro($errors) {
             <input type="text" name="nice_name" id="nice_name" value="<?php echo esc_attr( wp_unslash( $nice_name ) ); ?>" size="25" /><br/>
         Esse nome será usado em todos os seus comentários públicos.
 
+        <label for="termos_uso">
+            <input type="checkbox" name="termos_uso" id="termos_uso" class="checkbox" />
+            Li e aceito os <a href="#">termos de uso</a>
+        </label>
         <?php if ( $errmsg = $errors->get_error_message('termos_uso') ) { ?>
             <p class="error"><?php echo $errmsg ?></p>
         <?php } ?>
-        <input type="checkbox" name="termos_uso" id="termos_uso" class="checkbox" />
-        <label for="termos_uso">
-            Li e aceito os <a href="#">termos de uso</a>
-        </label>
 <?php
 }
 
