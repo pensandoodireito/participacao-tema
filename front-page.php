@@ -4,7 +4,7 @@
                 <div class="col-md-6">
                     <div class="debate-item protecao">
                         <div class="text-center">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/protecao-w.png" class="img-adptive" alt="Proteção de Dados Pessoais">
+                    <a href="<?php echo site_url("/dadospessoais"); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/protecao-w.png" class="img-adptive" alt="Proteção de Dados Pessoais"></a>
                 </div>
                 <div class="description">
                         <?php
@@ -23,7 +23,7 @@
         <div class="col-md-6">
             <div class="debate-item marco-civil">
                 <div class="text-center">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/marcocivil-b.png" class="img-adptive" alt="Proteção de Dados Pessoais">
+                    <a href="<?php echo site_url("/marcocivil"); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/marcocivil-b.png" class="img-adptive" alt="Proteção de Dados Pessoais"></a>
                 </div>
                 <div class="description">
                         <?php
