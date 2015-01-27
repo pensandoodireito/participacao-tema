@@ -1,4 +1,4 @@
-.mu_register {
+.mu_register, .widecolumn {
     .container-fixed();
     @media (min-width: @screen-sm-min) {
         width: @container-sm;
@@ -13,7 +13,7 @@
         font-size: 18px;
         font-weight: 700;
     }
-    form#setupform {
+    form#setupform, form#activateform {
         .clearfix();
         padding: 0 20px 20px 20px;
         border: 1px solid #ccc;
@@ -28,6 +28,12 @@
         }
         @media (min-width: @screen-lg-min) {
             width: 60%;
+        }
+    }
+    form#activateform {
+        .submit {
+            width: auto;
+            float: none;
         }
     }
     .error {
@@ -114,7 +120,7 @@
         }
     }
 }
-
-#login{
+#login {
     width: auto;
 }
+// confirmação de cadastro para o login:
