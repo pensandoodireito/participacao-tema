@@ -12,9 +12,11 @@
  */
 
 get_header(); ?>
-
+<div class="container">
     <div class="row">
-        <?php get_template_part('menu', 'horizontal'); ?>
+        <div class="col-xs-12">
+            <?php get_template_part("menu", "horizontal"); ?>
+        </div>
     </div>
     <?php
         // Start the Loop.
@@ -25,6 +27,6 @@ get_header(); ?>
 
         endwhile;
     ?>
-
+</div>
 <?php
 get_footer();
