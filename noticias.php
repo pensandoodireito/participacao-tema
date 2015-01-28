@@ -177,7 +177,7 @@
         </div>
         <div class="mt-md">
             <p>
-                <a href="#" class="blue"><strong>Todas as notícias</strong></a>
+<!--                <a href="#" class="blue"><strong>Todas as notícias</strong></a>-->
             </p>
         </div>
     </div>
