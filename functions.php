@@ -26,7 +26,7 @@ function pensando_get_logged_user() {
     }
     else {
 
-        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a data-target="#wp-login-modal" data-toggle="modal" href="' . wp_login_url($_SERVER['REQUEST_URI']) .'">Faça seu login</a>';
+        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a href="' . wp_login_url($_SERVER['REQUEST_URI']) .'">Faça seu login</a>';
 
     }
 }
@@ -232,7 +232,7 @@ function pensandoodireito_formulario_registro($errors) {
 
         <label for="termos_uso">
             <input type="checkbox" name="termos_uso" id="termos_uso" class="checkbox" />
-            Li e aceito os <a href="#">termos de uso</a>
+            Li e aceito os <a href="<?php echo get_permalink( get_page_by_path('/termos-de-uso') ); ?>" target="_blank">termos de uso</a>.
         </label>
         <?php if ( $errmsg = $errors->get_error_message('termos_uso') ) { ?>
             <p class="error"><?php echo $errmsg ?></p>
