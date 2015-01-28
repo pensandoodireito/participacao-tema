@@ -1,8 +1,7 @@
 <?php
 get_header(); ?>
     <div class="row">
-        <?php get_template_part('logo', 'mci'); ?>
-        <?php get_template_part('menu', 'interno'); ?>
+        <?php get_template_part('menu', 'horizontal'); ?>
     </div>
     <div class="container">
         <?php

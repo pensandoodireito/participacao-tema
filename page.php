@@ -14,8 +14,7 @@
 get_header(); ?>
 
     <div class="row">
-        <?php get_template_part('logo', 'mci'); ?>
-        <?php get_template_part('menu', 'interno'); ?>
+        <?php get_template_part('menu', 'horizontal'); ?>
     </div>
     <?php
         // Start the Loop.
