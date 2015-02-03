@@ -4,9 +4,13 @@
     $title = "";
 
     if (is_singular()) {
-        $title = get_the_title() . ' - ' . get_bloginfo('title');
+        $page_title = get_the_title() . ' - ' . get_bloginfo('title');
+        $title = get_the_title();
+        $description = get_the_excerpt();
     } else {
-        $title = get_bloginfo('title') . ' - ' . get_bloginfo('description');
+        $page_title = get_bloginfo('title') . ' - ' . get_bloginfo('description');
+        $title = get_bloginfo('title');
+        $description = get_bloginfo('description');
     }
 ?>
 <head>
@@ -20,10 +24,10 @@
     <meta property="og:image" content="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png"/>
     <meta property="og:title" content="<?php echo $title; ?>"/>
     <meta property="og:site_name" content="<?php echo get_bloginfo('title'); ?>"/>
-    <meta property="og:description" content="<?php echo get_bloginfo('description'); ?>"/>
+    <meta property="og:description" content="<?php echo $description; ?>"/>
     <meta property="og:type" content="website"/>
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon-pd.jpg">
-    <title><?php echo $title; ?></title>
+    <title><?php echo $page_title; ?></title>
     <!-- styles gerais do portal -->
     <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet">
     <!-- HTML5Shim e Respond.js oferecem suporte HTML5 e media queries para o IE8 -->
