@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+    $title = "";
 
+    if (is_singular()) {
+        $title = get_the_title() . ' - ' . get_bloginfo('title');
+    } else {
+        $title = get_bloginfo('title') . ' - ' . get_bloginfo('description');
+    }
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +17,12 @@
     <meta name="keywords" content="">
     <meta name="application-name" content="">
     <meta name="msapplication-TileColor" content="">
-    <link rel="shortcut icon" href="images/favicon-pd.jpg">
-    <title><?php echo get_bloginfo('title'); ?> - <?php echo get_bloginfo('description'); ?></title>
+    <meta property="og:image" content="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png"/>
+    <meta property="og:title" content="<?php echo $title; ?>"/>
+    <meta property="og:site_name" content="<?php echo get_bloginfo('title'); ?>"/>
+    <meta property="og:description" content="<?php echo get_bloginfo('description'); ?>"/>
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon-pd.jpg">
+    <title><?php echo $title; ?></title>
     <!-- styles gerais do portal -->
     <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet">
     <!-- HTML5Shim e Respond.js oferecem suporte HTML5 e media queries para o IE8 -->
