@@ -21,6 +21,7 @@
     <meta property="og:title" content="<?php echo $title; ?>"/>
     <meta property="og:site_name" content="<?php echo get_bloginfo('title'); ?>"/>
     <meta property="og:description" content="<?php echo get_bloginfo('description'); ?>"/>
+    <meta property="og:type" content="website"/>
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon-pd.jpg">
     <title><?php echo $title; ?></title>
     <!-- styles gerais do portal -->
