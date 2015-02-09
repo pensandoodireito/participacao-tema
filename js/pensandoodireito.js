@@ -1,16 +1,4 @@
-/*$(document).ready(function() {
- var s = $("#menueixos-sticker");
- var pos = s.position();
- $(window).scroll(function() {
- var windowpos = $(window).scrollTop();
 
- if (windowpos >= pos.top) {
- s.addClass("menueixo-stick");
- } else {
- s.removeClass("menueixo-stick");
- }
- });
- });*/
 
 function sticky_relocate() {
     var window_top = jQuery(window).scrollTop();
@@ -44,6 +32,20 @@ function back_to_top($) {
     })
 }
 
+function carregar_noticias(pageNumber) {
+    jQuery(".container .ordinarynews").append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + pensandoodireito.ajaxgif + '"/></div>');
+    jQuery.ajax({
+        url: pensandoodireito.ajaxurl,
+        type: 'POST',
+        data: "action=pensandoodireito_paginacao_infinita&paged="+ pageNumber,
+        success: function(html){
+            jQuery('#loader-gif').remove();
+            jQuery(".container .ordinarynews").append(html);
+        }
+    });
+    return false;
+}
+
 jQuery(function ($) {
     $(window).scroll(sticky_relocate);
     sticky_relocate();
@@ -56,4 +58,17 @@ jQuery(function ($) {
 
     back_to_top($);
 
+    $(window).scroll(function(){
+        if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+
+            if (pensandoodireito.paginaAtual > pensandoPaginasMaximas){
+                return false;
+            } else {
+                carregar_noticias(pensandoodireito.paginaAtual);
+            }
+
+            pensandoodireito.paginaAtual++;
+        }
+    });
 });
+

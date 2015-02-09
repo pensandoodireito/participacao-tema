@@ -8,6 +8,14 @@ add_image_size( 'noticia-lista', 214, 137, true );
 function pensandoodireito_scripts() {
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js' , array('jquery'), false, true );
     wp_enqueue_script( 'pensandoodireito', get_template_directory_uri() . '/js/pensandoodireito.js' , array('jquery', 'bootstrap'), false, true );
+
+    $pensandoodireito_data = array(
+                                'ajaxurl' => admin_url('admin-ajax.php'),
+                                'paginaAtual' => 2,
+                                'ajaxgif' => get_template_directory_uri() . '/images/ajax-loader.gif'
+                                );
+
+    wp_localize_script( 'pensandoodireito', 'pensandoodireito', $pensandoodireito_data );
 }
 
 add_action( 'wp_enqueue_scripts', 'pensandoodireito_scripts' );
@@ -304,3 +312,29 @@ function pensandoodireito_remover_style_signup() {
     remove_action( 'wp_head', 'wpmu_signup_stylesheet' );
     remove_action( 'wp_head', 'wpmu_activate_stylesheet' );
 }
+
+/**
+ * Função ajax pra paginação infinita
+ */
+function pensandoodireito_paginacao_infinita(){
+    $paged = $_POST['paged'];
+
+    $args = array(
+        'paged' => $paged,
+        'posts_per_page' => get_option('posts_per_page'),
+        'post__not_in' => get_option('sticky_posts')
+    );
+    $ordinary_news = new WP_Query($args);
+
+    if ($ordinary_news->have_posts()) {
+        while ($ordinary_news->have_posts()) {
+            $ordinary_news->the_post();
+            get_template_part('noticias','box');
+        }
+    }
+
+    exit;
+}
+
+add_action('wp_ajax_pensandoodireito_paginacao_infinita', 'pensandoodireito_paginacao_infinita');
+add_action('wp_ajax_nopriv_pensandoodireito_paginacao_infinita', 'pensandoodireito_paginacao_infinita');
