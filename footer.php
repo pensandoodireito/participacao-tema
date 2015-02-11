@@ -14,6 +14,8 @@
                     </li>
                     <li><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">PUBLICAÇÕES</a>
                     </li>
+                    <li><a href="http://participacao.mj.gov.br/termos-de-uso/">TERMOS DE USO</a>
+                    </li>
                 </ul>
                 <ul class="list-inline footer-menu">
                     <li><a href="http://participacao.mj.gov.br/pensandoodireito/noticias/">Notícias</a>
