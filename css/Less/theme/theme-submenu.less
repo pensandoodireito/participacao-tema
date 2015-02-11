@@ -95,13 +95,34 @@
     top: 50px;
     left: inherit;
     width: 20%;
+    height: 100%;
+    margin-bottom: 20px;
     @media (min-width: 1200px) {
         width: 14%;
     }
-    @media (max-width: 995px) {
-        position: relative;
-        top: 0;
-        left: inherit;
+    @media (max-width: 992px) {
         width: 100%;
+        position: relative;
+    }
+    .panel {
+        height: 88%;
+    }
+    .panel-body {
+        display: block;
+        overflow: auto;
+        overflow-x: hidden;
+        height: 93%;
+    }
+}
+@media (max-width: 992px) {
+    .menu-submenu {
+        .vertical {
+            &.panel-body {
+                display: block;
+                overflow: auto;
+                overflow-x: hidden;
+                height: 320px;
+            }
+        }
     }
 }
