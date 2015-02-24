@@ -12,7 +12,8 @@ function pensandoodireito_scripts() {
     $pensandoodireito_data = array(
                                 'ajaxurl' => admin_url('admin-ajax.php'),
                                 'paginaAtual' => 2,
-                                'ajaxgif' => get_template_directory_uri() . '/images/ajax-loader.gif'
+                                'ajaxgif' => get_template_directory_uri() . '/images/ajax-loader.gif',
+																'isHome' => is_home() ? 'true' : 'false'
                                 );
 
     wp_localize_script( 'pensandoodireito', 'pensandoodireito', $pensandoodireito_data );

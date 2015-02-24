@@ -58,17 +58,19 @@ jQuery(function ($) {
 
     back_to_top($);
 
-    $(window).scroll(function(){
-        if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+	if (pensandoodireito.isHome == "true") {
+        $(window).scroll(function(){
+            if  ($(window).scrollTop() == $(document).height() - $(window).height()){
 
-            if (pensandoodireito.paginaAtual > pensandoPaginasMaximas){
-                return false;
-            } else {
-                carregar_noticias(pensandoodireito.paginaAtual);
+                if (pensandoodireito.paginaAtual > pensandoPaginasMaximas){
+                    return false;
+                } else {
+                    carregar_noticias(pensandoodireito.paginaAtual);
+                }
+
+                pensandoodireito.paginaAtual++;
             }
-
-            pensandoodireito.paginaAtual++;
-        }
-    });
+        });
+	};
 });
 
