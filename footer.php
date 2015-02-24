@@ -49,6 +49,9 @@
                     </li>
                 </ul>
             </div>
+            <div class="col-sm-12">
+                <p>Dúvidas, sugestões e contribuições mande um e-mail para <a href="mailto:<?php echo bloginfo('admin_email') ?>"><?php echo bloginfo('admin_email') ?></a></p>
+            </div>
         </div>
         <div class="row text-center mt-md fontsize-xs">
             <p>Todo o conteúdo do Projeto Pensando o Direito está licenciado sob a CC-by-sa-2.5, exceto quando
