@@ -58,7 +58,7 @@ jQuery(function ($) {
 
     back_to_top($);
 
-	if (pensandoodireito.isHome == "true") {
+    if (pensandoodireito.isHome == "true") {
         $(window).scroll(function(){
             if  ($(window).scrollTop() == $(document).height() - $(window).height()){
 
@@ -71,6 +71,6 @@ jQuery(function ($) {
                 pensandoodireito.paginaAtual++;
             }
         });
-	};
+    };
 });
 
