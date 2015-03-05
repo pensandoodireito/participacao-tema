@@ -339,3 +339,49 @@ function pensandoodireito_paginacao_infinita(){
 
 add_action('wp_ajax_pensandoodireito_paginacao_infinita', 'pensandoodireito_paginacao_infinita');
 add_action('wp_ajax_nopriv_pensandoodireito_paginacao_infinita', 'pensandoodireito_paginacao_infinita');
+
+/**
+ * Registar post type publicação
+ */
+function publicacao_post_type() {
+
+    $labels = array(
+        'name'                => _x( 'Publicações', 'Post Type General Name', 'pensandooodireito' ),
+        'singular_name'       => _x( 'Publicação', 'Post Type Singular Name', 'pensandooodireito' ),
+        'menu_name'           => __( 'Publicações', 'pensandooodireito' ),
+        'parent_item_colon'   => __( 'Publicação pai:', 'pensandooodireito' ),
+        'all_items'           => __( 'Todas as publicações', 'pensandooodireito' ),
+        'view_item'           => __( 'Ver publicação', 'pensandooodireito' ),
+        'add_new_item'        => __( 'Adicionar publicação', 'pensandooodireito' ),
+        'add_new'             => __( 'Adicionar nova', 'pensandooodireito' ),
+        'edit_item'           => __( 'Editar Publicação', 'pensandooodireito' ),
+        'update_item'         => __( 'Atualizar Publicação', 'pensandooodireito' ),
+        'search_items'        => __( 'Buscar publicação', 'pensandooodireito' ),
+        'not_found'           => __( 'Não enconrtado', 'pensandooodireito' ),
+        'not_found_in_trash'  => __( 'Não encontrado na lixeira', 'pensandooodireito' ),
+    );
+    $args = array(
+        'label'               => __( 'publicacao', 'pensandooodireito' ),
+        'description'         => __( 'Publicações do Pensando o Direito', 'pensandooodireito' ),
+        'labels'              => $labels,
+        'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', ),
+        'taxonomies'          => array( 'category', 'post_tag' ),
+        'hierarchical'        => false,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'menu_position'       => 5,
+        'can_export'          => true,
+        'has_archive'         => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'post',
+    );
+    register_post_type( 'publicacao', $args );
+
+}
+
+// Iniciarlizar publicação.
+add_action( 'init', 'publicacao_post_type', 0 );
