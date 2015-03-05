@@ -101,9 +101,9 @@
             </li>
             <li class="navegacao-destaque-item">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">Publicações</a></h5>
+                    <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
 
-                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">Conheça as publicações da
+                    <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
                             Série Pensando o Direito.</a></p>
                 </div>
             </li>
