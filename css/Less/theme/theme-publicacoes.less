@@ -1,0 +1,80 @@
+@import "theme-variables.less";
+@import "../bootstrap/variables.less";
+/*@import "../bootstrap/mixins.less";*/
+
+/*publicacoes*/
+.capa {
+        color:#FFF;
+        text-align: center;
+        width: 156px;
+        margin: auto;
+        margin-top: 10px;
+     }   
+    .destaque {
+        background: url("../images/publicacoes/big-capa-card.gif") #c5212a;
+        background-position: center;
+        background-repeat: no-repeat; 
+        font-size: 20px;
+        height: 268px;
+        vertical-align: middle;
+        display: table-cell;
+        width: 206px; 
+        p{color: #FFF} 
+    }
+    .card {
+        background: url("../images/publicacoes/capa-card.gif") #c5212a;
+        background-position: center;
+        background-repeat: no-repeat; 
+        font-size: 15px;
+        height: 206px;
+        vertical-align: middle;
+        display: table-cell;
+        width: 156px; 
+        p{color: #FFF}
+}
+.nounderline{text-decoration: none!important}
+
+.ribbon-wrapper {
+width: 150px;
+  height: 85px;
+  overflow: hidden;
+  position: absolute;
+  top: 15px;
+}
+
+.ribbon {
+  font: bold 12px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(-33deg);
+  -moz-transform:    rotate(-33deg);
+  -ms-transform:     rotate(-33deg);
+  -o-transform:      rotate(-33deg);
+  position: relative;
+  padding: 4px 0;
+  left: -38px;
+  top: 15px;
+  width: 150px;
+  background-color: #FFF;
+  color: #6a6340;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon:before, .ribbon:after {
+  content: "";
+  border-top:   3px solid #6e8900;   
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon:before {
+  left: 0;
+}
+.ribbon-:after {
+  right: 0;
+}
