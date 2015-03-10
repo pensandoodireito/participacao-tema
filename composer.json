@@ -1,10 +1,10 @@
 {
-    "name": "pensandoodireito/pensandoodireito-tema",
+    "name": "pensandoodireito/participacao-tema",
     "version": "0.0.1",
     "type": "wordpress-theme",
     "description": "Tema para o site Pensando o Direito",
     "keywords": ["theme", "wordpress", "democracy", "participação"],
-    "homepage": "https://github.com/pensandoodireito/pensandoodireito-tema",
+    "homepage": "https://github.com/pensandoodireito/participacao-tema",
     "license": "GPL-2",
     "authors": [
         {
