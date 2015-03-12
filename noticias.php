@@ -1,5 +1,5 @@
 <div class="noticias">
-    <div class="container mt-lg">
+    <div class="container mt-lg well well-sm">
         <div class="row">
             <div class="col-xs-12">
                 <h4 class="font-roboto red"><strong>Notícias</strong></h4>
@@ -37,7 +37,7 @@
                                         </a>
                                     </strong>
                                 </p>
-
+                                 <small>10 de maio de 2015</small>
                                 <p><?php the_excerpt(); ?></p>
                             </div>
                         </div>
@@ -162,6 +162,10 @@
                 }
             } ?>
         </div>
+</br>
+        <div class="row text-center">
+          <button type="button" class="btn btn-danger">Mostrar mais notícias</button>
+        </div>        
         <div class="mt-md">
             <p>
 <!--                <a href="#" class="blue"><strong>Todas as notícias</strong></a>-->
