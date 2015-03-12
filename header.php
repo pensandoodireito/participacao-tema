@@ -72,11 +72,11 @@
 
 
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="http://participacao.mj.gov.br/pensandoodireito/noticias/">Notícias</a></li>
-                                <li><a href="http://participacao.mj.gov.br/pensandoodireito/editais/">Editais</a></li>
-                                <li><a href="http://participacao.mj.gov.br/pensandoodireito/parceiros/">Parceiros</a>
+                                <li><a href="/pensandoodireito/noticias/">Notícias</a></li>
+                                <li><a href="/pensandoodireito/editais/">Editais</a></li>
+                                <li><a href="/pensandoodireito/parceiros/">Parceiros</a>
                                 </li>
-                                <li><a href="http://participacao.mj.gov.br/pensandoodireito/contato/">Fale conosco</a>
+                                <li><a href="/pensandoodireito/contato/">Fale conosco</a>
                                 </li>
                             </ul>
                         </div>
@@ -93,9 +93,9 @@
         <ul class="navegacao-destaque-list">
             <li class="navegacao-destaque-item">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
+                    <h5><a href="/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
 
-                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">Criado para promover a
+                    <p><a href="/pensandoodireito/o-que-e/">Criado para promover a
                             democratização do processo de elaboração legislativa.</a></p>
                 </div>
             </li>
@@ -109,9 +109,9 @@
             </li>
             <li class="navegacao-destaque-item">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">Debates</a></h5>
+                    <h5><a href="/pensandoodireito/debates/">Debates</a></h5>
 
-                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">Conheça os debates já
+                    <p><a href="/pensandoodireito/debates/">Conheça os debates já
                             realizados.</a>
                     </p>
                 </div>
@@ -119,9 +119,9 @@
             <li class="navegacao-destaque-item participe">
                 <div class="arrow-right"></div>
                 <div class="navegacao-destaque-content">
-                    <h5><a href="<?php echo pensando_get_participe_link(); ?>">Participe!</a></h5>
+                    <h5><a href="<?php echo participacao_get_participe_link(); ?>">Participe!</a></h5>
 
-                    <p><?php echo pensando_get_logged_user(); ?>
+                    <p><?php echo participacao_get_logged_user(); ?>
                     </p>
                     <p></p>
                 </div>
@@ -139,8 +139,8 @@
             </div>
             <div class="col-md-4 text-right">
                 <p>
-                    <a href="<?php echo pensando_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
-                    <strong class="mt-xs ml-md"><?php echo pensando_get_logged_user(); ?></strong>
+                    <a href="<?php echo participacao_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
+                    <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
                 </p>
             </div>
         </div>
