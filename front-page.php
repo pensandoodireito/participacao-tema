@@ -5,18 +5,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-7">
-
-<!-- 4:3 aspect ratio -->
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EHHmVbNNvHQ?controls=1&autohide=1"></iframe>
-</div>
-
-
-
-
-                <!--         <iframe id="ytplayer" type="text/html" width="640" height="315"
-                        src="https://www.youtube.com/embed/EHHmVbNNvHQ?controls=1&autohide=1"
-                        frameborder="0" allowfullscreen></iframe> -->
+                        <!-- 4:3 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EHHmVbNNvHQ?controls=1&autohide=1"></iframe>
+                        </div>
                     </div>
                     <div class="col-xs-4 description-destaque font-roboto">
                         <h6 class="font-roboto">Pensando o direito</h6>
@@ -54,7 +46,7 @@
                     <div class="">
                      <a href="#">   
                         <div class="text-center">
-                            <img src="/wp-content/themes/pensandoodireito-tema/images/home/mc-home.png" class="img-adaptative" alt="Debate">
+                            <img src="/wp-content/themes/participacao-tema/images/home/mc-home.png" class="img-adaptative" alt="Debate">
                         </div>
                         <div class="description">
                             <strong class="red">Título do Debate</strong>
@@ -67,7 +59,7 @@
                     <div class="">
                      <a href="#">   
                         <div class="text-center">
-                            <img src="/wp-content/themes/pensandoodireito-tema/images/home/dp-home.gif" class="img-adaptative" alt="Debate">
+                            <img src="/wp-content/themes/participacao-tema/images/home/dp-home.gif" class="img-adaptative" alt="Debate">
                         </div>
                         <div class="description">
                             <strong class="red">Título do Debate</strong>
@@ -80,7 +72,7 @@
                     <div class="">
                      <a href="#">   
                         <div class="text-center">
-                            <img src="/wp-content/themes/pensandoodireito-tema/images/home/mc-home.png" class="img-adaptative" alt="Debate">
+                            <img src="/wp-content/themes/participacao-tema/images/home/mc-home.png" class="img-adaptative" alt="Debate">
                         </div>
                         <div class="description">
                             <strong class="red">Título do Debate</strong>
