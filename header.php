@@ -90,8 +90,9 @@
 </div>
 <div id="navegacao-destaque">
     <div class="container">
+        <div class="row">
         <ul class="navegacao-destaque-list">
-            <li class="navegacao-destaque-item">
+            <li class="navegacao-destaque-item col-xs-6 col-md-4">
                 <div class="navegacao-destaque-content">
                     <h5><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
 
@@ -99,7 +100,7 @@
                             democratização do processo de elaboração legislativa.</a></p>
                 </div>
             </li>
-            <li class="navegacao-destaque-item">
+            <li class="navegacao-destaque-item col-xs-6 col-md-4">
                 <div class="navegacao-destaque-content">
                     <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
 
@@ -107,7 +108,7 @@
                             Série Pensando o Direito.</a></p>
                 </div>
             </li>
-            <li class="navegacao-destaque-item">
+            <li class="navegacao-destaque-item col-xs-6 col-md-4">
                 <div class="navegacao-destaque-content">
                     <h5><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">Debates</a></h5>
 
@@ -116,7 +117,7 @@
                     </p>
                 </div>
             </li>
-            <li class="navegacao-destaque-item participe">
+ <!--            <li class="navegacao-destaque-item participe">
                 <div class="arrow-right"></div>
                 <div class="navegacao-destaque-content">
                     <h5><a href="<?php echo pensando_get_participe_link(); ?>">Participe!</a></h5>
@@ -125,17 +126,24 @@
                     </p>
                     <p></p>
                 </div>
-            </li>
+            </li> -->
         </ul>
+    </div> <!-- /row -->
     </div>
 </div>
 <div class="conteudo">
     <div class="container mt-sm">
         <div class="row">
             <div class="col-md-8">
-                <h2 class="font-roboto red"><a
+                <!-- breadcrumb -->
+                    <div class="bread-crumb">
+                        <p><small><a href="">Página Anterior</a> / Você está aqui /</small></p>
+                    </div>
+                <!-- /breadcrumb -->
+
+                <!-- <h2 class="font-roboto red"><a
                         href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('title'); ?></a></h2>
-                <p><?php echo get_bloginfo('description'); ?></p>
+                <p><?php echo get_bloginfo('description'); ?></p> -->
             </div>
             <div class="col-md-4 text-right">
                 <p>
