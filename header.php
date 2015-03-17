@@ -136,9 +136,7 @@
         <div class="row">
             <div class="col-md-8">
                 <!-- breadcrumb -->
-                    <div class="bread-crumb">
-                        <p><small><a href="">Página Anterior</a> / Você está aqui /</small></p>
-                    </div>
+                <?php wp_custom_breadcrumbs(); ?>
                 <!-- /breadcrumb -->
 
                 <!-- <h2 class="font-roboto red"><a
