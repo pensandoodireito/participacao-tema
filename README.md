@@ -1,2 +1,2 @@
-# pensandoodireito-tema
-Tema do portal Pensando o Direito
+# participacao-tema
+Tema Base do portal Participação do MJ

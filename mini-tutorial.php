@@ -9,7 +9,7 @@
                         <p class="font-amatic h5">Cadastre-se no site</p>
                     </div>
                     <div class="tuto-text">
-                        <p><?php echo pensando_get_cadastrase_minitutorial(); ?></p>
+                        <p><?php echo participacao_get_cadastrase_minitutorial(); ?></p>
                     </div>
                 </div>
             </div>

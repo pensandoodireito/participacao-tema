@@ -5,21 +5,21 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'noticia-destaque', 555, 290, true );
 add_image_size( 'noticia-lista', 214, 137, true );
 
-function pensandoodireito_scripts() {
+function participacao_scripts() {
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js' , array('jquery'), false, true );
-    wp_enqueue_script( 'pensandoodireito', get_template_directory_uri() . '/js/pensandoodireito.js' , array('jquery', 'bootstrap'), false, true );
+    wp_enqueue_script( 'participacao', get_template_directory_uri() . '/js/participacao.js' , array('jquery', 'bootstrap'), false, true );
 
-    $pensandoodireito_data = array(
+    $participacao_data = array(
                                 'ajaxurl' => admin_url('admin-ajax.php'),
                                 'paginaAtual' => 2,
                                 'ajaxgif' => get_template_directory_uri() . '/images/ajax-loader.gif',
                                 'isHome' => is_home() ? 'true' : 'false'
                                 );
 
-    wp_localize_script( 'pensandoodireito', 'pensandoodireito', $pensandoodireito_data );
+    wp_localize_script( 'participacao', 'participacao', $participacao_data );
 }
 
-add_action( 'wp_enqueue_scripts', 'pensandoodireito_scripts' );
+add_action( 'wp_enqueue_scripts', 'participacao_scripts' );
 
 /**
  * Retorna o bloco de texto para usuários logados ou não, com
@@ -27,7 +27,7 @@ add_action( 'wp_enqueue_scripts', 'pensandoodireito_scripts' );
  *
  * @return string
  */
-function pensando_get_logged_user() {
+function participacao_get_logged_user() {
     if ( is_user_logged_in() ) {
         $current_user = wp_get_current_user();
 
@@ -48,11 +48,11 @@ function pensando_get_logged_user() {
  *
  * @return string
  */
-function pensando_get_participe_link() {
+function participacao_get_participe_link() {
     $link_delibera = get_post_type_archive_link('pauta');
 
     if ($link_delibera == "") {
-        $page_participe = pensando_get_participe_page();
+        $page_participe = participacao_get_participe_page();
 
         if ($page_participe != null) {
             return get_page_link( $page_participe->ID );
@@ -64,7 +64,7 @@ function pensando_get_participe_link() {
     }
 }
 
-function pensando_get_participe_page() {
+function participacao_get_participe_page() {
 
     return get_page_by_path( '/participe' );
 
@@ -75,7 +75,7 @@ function pensando_get_participe_page() {
  *
  * @return string
  */
-function pensando_get_cadastrase_minitutorial() {
+function participacao_get_cadastrase_minitutorial() {
     if ( is_user_logged_in() ) {
         $current_user = wp_get_current_user();
 
@@ -88,62 +88,62 @@ function pensando_get_cadastrase_minitutorial() {
 
 }
 
-add_action( 'admin_menu', 'pensandoodireito_add_admin_menu' );
-add_action( 'admin_init', 'pensandoodireito_settings_init' );
+add_action( 'admin_menu', 'participacao_add_admin_menu' );
+add_action( 'admin_init', 'participacao_settings_init' );
 
 /**
  * Adiciona o link para a página de opções do tema no menu
  */
-function pensandoodireito_add_admin_menu(  ) {
+function participacao_add_admin_menu(  ) {
 
-    add_options_page( 'Tema Pensando o Direito', 'Tema Pensando o Direito', 'manage_options', 'pensandoodireito-tema', 'pensandoodireito_options_page' );
+    add_options_page( 'Tema Base Participação', 'Tema Base Participação', 'manage_options', 'participacao-tema', 'participacao_options_page' );
 
 }
 
 /**
  * Inicia os campos das opções do tema
  */
-function pensandoodireito_settings_init(  ) {
+function participacao_settings_init(  ) {
 
-    register_setting( 'pluginPage', 'pensandoodireito_settings' );
+    register_setting( 'pluginPage', 'participacao_settings' );
 
     add_settings_section(
-        'pensandoodireito_pluginPage_section',
+        'participacao_pluginPage_section',
         'Opções do tema Pensando o Direito',
-        'pensandoodireito_settings_section_callback',
+        'participacao_settings_section_callback',
         'pluginPage'
     );
 
     add_settings_field(
-        'pensandoodireito_twitter_embed',
+        'participacao_twitter_embed',
         'Código do widget do Twitter (usar altura máxima de 350px)',
-        'pensandoodireito_twitter_render',
+        'participacao_twitter_render',
         'pluginPage',
-        'pensandoodireito_pluginPage_section'
+        'participacao_pluginPage_section'
     );
 
     add_settings_field(
-        'pensandoodireito_facebook_embed',
+        'participacao_facebook_embed',
         'Código do widget do Facebook (usar altura máxima de 350px)',
-        'pensandoodireito_facebook_render',
+        'participacao_facebook_render',
         'pluginPage',
-        'pensandoodireito_pluginPage_section'
+        'participacao_pluginPage_section'
     );
 
     add_settings_field(
-        'pensandoodireito_identica_embed',
+        'participacao_identica_embed',
         'Código do widget do Identica (usar altura máxima de 350px)',
-        'pensandoodireito_identica_render',
+        'participacao_identica_render',
         'pluginPage',
-        'pensandoodireito_pluginPage_section'
+        'participacao_pluginPage_section'
     );
 
     add_settings_field(
-        'pensandoodireito_diaspora_embed',
+        'participacao_diaspora_embed',
         'Código do widget do Diaspora (usar altura máxima de 350px)',
-        'pensandoodireito_diaspora_render',
+        'participacao_diaspora_render',
         'pluginPage',
-        'pensandoodireito_pluginPage_section'
+        'participacao_pluginPage_section'
     );
 
 
@@ -152,62 +152,62 @@ function pensandoodireito_settings_init(  ) {
 /**
  * Render do campo para o widget do Twitter
  */
-function pensandoodireito_twitter_render(  ) {
+function participacao_twitter_render(  ) {
 
-    $options = get_option( 'pensandoodireito_settings' );
+    $options = get_option( 'participacao_settings' );
     ?>
-    <textarea cols='40' rows='5' name='pensandoodireito_settings[pensandoodireito_twitter_embed]'>
-        <?php echo $options['pensandoodireito_twitter_embed']; ?>
+    <textarea cols='40' rows='5' name='participacao_settings[participacao_twitter_embed]'>
+        <?php echo $options['participacao_twitter_embed']; ?>
     </textarea>
 <?php
 
 }
 
 
-function pensandoodireito_facebook_render(  ) {
+function participacao_facebook_render(  ) {
 
-    $options = get_option( 'pensandoodireito_settings' );
+    $options = get_option( 'participacao_settings' );
     ?>
-    <textarea cols='40' rows='5' name='pensandoodireito_settings[pensandoodireito_facebook_embed]'>
-        <?php echo $options['pensandoodireito_facebook_embed']; ?>
+    <textarea cols='40' rows='5' name='participacao_settings[participacao_facebook_embed]'>
+        <?php echo $options['participacao_facebook_embed']; ?>
     </textarea>
 <?php
 
 }
 
 
-function pensandoodireito_identica_render(  ) {
+function participacao_identica_render(  ) {
 
-    $options = get_option( 'pensandoodireito_settings' );
+    $options = get_option( 'participacao_settings' );
     ?>
-    <textarea cols='40' rows='5' name='pensandoodireito_settings[pensandoodireito_identica_embed]'>
-        <?php echo $options['pensandoodireito_identica_embed']; ?>
+    <textarea cols='40' rows='5' name='participacao_settings[participacao_identica_embed]'>
+        <?php echo $options['participacao_identica_embed']; ?>
     </textarea>
 <?php
 
 }
 
 
-function pensandoodireito_diaspora_render(  ) {
+function participacao_diaspora_render(  ) {
 
-    $options = get_option( 'pensandoodireito_settings' );
+    $options = get_option( 'participacao_settings' );
     ?>
-    <textarea cols='40' rows='5' name='pensandoodireito_settings[pensandoodireito_diaspora_embed]'>
-        <?php echo $options['pensandoodireito_diaspora_embed']; ?>
+    <textarea cols='40' rows='5' name='participacao_settings[participacao_diaspora_embed]'>
+        <?php echo $options['participacao_diaspora_embed']; ?>
     </textarea>
 <?php
 
 }
 
 
-function pensandoodireito_settings_section_callback(  ) {
+function participacao_settings_section_callback(  ) {
 
     echo 'Configurações do tema';
 
 }
 
 
-function pensandoodireito_options_page(  ) {
+function participacao_options_page(  ) {
 
     ?>
     <form action='options.php' method='post'>
@@ -225,12 +225,12 @@ function pensandoodireito_options_page(  ) {
 
 }
 
-add_action( 'signup_extra_fields', 'pensandoodireito_formulario_registro' );
+add_action( 'signup_extra_fields', 'participacao_formulario_registro' );
 
 /**
  * Inclusão de campos extras no registro do WordPress
  */
-function pensandoodireito_formulario_registro($errors) {
+function participacao_formulario_registro($errors) {
 
     $nice_name = ( ! empty( $_POST['nice_name'] ) ) ? trim( $_POST['nice_name'] ) : '';
 
@@ -249,13 +249,13 @@ function pensandoodireito_formulario_registro($errors) {
 <?php
 }
 
-add_filter( 'add_signup_meta', 'pensandoodireito_salvar_meta' );
+add_filter( 'add_signup_meta', 'participacao_salvar_meta' );
 
 /**
  * Salva os campos extras
  * @param $user_id
  */
-function pensandoodireito_salvar_meta( $meta ) {
+function participacao_salvar_meta( $meta ) {
     if ( ! empty( $_POST['nice_name'] ) ) {
         $meta['nice_name'] = trim( $_POST['nice_name'] ) ;
     }
@@ -263,7 +263,7 @@ function pensandoodireito_salvar_meta( $meta ) {
     return $meta;
 }
 
-add_action('wpmu_activate_user', 'pensandoodireito_salvar_campos_usuario', 10, 3 );
+add_action('wpmu_activate_user', 'participacao_salvar_campos_usuario', 10, 3 );
 
 /**
  * Persiste os campos especiais salvos no signup
@@ -272,14 +272,14 @@ add_action('wpmu_activate_user', 'pensandoodireito_salvar_campos_usuario', 10, 3
  * @param $password
  * @param $meta
  */
-function pensandoodireito_salvar_campos_usuario ($user_id, $password, $meta) {
+function participacao_salvar_campos_usuario ($user_id, $password, $meta) {
 
     update_user_meta($user_id, 'nickname', $meta['nice_name']);
     wp_update_user( array ('ID' => $user_id, 'display_name' => $meta['nice_name']));
 
 }
 
-add_filter( 'wpmu_validate_user_signup', 'pensandoodireito_validacao', 10, 3 );
+add_filter( 'wpmu_validate_user_signup', 'participacao_validacao', 10, 3 );
 
 /**
  * Validação dos campos extras
@@ -289,7 +289,7 @@ add_filter( 'wpmu_validate_user_signup', 'pensandoodireito_validacao', 10, 3 );
  * @param $user_email
  * @return mixed
  */
-function pensandoodireito_validacao( $result ) {
+function participacao_validacao( $result ) {
 
     if ( !isset( $_POST['termos_uso']) || empty( $_POST['termos_uso'] ) ) {
         $result['errors']->add( 'termos_uso', 'Você precisa aceitar os termos de uso para se registrar na plataforma.' );
@@ -298,18 +298,18 @@ function pensandoodireito_validacao( $result ) {
     return $result;
 }
 
-add_action( 'init', 'pensandoodireito_habilitar_resumo' );
+add_action( 'init', 'participacao_habilitar_resumo' );
 
 /**
  * Habilitar resumo para páginas
  */
-function pensandoodireito_habilitar_resumo() {
+function participacao_habilitar_resumo() {
     add_post_type_support( 'page', 'excerpt' );
 }
 
-add_action( 'get_header', 'pensandoodireito_remover_style_signup' );
+add_action( 'get_header', 'participacao_remover_style_signup' );
 
-function pensandoodireito_remover_style_signup() {
+function participacao_remover_style_signup() {
     remove_action( 'wp_head', 'wpmu_signup_stylesheet' );
     remove_action( 'wp_head', 'wpmu_activate_stylesheet' );
 }
@@ -317,7 +317,7 @@ function pensandoodireito_remover_style_signup() {
 /**
  * Função ajax pra paginação infinita
  */
-function pensandoodireito_paginacao_infinita(){
+function participacao_paginacao_infinita(){
     $paged = $_POST['paged'];
 
     $args = array(
@@ -337,51 +337,6 @@ function pensandoodireito_paginacao_infinita(){
     exit;
 }
 
-add_action('wp_ajax_pensandoodireito_paginacao_infinita', 'pensandoodireito_paginacao_infinita');
-add_action('wp_ajax_nopriv_pensandoodireito_paginacao_infinita', 'pensandoodireito_paginacao_infinita');
+add_action('wp_ajax_participacao_paginacao_infinita', 'participacao_paginacao_infinita');
+add_action('wp_ajax_nopriv_participacao_paginacao_infinita', 'participacao_paginacao_infinita');
 
-/**
- * Registar post type publicação
- */
-function publicacao_post_type() {
-
-    $labels = array(
-        'name'                => _x( 'Publicações', 'Post Type General Name', 'pensandooodireito' ),
-        'singular_name'       => _x( 'Publicação', 'Post Type Singular Name', 'pensandooodireito' ),
-        'menu_name'           => __( 'Publicações', 'pensandooodireito' ),
-        'parent_item_colon'   => __( 'Publicação pai:', 'pensandooodireito' ),
-        'all_items'           => __( 'Todas as publicações', 'pensandooodireito' ),
-        'view_item'           => __( 'Ver publicação', 'pensandooodireito' ),
-        'add_new_item'        => __( 'Adicionar publicação', 'pensandooodireito' ),
-        'add_new'             => __( 'Adicionar nova', 'pensandooodireito' ),
-        'edit_item'           => __( 'Editar Publicação', 'pensandooodireito' ),
-        'update_item'         => __( 'Atualizar Publicação', 'pensandooodireito' ),
-        'search_items'        => __( 'Buscar publicação', 'pensandooodireito' ),
-        'not_found'           => __( 'Não enconrtado', 'pensandooodireito' ),
-        'not_found_in_trash'  => __( 'Não encontrado na lixeira', 'pensandooodireito' ),
-    );
-    $args = array(
-        'label'               => __( 'publicacao', 'pensandooodireito' ),
-        'description'         => __( 'Publicações do Pensando o Direito', 'pensandooodireito' ),
-        'labels'              => $labels,
-        'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', ),
-        'taxonomies'          => array( 'category', 'post_tag' ),
-        'hierarchical'        => false,
-        'public'              => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'show_in_nav_menus'   => true,
-        'show_in_admin_bar'   => true,
-        'menu_position'       => 5,
-        'can_export'          => true,
-        'has_archive'         => true,
-        'exclude_from_search' => false,
-        'publicly_queryable'  => true,
-        'capability_type'     => 'post',
-    );
-    register_post_type( 'publicacao', $args );
-
-}
-
-// Iniciarlizar publicação.
-add_action( 'init', 'publicacao_post_type', 0 );
