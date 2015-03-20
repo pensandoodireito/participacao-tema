@@ -8,23 +8,23 @@
             </div>
             <div class="col-sm-5 footer-menu">
                 <ul class="list-inline mt-sm">
-                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">CONHEÇA O PROJETO</a>
+                    <li><a href="/pensandoodireito/o-que-e/">CONHEÇA O PROJETO</a>
                     </li>
-                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">DEBATES</a>
+                    <li><a href="/pensandoodireito/debates/">DEBATES</a>
                     </li>
-                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">PUBLICAÇÕES</a>
+                    <li><a href="/pensandoodireito/publicacoes/">PUBLICAÇÕES</a>
                     </li>
-                    <li><a href="http://participacao.mj.gov.br/termos-de-uso/">TERMOS DE USO</a>
+                    <li><a href="/termos-de-uso/">TERMOS DE USO</a>
                     </li>
                 </ul>
                 <ul class="list-inline footer-menu">
-                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/noticias/">Notícias</a>
+                    <li><a href="/pensandoodireito/noticias/">Notícias</a>
                     </li>
-                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/editais/">Editais</a>
+                    <li><a href="/pensandoodireito/editais/">Editais</a>
                     </li>
-                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/parceiros/">Parceiros</a>
+                    <li><a href="/pensandoodireito/parceiros/">Parceiros</a>
                     </li>
-                    <li><a href="http://participacao.mj.gov.br/pensandoodireito/contato/">Fale conosco</a>
+                    <li><a href="/pensandoodireito/contato/">Fale conosco</a>
                     </li>
                 </ul>
             </div>

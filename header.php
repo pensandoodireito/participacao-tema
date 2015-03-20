@@ -72,11 +72,11 @@
 
 
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="http://participacao.mj.gov.br/pensandoodireito/noticias/">Notícias</a></li>
-                                <li><a href="http://participacao.mj.gov.br/pensandoodireito/editais/">Editais</a></li>
-                                <li><a href="http://participacao.mj.gov.br/pensandoodireito/parceiros/">Parceiros</a>
+                                <li><a href="/pensandoodireito/noticias/">Notícias</a></li>
+                                <li><a href="/pensandoodireito/editais/">Editais</a></li>
+                                <li><a href="/pensandoodireito/parceiros/">Parceiros</a>
                                 </li>
-                                <li><a href="http://participacao.mj.gov.br/pensandoodireito/contato/">Fale conosco</a>
+                                <li><a href="/pensandoodireito/contato/">Fale conosco</a>
                                 </li>
                             </ul>
                         </div>
@@ -90,57 +90,63 @@
 </div>
 <div id="navegacao-destaque">
     <div class="container">
+        <div class="row">
         <ul class="navegacao-destaque-list">
-            <li class="navegacao-destaque-item">
+            <li class="navegacao-destaque-item col-xs-6 col-md-4">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
+                    <h5><a href="/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
 
-                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/o-que-e/">Criado para promover a
+                    <p><a href="/pensandoodireito/o-que-e/">Criado para promover a
                             democratização do processo de elaboração legislativa.</a></p>
                 </div>
             </li>
-            <li class="navegacao-destaque-item">
+            <li class="navegacao-destaque-item col-xs-6 col-md-4">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">Publicações</a></h5>
+                    <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
 
-                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/publicacoes/">Conheça as publicações da
+                    <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
                             Série Pensando o Direito.</a></p>
                 </div>
             </li>
-            <li class="navegacao-destaque-item">
+            <li class="navegacao-destaque-item col-xs-6 col-md-4">
                 <div class="navegacao-destaque-content">
-                    <h5><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">Debates</a></h5>
+                    <h5><a href="/pensandoodireito/debates/">Debates</a></h5>
 
-                    <p><a href="http://participacao.mj.gov.br/pensandoodireito/debates/">Conheça os debates já
+                    <p><a href="/pensandoodireito/debates/">Conheça os debates já
                             realizados.</a>
                     </p>
                 </div>
             </li>
-            <li class="navegacao-destaque-item participe">
+ <!--            <li class="navegacao-destaque-item participe">
                 <div class="arrow-right"></div>
                 <div class="navegacao-destaque-content">
-                    <h5><a href="<?php echo pensando_get_participe_link(); ?>">Participe!</a></h5>
+                    <h5><a href="<?php echo participacao_get_participe_link(); ?>">Participe!</a></h5>
 
-                    <p><?php echo pensando_get_logged_user(); ?>
+                    <p><?php echo participacao_get_logged_user(); ?>
                     </p>
                     <p></p>
                 </div>
-            </li>
+            </li> -->
         </ul>
+    </div> <!-- /row -->
     </div>
 </div>
 <div class="conteudo">
     <div class="container mt-sm">
         <div class="row">
             <div class="col-md-8">
-                <h2 class="font-roboto red"><a
+                <!-- breadcrumb -->
+                <?php wp_custom_breadcrumbs(); ?>
+                <!-- /breadcrumb -->
+
+                <!-- <h2 class="font-roboto red"><a
                         href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('title'); ?></a></h2>
-                <p><?php echo get_bloginfo('description'); ?></p>
+                <p><?php echo get_bloginfo('description'); ?></p> -->
             </div>
             <div class="col-md-4 text-right">
                 <p>
-                    <a href="<?php echo pensando_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
-                    <strong class="mt-xs ml-md"><?php echo pensando_get_logged_user(); ?></strong>
+                    <a href="<?php echo participacao_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
+                    <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
                 </p>
             </div>
         </div>

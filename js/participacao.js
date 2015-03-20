@@ -33,11 +33,11 @@ function back_to_top($) {
 }
 
 function carregar_noticias(pageNumber) {
-    jQuery(".container .ordinarynews").append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + pensandoodireito.ajaxgif + '"/></div>');
+    jQuery(".container .ordinarynews").append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
     jQuery.ajax({
-        url: pensandoodireito.ajaxurl,
+        url: participacao.ajaxurl,
         type: 'POST',
-        data: "action=pensandoodireito_paginacao_infinita&paged="+ pageNumber,
+        data: "action=participacao_paginacao_infinita&paged="+ pageNumber,
         success: function(html){
             jQuery('#loader-gif').remove();
             jQuery(".container .ordinarynews").append(html);
@@ -58,17 +58,17 @@ jQuery(function ($) {
 
     back_to_top($);
 
-    if (pensandoodireito.isHome == "true") {
+    if (participacao.isHome == "true") {
         $(window).scroll(function(){
             if  ($(window).scrollTop() == $(document).height() - $(window).height()){
 
-                if (pensandoodireito.paginaAtual > pensandoPaginasMaximas){
+                if (participacao.paginaAtual > participacaoPaginasMaximas){
                     return false;
                 } else {
-                    carregar_noticias(pensandoodireito.paginaAtual);
+                    carregar_noticias(participacao.paginaAtual);
                 }
 
-                pensandoodireito.paginaAtual++;
+                participacao.paginaAtual++;
             }
         });
     };

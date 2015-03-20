@@ -1,5 +1,5 @@
 <div class="noticias">
-    <div class="container mt-lg">
+    <div class="container mt-lg well well-sm">
         <div class="row">
             <div class="col-xs-12">
                 <h4 class="font-roboto red"><strong>Notícias</strong></h4>
@@ -37,7 +37,7 @@
                                         </a>
                                     </strong>
                                 </p>
-
+                                 <small>10 de maio de 2015</small>
                                 <p><?php the_excerpt(); ?></p>
                             </div>
                         </div>
@@ -54,9 +54,9 @@
 
                         // TODO: Automatizar isso urgente!
 
-                        $pensandoodireito_settings = get_option('pensandoodireito_settings');
+                        $participacao_settings = get_option('participacao_settings');
 
-                        if (trim($pensandoodireito_settings['pensandoodireito_twitter_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_twitter_embed']) != "") { ?>
 
                             <li class="active">
                                 <a href="#Twitter" data-toggle="tab" class="font-roboto">Twitter</a>
@@ -66,7 +66,7 @@
 
                         <?php }
 
-                        if (trim($pensandoodireito_settings['pensandoodireito_facebook_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_facebook_embed']) != "") { ?>
 
                             <li>
                                 <a href="#Facebook" data-toggle="tab" class="font-roboto">Facebook</a>
@@ -76,7 +76,7 @@
 
                         <?php }
 
-                        if (trim($pensandoodireito_settings['pensandoodireito_identica_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_identica_embed']) != "") { ?>
 
                             <li>
                                 <a href="#Identica" data-toggle="tab" class="font-roboto">Identica</a>
@@ -86,7 +86,7 @@
 
                         <?php }
 
-                        if (trim($pensandoodireito_settings['pensandoodireito_diaspora_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_diaspora_embed']) != "") { ?>
 
                             <li>
                                 <a href="#Diaspora" data-toggle="tab" class="font-roboto">Diaspora</a>
@@ -102,36 +102,36 @@
 
                         // TODO: Automatizar isso urgente!
 
-                        $pensandoodireito_settings = get_option('pensandoodireito_settings');
+                        $participacao_settings = get_option('participacao_settings');
 
-                        if (trim($pensandoodireito_settings['pensandoodireito_twitter_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_twitter_embed']) != "") { ?>
 
                         <div class="tab-pane active" id="Twitter">
-                            <?php echo $pensandoodireito_settings['pensandoodireito_twitter_embed'];  ?>
+                            <?php echo $participacao_settings['participacao_twitter_embed'];  ?>
                         </div>
 
                         <?php }
 
-                        if (trim($pensandoodireito_settings['pensandoodireito_facebook_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_facebook_embed']) != "") { ?>
 
                         <div class="tab-pane" id="Facebook">
-                            <?php echo $pensandoodireito_settings['pensandoodireito_facebook_embed'];  ?>
+                            <?php echo $participacao_settings['participacao_facebook_embed'];  ?>
                         </div>
 
                         <?php }
 
-                        if (trim($pensandoodireito_settings['pensandoodireito_identica_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_identica_embed']) != "") { ?>
 
                         <div class="tab-pane" id="Identica">
-                            <?php echo $pensandoodireito_settings['pensandoodireito_identica_embed'];  ?>
+                            <?php echo $participacao_settings['participacao_identica_embed'];  ?>
                         </div>
 
                         <?php }
 
-                        if (trim($pensandoodireito_settings['pensandoodireito_diaspora_embed'] != "")) { ?>
+                        if (trim($participacao_settings['participacao_diaspora_embed'] != "")) { ?>
 
                         <div class="tab-pane" id="Diaspora">
-                            <?php echo $pensandoodireito_settings['pensandoodireito_diaspora_embed'];  ?>
+                            <?php echo $participacao_settings['participacao_diaspora_embed'];  ?>
                         </div>
 
                         <?php } ?>
@@ -151,7 +151,7 @@
 
 ?>
             <script>
-                var pensandoPaginasMaximas = <?php echo $ordinary_news->max_num_pages; ?>
+                var participacaoPaginasMaximas = <?php echo $ordinary_news->max_num_pages; ?>
             </script>
 <?php
 
@@ -162,6 +162,10 @@
                 }
             } ?>
         </div>
+</br>
+        <div class="row text-center">
+          <button type="button" class="btn btn-danger">Mostrar mais notícias</button>
+        </div>        
         <div class="mt-md">
             <p>
 <!--                <a href="#" class="blue"><strong>Todas as notícias</strong></a>-->
