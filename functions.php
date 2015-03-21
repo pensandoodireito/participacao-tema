@@ -96,7 +96,7 @@ add_action( 'admin_init', 'participacao_settings_init' );
  */
 function participacao_add_admin_menu(  ) {
 
-    add_options_page( 'Tema Base Participação', 'Tema Base Participação', 'manage_options', 'participacao-tema', 'participacao_options_page' );
+    add_options_page( 'Outras opções', 'Outras opções', 'manage_options', 'participacao-tema', 'participacao_options_page' );
 
 }
 
@@ -109,9 +109,33 @@ function participacao_settings_init(  ) {
 
     add_settings_section(
         'participacao_pluginPage_section',
-        'Opções do tema Pensando o Direito',
-        'participacao_settings_section_callback',
+        'Opções do tema ' . get_bloginfo('name'),
+        null,
         'pluginPage'
+    );
+
+    add_settings_field(
+        'participacao_sitelogo',
+        'Logo do site',
+        'participacao_sitelogo_render',
+        'pluginPage',
+        'participacao_pluginPage_section'
+    );
+
+    add_settings_field(
+        'participacao_sitelogo_preview',
+        '',
+        'participacao_sitelogo_preview_render',
+        'pluginPage',
+        'participacao_pluginPage_section'
+    );
+
+    add_settings_field(
+        'participacao_site_excerpt',
+        'Resumo da descrição do debate para capa',
+        'participacao_site_excerpt_render',
+        'pluginPage',
+        'participacao_pluginPage_section'
     );
 
     add_settings_field(
@@ -146,6 +170,44 @@ function participacao_settings_init(  ) {
         'participacao_pluginPage_section'
     );
 
+
+}
+
+/**
+ * Render do campo para logo
+ */
+function participacao_sitelogo_render(  ) {
+
+    $options = get_option( 'participacao_settings' );
+    ?>
+    <input type="hidden" id="logo_url" name="participacao_settings[logo]" value="<?php echo esc_url( $options['logo'] ); ?>" />
+    <input id="upload_logo_button" type="button" class="button" value="Escolher/trocar uma imagem" />
+<?php
+
+}
+
+/**
+ * Render da previsualização da logo
+ */
+function participacao_sitelogo_preview_render() {
+    $options = get_option( 'participacao_settings' );  ?>
+    <div id="upload_logo_preview" style="min-height: 100px;">
+        <img style="max-width:100%; <?php echo (!isset($options['logo']) ? "display: none;" : ""); ?>"  src="<?php echo esc_url( $options['logo'] ); ?>" />
+    </div>
+<?php
+}
+
+/**
+ * Render do campo para o resumo da descrição do site
+ */
+function participacao_site_excerpt_render(  ) {
+
+    $options = get_option( 'participacao_settings' );
+    ?>
+    <textarea cols='20' rows='2' name='participacao_settings[participacao_site_excerpt]'>
+        <?php echo $options['participacao_site_excerpt']; ?>
+    </textarea>
+<?php
 
 }
 
@@ -199,20 +261,12 @@ function participacao_diaspora_render(  ) {
 
 }
 
-
-function participacao_settings_section_callback(  ) {
-
-    echo 'Configurações do tema';
-
-}
-
-
 function participacao_options_page(  ) {
 
     ?>
     <form action='options.php' method='post'>
 
-        <h2>Pensando o Direito</h2>
+        <h2>Outras opções</h2>
 
         <?php
         settings_fields( 'pluginPage' );
@@ -223,6 +277,43 @@ function participacao_options_page(  ) {
     </form>
 <?php
 
+}
+
+add_action('admin_enqueue_scripts', 'participacao_options_enqueue_scripts');
+function participacao_options_enqueue_scripts() {
+    wp_register_script( 'participacao-upload', get_template_directory_uri() .'/js/participacao-upload.js', array('jquery','media-upload','thickbox') );
+
+    if ( 'settings_page_participacao-tema' == get_current_screen()-> id ) {
+        wp_enqueue_script('jquery');
+
+        wp_enqueue_script('thickbox');
+        wp_enqueue_style('thickbox');
+
+        wp_enqueue_script('media-upload');
+        wp_enqueue_script('participacao-upload');
+
+    }
+
+}
+
+add_action( 'admin_init', 'participacao_sitelogo_option_setup' );
+
+function participacao_sitelogo_option_setup() {
+    global $pagenow;
+
+    if ( 'media-upload.php' == $pagenow || 'async-upload.php' == $pagenow ) {
+        add_filter( 'gettext', 'participacao_sitelogo_change_text'  , 1, 3 );
+    }
+}
+
+function participacao_sitelogo_change_text($translated_text, $text, $domain) {
+    if ('Insert into Post' == $text) {
+        $referer = strpos( wp_get_referer(), 'settings_page_participacao-tema' );
+        if ( $referer != '' ) {
+            return 'Definir essa imagem como logo do site';
+        }
+    }
+    return $translated_text;
 }
 
 add_action( 'signup_extra_fields', 'participacao_formulario_registro' );
