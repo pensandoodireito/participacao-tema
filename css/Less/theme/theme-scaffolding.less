@@ -1,8 +1,8 @@
 #barra-brasil .brasil-flag {
     height: 32px;
 }
-html, body{
-    height:100%;
+html, body {
+    height: 100%;
 }
 body {
     font-family: @font-family-opensans;
@@ -25,12 +25,15 @@ a {
     &:focus {
         .tab-focus();
     }
+    &.nounderline {
+        text-decoration: none!important;
+    }
 }
 // Classes genérias
 // Imagens adaptativas
 .img-adptive {
     max-width: 100%;
-    height:auto;
+    height: auto;
 }
 // Botão Leia +
 .btn-leiamais {
@@ -398,6 +401,5 @@ text-maroon
     }
     &:hover {
         background-color: rgba(188, 63, 56, 1);
-        
     }
 }
