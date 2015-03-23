@@ -32,17 +32,24 @@ function back_to_top($) {
     })
 }
 
-function carregar_noticias(pageNumber) {
-    jQuery(".container .ordinarynews").append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
-    jQuery.ajax({
-        url: participacao.ajaxurl,
-        type: 'POST',
-        data: "action=participacao_paginacao_infinita&paged="+ pageNumber,
-        success: function(html){
-            jQuery('#loader-gif').remove();
-            jQuery(".container .ordinarynews").append(html);
-        }
-    });
+function carregar_noticias() {
+        jQuery(".container .ordinarynews").append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
+        jQuery.ajax({
+            url: participacao.ajaxurl,
+            type: 'POST',
+            data: "action=participacao_paginacao_infinita&paged="+ participacao.paginaAtual,
+            success: function(html){
+                jQuery('#loader-gif').remove();
+                jQuery(".container .ordinarynews").append(html);
+
+                participacao.paginaAtual++;
+
+                if (participacao.paginaAtual > participacaoPaginasMaximas) {
+                    jQuery("#mais-noticias").hide();
+                }
+            }
+        });
+
     return false;
 }
 
@@ -58,19 +65,5 @@ jQuery(function ($) {
 
     back_to_top($);
 
-    if (participacao.isHome == "true") {
-        $(window).scroll(function(){
-            if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-
-                if (participacao.paginaAtual > participacaoPaginasMaximas){
-                    return false;
-                } else {
-                    carregar_noticias(participacao.paginaAtual);
-                }
-
-                participacao.paginaAtual++;
-            }
-        });
-    };
 });
 

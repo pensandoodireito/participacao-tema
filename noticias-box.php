@@ -13,7 +13,7 @@
                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </strong>
             </p>
-            <small>10 de maio de 2015</small>
+            <small><?php the_date('d \d\e F \d\e Y'); ?></small>
         </div>
     </div>
 </div>
