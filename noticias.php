@@ -37,7 +37,7 @@
                                         </a>
                                     </strong>
                                 </p>
-                                 <small>10 de maio de 2015</small>
+                                 <small><?php the_date('d \d\e F \d\e Y'); ?></small>
                                 <p><?php the_excerpt(); ?></p>
                             </div>
                         </div>
@@ -162,14 +162,9 @@
                 }
             } ?>
         </div>
-</br>
+        <br/>
         <div class="row text-center">
-          <button type="button" class="btn btn-danger">Mostrar mais notícias</button>
-        </div>        
-        <div class="mt-md">
-            <p>
-<!--                <a href="#" class="blue"><strong>Todas as notícias</strong></a>-->
-            </p>
+          <button id="mais-noticias" type="button" class="btn btn-danger" onclick="carregar_noticias();">Mostrar mais notícias</button>
         </div>
     </div>
 </div>
