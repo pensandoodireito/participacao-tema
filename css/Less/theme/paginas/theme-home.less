@@ -9,8 +9,8 @@
         //height: 300px;
         //width: 350px;
         vertical-align: middle;
-        display: table-cell;
-        float: none;
+        //display: table-cell;
+        //float: none;
         a, a:hover {
             color: #fff;
         }
@@ -35,5 +35,8 @@
 }
 .box-publicacao {
     background: url("../images/home/livro-serie-pensando.gif") #dadada bottom right no-repeat;
-    min-height: 370px
+    min-height: 360px;
+    @media (max-width: 360px) {
+            padding-bottom: 160px;
+        }
 }
