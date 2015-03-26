@@ -14,6 +14,7 @@
     while ($mais_noticias->have_posts()) {
         $mais_noticias->the_post();
 ?>
+    <div class="row col-xs-12">
 
         <div class="col-xs-5">
             <?php
@@ -29,6 +30,7 @@
                 </strong>
             </p>
         </div>
+    </div>
 <?php
     }
 ?>
