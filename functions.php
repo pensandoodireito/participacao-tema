@@ -155,9 +155,9 @@ function participacao_settings_init(  ) {
     );
 
     add_settings_field(
-        'participacao_identica_embed',
-        'Código do widget do Identica (usar altura máxima de 350px)',
-        'participacao_identica_render',
+        'participacao_youtube_embed',
+        'Código do widget do YouTube (usar altura máxima de 350px)',
+        'participacao_youtube_render',
         'pluginPage',
         'participacao_pluginPage_section'
     );
@@ -238,12 +238,12 @@ function participacao_facebook_render(  ) {
 }
 
 
-function participacao_identica_render(  ) {
+function participacao_youtube_render(  ) {
 
     $options = get_option( 'participacao_settings' );
     ?>
-    <textarea cols='40' rows='5' name='participacao_settings[participacao_identica_embed]'>
-        <?php echo $options['participacao_identica_embed']; ?>
+    <textarea cols='40' rows='5' name='participacao_settings[participacao_youtube_embed]'>
+        <?php echo $options['participacao_youtube_embed']; ?>
     </textarea>
 <?php
 
