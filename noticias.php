@@ -1,5 +1,5 @@
-<div class="noticias">
-    <div class="container mt-lg well well-sm">
+<div class="noticias container">
+    <div class="mt-lg well well-sm">
         <div class="row">
             <div class="col-xs-12">
                 <h4 class="font-roboto red"><strong>Notícias</strong></h4>
