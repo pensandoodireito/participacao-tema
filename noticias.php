@@ -76,10 +76,10 @@
 
                         <?php }
 
-                        if (trim($participacao_settings['participacao_identica_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_youtube_embed']) != "") { ?>
 
                             <li>
-                                <a href="#Identica" data-toggle="tab" class="font-roboto">Identica</a>
+                                <a href="#Youtube" data-toggle="tab" class="font-roboto">Youtube</a>
 
                                 <div class="tab-arrow"></div>
                             </li>
@@ -120,10 +120,10 @@
 
                         <?php }
 
-                        if (trim($participacao_settings['participacao_identica_embed']) != "") { ?>
+                        if (trim($participacao_settings['participacao_youtube_embed']) != "") { ?>
 
-                        <div class="tab-pane" id="Identica">
-                            <?php echo $participacao_settings['participacao_identica_embed'];  ?>
+                        <div class="tab-pane" id="Youtube">
+                            <?php echo $participacao_settings['participacao_youtube_embed'];  ?>
                         </div>
 
                         <?php }
