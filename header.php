@@ -90,8 +90,8 @@
             <ul class="navegacao-destaque-list">
                 <li class="navegacao-destaque-item col-xs-6 col-md-4">
                     <div class="navegacao-destaque-content">
-                        <h5><a href="/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
-                        <p><a href="/pensandoodireito/o-que-e/">Criado para promover a
+                        <h5><a href="/o-que-e/">Conheça o projeto</a></h5>
+                        <p><a href="/o-que-e/">Criado para promover a
                         democratização do processo de elaboração legislativa.</a></p>
                     </div>
                 </li>
@@ -104,8 +104,8 @@
                 </li>
                 <li class="navegacao-destaque-item col-xs-6 col-md-4">
                     <div class="navegacao-destaque-content">
-                        <h5><a href="/pensandoodireito/debates/">Debates</a></h5>
-                        <p><a href="/pensandoodireito/debates/">Veja os debates abertos. Sua participação é muito importante</a>
+                        <h5><a href="/debates/">Debates</a></h5>
+                        <p><a href="/debates/">Veja os debates abertos. Sua participação é muito importante.</a>
                         </p>
                     </div>
                 </li>
@@ -117,8 +117,7 @@
                     </div>
                 </li>
             </ul>
-            </div> <!-- /row -->
-        </div>
+        </div> <!-- /row -->
     </div>
     <div class="conteudo">
         <div class="container mt-sm">
