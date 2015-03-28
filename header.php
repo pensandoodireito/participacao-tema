@@ -68,11 +68,11 @@
                                 <div class="collapse navbar-collapse" id="menu-top">
                                     <?php echo get_search_form(); ?>
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="/pensandoodireito/noticias/">Notícias</a></li>
-                                        <li><a href="/pensandoodireito/editais/">Editais</a></li>
-                                        <li><a href="/pensandoodireito/parceiros/">Parceiros</a>
+                                        <li><a href="/noticias/">Notícias</a></li>
+                                        <li><a href="/editais/">Editais</a></li>
+                                        <li><a href="/parceiros/">Parceiros</a>
                                     </li>
-                                    <li><a href="/pensandoodireito/contato/">Fale conosco</a>
+                                    <li><a href="/contato/">Fale conosco</a>
                                 </li>
                             </ul>
                         </div>
@@ -90,8 +90,8 @@
             <ul class="navegacao-destaque-list">
                 <li class="navegacao-destaque-item col-xs-6 col-md-4">
                     <div class="navegacao-destaque-content">
-                        <h5><a href="/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
-                        <p><a href="/pensandoodireito/o-que-e/">Criado para promover a
+                        <h5><a href="/o-que-e/">Conheça o projeto</a></h5>
+                        <p><a href="/o-que-e/">Criado para promover a
                         democratização do processo de elaboração legislativa.</a></p>
                     </div>
                 </li>
@@ -104,8 +104,8 @@
                 </li>
                 <li class="navegacao-destaque-item col-xs-6 col-md-4">
                     <div class="navegacao-destaque-content">
-                        <h5><a href="/pensandoodireito/debates/">Debates</a></h5>
-                        <p><a href="/pensandoodireito/debates/">Veja os debates abertos. Sua participação é muito importante</a>
+                        <h5><a href="/debates/">Debates</a></h5>
+                        <p><a href="/debates/">Veja os debates abertos. Sua participação é muito importante.</a>
                         </p>
                     </div>
                 </li>
@@ -117,8 +117,7 @@
                     </div>
                 </li>
             </ul>
-            </div> <!-- /row -->
-        </div>
+        </div> <!-- /row -->
     </div>
     <div class="conteudo">
         <div class="container mt-sm">
