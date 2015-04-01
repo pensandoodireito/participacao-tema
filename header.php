@@ -70,71 +70,63 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li><a href="/noticias/">Notícias</a></li>
                                         <li><a href="/editais/">Editais</a></li>
-                                        <li><a href="/parceiros/">Parceiros</a>
-                                    </li>
-                                    <li><a href="/contato/">Fale conosco</a>
-                                </li>
-                            </ul>
+                                        <li><a href="/parceiros/">Parceiros</a></li>
+                                        <li><a href="/contato/">Fale conosco</a></li>
+                                    </ul>
+                                </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- class header-->
+        <div id="navegacao-destaque">
+            <div class="container">
+                <div class="row">
+                    <ul class="navegacao-destaque-list">
+                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
+                            <div class="navegacao-destaque-content">
+                                <h5><a href="/o-que-e/">Conheça o projeto</a></h5>
+                                <p><a href="/o-que-e/">Criado para promover a
+                                democratização do processo de elaboração legislativa.</a></p>
+                            </div>
+                        </li>
+                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
+                            <div class="navegacao-destaque-content">
+                                <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
+                                <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
+                                Série Pensando o Direito.</a></p>
+                            </div>
+                        </li>
+                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
+                            <div class="navegacao-destaque-content">
+                                <h5><a href="/debates/">Debates</a></h5>
+                                <p><a href="/debates/">Veja os debates abertos. Sua participação é muito importante.</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
+                            <div class="navegacao-destaque-content">
+                                <h5><a href="#">Proponha um debate</a></h5>
+                                <p><a href="#">Gostaria de ver algum tema ser debatido? Faça aqui sua proposta</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div> <!-- /row -->
+            </div>
+            <div class="conteudo">
+                <div class="container mt-sm">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <!-- breadcrumb -->
+                            <?php wp_custom_breadcrumbs(); ?>
                         </div>
-                        <!-- /.navbar-collapse -->
+                        <div class="col-md-4 text-right">
+                            <p>
+                            <a href="<?php echo participacao_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
+                            <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
+                            </p>
+                        </div>
                     </div>
-                    <!-- /.container-fluid -->
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="navegacao-destaque">
-    <div class="container">
-        <div class="row">
-            <ul class="navegacao-destaque-list">
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="/o-que-e/">Conheça o projeto</a></h5>
-                        <p><a href="/o-que-e/">Criado para promover a
-                        democratização do processo de elaboração legislativa.</a></p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
-                        <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
-                        Série Pensando o Direito.</a></p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="/debates/">Debates</a></h5>
-                        <p><a href="/debates/">Veja os debates abertos. Sua participação é muito importante.</a>
-                        </p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="#">Proponha um debate</a></h5>
-                        <p><a href="#">Gostaria de ver algum tema ser debatido? Faça aqui sua proposta</a>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div> <!-- /row -->
-    </div>
-    <div class="conteudo">
-        <div class="container mt-sm">
-            <div class="row">
-                <div class="col-md-8">
-                    <!-- breadcrumb -->
-                    <?php wp_custom_breadcrumbs(); ?>
-                    <!-- /breadcrumb -->
-                    <!-- <h2 class="font-roboto red"><a
-                    href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('title'); ?></a></h2>
-                    <p><?php echo get_bloginfo('description'); ?></p> -->
                 </div>
-                <div class="col-md-4 text-right">
-                    <p>
-                    <a href="<?php echo participacao_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
-                    <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
-                    </p>
-                </div>
-            </div>
-        </div>
