@@ -67,19 +67,19 @@
                                 </div>
                                 <div class="collapse navbar-collapse" id="menu-top">
                                     <?php echo get_search_form(); ?>
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="/pensandoodireito/noticias/">Notícias</a></li>
-                                        <li><a href="/pensandoodireito/editais/">Editais</a></li>
-                                        <li><a href="/pensandoodireito/parceiros/">Parceiros</a>
-                                    </li>
-                                    <li><a href="/pensandoodireito/contato/">Fale conosco</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.navbar-collapse -->
+                                    <?php wp_nav_menu( array( 'theme_location' => 'menu-secundario', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
+                                </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+                        </nav>
                     </div>
-                    <!-- /.container-fluid -->
-                </nav>
+                </div>
+            </div>
+        </div> <!-- class header-->
+        <div id="navegacao-destaque">
+            <div class="container">
+                <div class="row">
+                    <?php wp_nav_menu( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ) ); ?>
+                </div> <!-- /row -->
             </div>
         </div>
     </div>
