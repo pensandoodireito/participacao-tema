@@ -431,6 +431,18 @@ function participacao_paginacao_infinita(){
 add_action('wp_ajax_participacao_paginacao_infinita', 'participacao_paginacao_infinita');
 add_action('wp_ajax_nopriv_participacao_paginacao_infinita', 'participacao_paginacao_infinita');
 
+/* MENUS DO TEMA PRINCIPAL */
+// Menu principal, que fica abaixo da barra 'vermelha' aonde tem a busca
+function register_menu_primario() {
+  register_nav_menu('menu-primario', __('Menu Primário'));
+}
+add_action('init', 'register_menu_primario');
+// Menu secundário, que fica logo abaixo da "barra Brasil"
+function register_menu_secundario() {
+  register_nav_menu('menu-secundario', __('Menu Secundário'));
+}
+add_action('init', 'register_menu_secundario');
+
 function wp_custom_breadcrumbs() {
 
     $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
