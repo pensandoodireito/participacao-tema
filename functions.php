@@ -443,6 +443,20 @@ function register_menu_secundario() {
 }
 add_action('init', 'register_menu_secundario');
 
+// Modifica a formatação de um item de menu para adicionar a description
+function add_description_to_menu($item_output, $item, $depth, $args) {
+    if ($args->theme_location == 'menu-primario') {
+        $item_output = '<div class="navegacao-destaque-content">';
+        $item_output .= sprintf('<h5><a href="%s">%s</a></h5>', esc_html($item->url), esc_html($item->title));
+        $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description));
+        $item_output .= '</div>';
+    }
+
+    return $item_output;
+}
+add_filter('walker_nav_menu_start_el', 'add_description_to_menu', 1, 4);
+
+/* BREADCRUMB */
 function wp_custom_breadcrumbs() {
 
     $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
