@@ -1,5 +1,6 @@
 @import "theme-variables.less";
 @import "../bootstrap/variables.less";
+@import "../bootstrap/mixins.less";
 #hello {
     width: 100%;
     padding-top: 70px;
@@ -108,14 +109,7 @@
     width: 100%;
     border: 1px solid #E7E7E7;
     figure {
-        position: relative;
-        display: inline-block;
-        -moz-box-shadow: 0 3px 0 #e2e2e2, transparent 0 0 0;
-        -webkit-box-shadow: 0 3px 0 #e2e2e2, transparent 0 0 0;
-        box-shadow: 0 3px 0 #e2e2e2, transparent 0 0 0;
-        -webkit-box-shadow: 0 3px 0 #e2e2e2;
-        -moz-box-shadow: 0 3px 0 #e2e2e2;
-        box-shadow: 0 3px 0 #e2e2e2;
+
         figcaption {
             position: relative;
             z-index: 10;
@@ -148,13 +142,13 @@
     &-stats {
         padding-left: 0px;
         font-size: 13px;
-        &-label {} &-date {}
+        &-label &-date {}
     }
     &-vote-yes {
         color: #0f2105;
         font-weight: bold;
     }
-    &-date {} figcaption .proposal-title {
+    &-date figcaption .proposal-title {
         display: block;
         font-size: 16px;
         line-height: 33px;
@@ -240,6 +234,7 @@
     border-radius: 10px;
     border: 1px solid #CCC;
     margin-bottom: 20px;
+    .clearfix();
     .proposal-stats-label {
         margin-bottom: 20px;
     }
