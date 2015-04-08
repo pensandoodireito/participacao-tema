@@ -280,6 +280,10 @@ text-maroon
     overflow: auto;
 }
 
+.overflow-hide {
+    overflow: hidden;
+}
+
 //  Linhas 
 .line-1 {
     height: 60px;
@@ -477,13 +481,24 @@ text-maroon
 }
 
 .gradient-mesh {
-    position: relative;
-    display: inline-block;
-    -moz-box-shadow: 0 3px 0 #e2e2e2, transparent 0 0 0;
-    -webkit-box-shadow: 0 3px 0 #e2e2e2, transparent 0 0 0;
-    box-shadow: 0 3px 0 #e2e2e2, transparent 0 0 0;
-    -webkit-box-shadow: 0 3px 0 #e2e2e2;
-    -moz-box-shadow: 0 3px 0 #e2e2e2;
-    box-shadow: 0 3px 0 #e2e2e2;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 26%);
+    border-radius: 0 0 6px 6px;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    padding-top: 20%;
+    margin-bottom: 0;
 }
 
+// positions
+.pos-absolute {
+    position: absolute;
+}
+
+.pos-relative {
+    position: relative;
+}
+
+.pos-fixed {
+    position: fixed;
+}
