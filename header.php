@@ -84,42 +84,6 @@
         </div>
     </div>
 </div>
-<div id="navegacao-destaque">
-    <div class="container">
-        <div class="row">
-            <ul class="navegacao-destaque-list">
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
-                        <p><a href="/pensandoodireito/o-que-e/">Criado para promover a
-                        democratização do processo de elaboração legislativa.</a></p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
-                        <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
-                        Série Pensando o Direito.</a></p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="/pensandoodireito/debates/">Debates</a></h5>
-                        <p><a href="/pensandoodireito/debates/">Veja os debates abertos. Sua participação é muito importante</a>
-                        </p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="#">Proponha um debate</a></h5>
-                        <p><a href="#">Gostaria de ver algum tema ser debatido? Faça aqui sua proposta</a>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-            </div> <!-- /row -->
-        </div>
-    </div>
     <div class="conteudo">
         <div class="container mt-sm">
             <div class="row">
