@@ -93,8 +93,8 @@
                         </li>
                         <li class="navegacao-destaque-item col-xs-6 col-md-4">
                             <div class="navegacao-destaque-content">
-                                <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
-                                <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
+                                <h5><a href="/publicacao/">Publicações</a></h5>
+                                <p><a href="/publicacao/">Conheça as publicações da
                                 Série Pensando o Direito.</a></p>
                             </div>
                         </li>
