@@ -133,7 +133,6 @@
                 </div>
                 <div class="col-md-4 text-right">
                     <p>
-                    <a href="<?php echo participacao_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
                     <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
                     </p>
                 </div>
