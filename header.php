@@ -68,73 +68,80 @@
                                 <div class="collapse navbar-collapse" id="menu-top">
                                     <?php echo get_search_form(); ?>
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="/pensandoodireito/noticias/">Notícias</a></li>
+                                        <li class="dropdown">
+                                            <a id="noticias" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Notícias
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="noticias">
+                                                <li><a href="/pensandoodireito/noticias/">Editais</a></li>
+                                                <li><a href="/pensandoodireito/noticias/">Lorem Ipsum</a></li>
+                                                <li><a href="/pensandoodireito/noticias/">Dolor sit</a></li>
+                                                <li><a href="/pensandoodireito/noticias/">Vectelius dolor</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="/pensandoodireito/editais/">Editais</a></li>
-                                        <li><a href="/pensandoodireito/parceiros/">Parceiros</a>
-                                    </li>
-                                    <li><a href="/pensandoodireito/contato/">Fale conosco</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.navbar-collapse -->
+                                        <li><a href="/pensandoodireito/parceiros/">Parceiros</a></li>
+                                        <li><a href="/pensandoodireito/contato/">Fale conosco</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
                     </div>
-                    <!-- /.container-fluid -->
-                </nav>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div id="navegacao-destaque">
-    <div class="container">
-        <div class="row">
-            <ul class="navegacao-destaque-list">
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
-                        <p><a href="/pensandoodireito/o-que-e/">Criado para promover a
-                        democratização do processo de elaboração legislativa.</a></p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
-                        <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
-                        Série Pensando o Direito.</a></p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="/pensandoodireito/debates/">Debates</a></h5>
-                        <p><a href="/pensandoodireito/debates/">Veja os debates abertos. Sua participação é muito importante</a>
-                        </p>
-                    </div>
-                </li>
-                <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                    <div class="navegacao-destaque-content">
-                        <h5><a href="#">Proponha um debate</a></h5>
-                        <p><a href="#">Gostaria de ver algum tema ser debatido? Faça aqui sua proposta</a>
+        <div id="navegacao-destaque">
+            <div class="container">
+                <div class="row">
+                    <ul class="navegacao-destaque-list">
+                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
+                            <div class="navegacao-destaque-content">
+                                <h5><a href="/pensandoodireito/o-que-e/">Conheça o projeto</a></h5>
+                                <p><a href="/pensandoodireito/o-que-e/">Criado para promover a
+                                democratização do processo de elaboração legislativa.</a></p>
+                            </div>
+                        </li>
+                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
+                            <div class="navegacao-destaque-content">
+                                <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
+                                <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
+                                Série Pensando o Direito.</a></p>
+                            </div>
+                        </li>
+                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
+                            <div class="navegacao-destaque-content">
+                                <h5><a href="/pensandoodireito/debates/">Debates</a></h5>
+                                <p><a href="/pensandoodireito/debates/">Veja os debates abertos. Sua participação é muito importante</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="navegacao-destaque-item col-xs-6 col-md-4">
+                        <div class="navegacao-destaque-content">
+                            <h5><a href="#">Proponha um debate</a></h5>
+                            <p><a href="#">Gostaria de ver algum tema ser debatido? Faça aqui sua proposta</a>
                         </p>
                     </div>
                 </li>
             </ul>
-            </div> <!-- /row -->
         </div>
     </div>
-    <div class="conteudo">
-        <div class="container mt-sm">
-            <div class="row">
-                <div class="col-md-8">
-                    <!-- breadcrumb -->
-                    <?php wp_custom_breadcrumbs(); ?>
-                    <!-- /breadcrumb -->
-                    <!-- <h2 class="font-roboto red"><a
-                    href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('title'); ?></a></h2>
-                    <p><?php echo get_bloginfo('description'); ?></p> -->
-                </div>
-                <div class="col-md-4 text-right">
-                    <p>
+</div>
+<div class="conteudo">
+    <div class="container mt-sm">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- breadcrumb -->
+                <?php wp_custom_breadcrumbs(); ?>
+                <!-- /breadcrumb -->
+                <!-- <h2 class="font-roboto red"><a
+                href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('title'); ?></a></h2>
+                <p><?php echo get_bloginfo('description'); ?></p> -->
+            </div>
+            <div class="col-md-4 text-right">
+                <p>
                     <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
-                    </p>
-                </div>
+                </p>
             </div>
         </div>
+    </div>
