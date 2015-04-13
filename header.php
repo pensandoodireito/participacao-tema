@@ -81,18 +81,22 @@
                     <?php wp_nav_menu( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ) ); ?>
                 </div> <!-- /row -->
             </div>
-            <div class="conteudo">
-                <div class="container mt-sm">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <!-- breadcrumb -->
-                            <?php wp_custom_breadcrumbs(); ?>
-                        </div>
-                        <div class="col-md-4 text-right">
-                            <p>
-                            <a href="<?php echo participacao_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
-                            <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
-                            </p>
-                        </div>
-                    </div>
+        </div>
+    </div>
+</div>
+    <div class="conteudo">
+        <div class="container mt-sm">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- breadcrumb -->
+                    <?php wp_custom_breadcrumbs(); ?>
+                    <!-- /breadcrumb -->
                 </div>
+                <div class="col-md-4 text-right">
+                    <p>
+                    <a href="<?php echo participacao_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
+                    <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
+                    </p>
+                </div>
+            </div>
+        </div>
