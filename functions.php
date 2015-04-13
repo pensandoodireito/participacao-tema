@@ -469,13 +469,27 @@ function wp_custom_breadcrumbs() {
     global $post;
     $homeLink = get_bloginfo('url');
 
-    if (is_home() || is_front_page()) {
+    $blog_ID = get_current_blog_id();
+
+    if ( (is_home() || is_front_page()) && $blog_ID == 1 ) {
 
         if ($showOnHome == 1) echo '<div id="crumbs red"><a href="' . $homeLink . '" class="red">' . $home . '</a></div>';
 
     } else {
+        echo '<div id="crumbs red">';
 
-        echo '<div id="crumbs red"><a href="' . $homeLink . '" class="red">' . $home . '</a> ' . $delimiter . ' ';
+        if ( $blog_ID != 1 ) {
+            echo '<a href="' . get_site_url() . '" class="red">' . $home . '</a> ' . $delimiter . ' ';
+            echo '<a href="/debates/" class="red">Debates</a> ' . $delimiter . ' ';
+            if ( is_home() || is_front_page() ) {
+                echo bloginfo('name') . ' ';
+            } else {
+                echo '<a href="' . get_blog_details($blog_ID)->siteurl . '" class="red">';
+                echo bloginfo('name') . '</a> ' . $delimiter . ' ';
+            }
+        } else {
+            echo '<a href="' . $homeLink . '" class="red">' . $home . '</a> ' . $delimiter . ' ';
+        }
 
         if ( is_category() ) {
             $thisCat = get_category(get_query_var('cat'), false);
@@ -501,7 +515,7 @@ function wp_custom_breadcrumbs() {
             if ( get_post_type() != 'post' ) {
                 $post_type = get_post_type_object(get_post_type());
                 $slug = $post_type->rewrite;
-                echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/" class="red">' . $post_type->labels->singular_name . '</a>';
+                echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/" class="red">' . $post_type->labels->name . '</a>';
                 if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
             } else {
                 $cat = get_the_category(); $cat = $cat[0];

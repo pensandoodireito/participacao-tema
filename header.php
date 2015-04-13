@@ -91,13 +91,9 @@
                     <!-- breadcrumb -->
                     <?php wp_custom_breadcrumbs(); ?>
                     <!-- /breadcrumb -->
-                    <!-- <h2 class="font-roboto red"><a
-                    href="<?php echo site_url("/"); ?>"><?php echo get_bloginfo('title'); ?></a></h2>
-                    <p><?php echo get_bloginfo('description'); ?></p> -->
                 </div>
                 <div class="col-md-4 text-right">
                     <p>
-                    <a href="<?php echo participacao_get_participe_link(); ?>" class="btn btn-danger">Participe!</a>
                     <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
                     </p>
                 </div>
