@@ -67,12 +67,7 @@
                                 </div>
                                 <div class="collapse navbar-collapse" id="menu-top">
                                     <?php echo get_search_form(); ?>
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="/noticias/">Notícias</a></li>
-                                        <li><a href="/editais/">Editais</a></li>
-                                        <li><a href="/parceiros/">Parceiros</a></li>
-                                        <li><a href="/contato/">Fale conosco</a></li>
-                                    </ul>
+                                    <?php wp_nav_menu( array( 'theme_location' => 'menu-secundario', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
                         </nav>
@@ -83,36 +78,7 @@
         <div id="navegacao-destaque">
             <div class="container">
                 <div class="row">
-                    <ul class="navegacao-destaque-list">
-                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                            <div class="navegacao-destaque-content">
-                                <h5><a href="/o-que-e/">Conheça o projeto</a></h5>
-                                <p><a href="/o-que-e/">Criado para promover a
-                                democratização do processo de elaboração legislativa.</a></p>
-                            </div>
-                        </li>
-                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                            <div class="navegacao-destaque-content">
-                                <h5><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Publicações</a></h5>
-                                <p><a href="<?php echo get_post_type_archive_link('publicacao'); ?>">Conheça as publicações da
-                                Série Pensando o Direito.</a></p>
-                            </div>
-                        </li>
-                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                            <div class="navegacao-destaque-content">
-                                <h5><a href="/debates/">Debates</a></h5>
-                                <p><a href="/debates/">Veja os debates abertos. Sua participação é muito importante.</a>
-                                </p>
-                            </div>
-                        </li>
-                        <li class="navegacao-destaque-item col-xs-6 col-md-4">
-                            <div class="navegacao-destaque-content">
-                                <h5><a href="#">Proponha um debate</a></h5>
-                                <p><a href="#">Gostaria de ver algum tema ser debatido? Faça aqui sua proposta</a>
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
+                    <?php wp_nav_menu( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ) ); ?>
                 </div> <!-- /row -->
             </div>
             <div class="conteudo">
