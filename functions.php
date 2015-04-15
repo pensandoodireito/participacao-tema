@@ -431,6 +431,32 @@ function participacao_paginacao_infinita(){
 add_action('wp_ajax_participacao_paginacao_infinita', 'participacao_paginacao_infinita');
 add_action('wp_ajax_nopriv_participacao_paginacao_infinita', 'participacao_paginacao_infinita');
 
+/* MENUS DO TEMA PRINCIPAL */
+// Menu principal, que fica abaixo da barra 'vermelha' aonde tem a busca
+function register_menu_primario() {
+  register_nav_menu('menu-primario', __('Menu Primário'));
+}
+add_action('init', 'register_menu_primario');
+// Menu secundário, que fica logo abaixo da "barra Brasil"
+function register_menu_secundario() {
+  register_nav_menu('menu-secundario', __('Menu Secundário'));
+}
+add_action('init', 'register_menu_secundario');
+
+// Modifica a formatação de um item de menu para adicionar a description
+function add_description_to_menu($item_output, $item, $depth, $args) {
+    if ($args->theme_location == 'menu-primario') {
+        $item_output = '<div class="navegacao-destaque-content">';
+        $item_output .= sprintf('<h5><a href="%s">%s</a></h5>', esc_html($item->url), esc_html($item->title));
+        $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description));
+        $item_output .= '</div>';
+    }
+
+    return $item_output;
+}
+add_filter('walker_nav_menu_start_el', 'add_description_to_menu', 1, 4);
+
+/* BREADCRUMB */
 function wp_custom_breadcrumbs() {
 
     $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
@@ -475,7 +501,7 @@ function wp_custom_breadcrumbs() {
             if ( get_post_type() != 'post' ) {
                 $post_type = get_post_type_object(get_post_type());
                 $slug = $post_type->rewrite;
-                echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/" class="red">' . $post_type->labels->singular_name . '</a>';
+                echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/" class="red">' . $post_type->labels->name . '</a>';
                 if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
             } else {
                 $cat = get_the_category(); $cat = $cat[0];
