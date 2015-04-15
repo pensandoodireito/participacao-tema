@@ -460,10 +460,10 @@ add_filter('walker_nav_menu_start_el', 'add_description_to_menu', 1, 4);
 function wp_custom_breadcrumbs() {
 
     $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
-    $delimiter = '&raquo;'; // delimiter between crumbs
-    $home = 'Home'; // text for the 'Home' link
+    $delimiter = '<i class="fa fa-angle-right text-muted"></i>'; // delimiter between crumbs
+    $home = '<i class="fa fa-home fa-lg"></i>'; // text for the 'Home' link
     $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
-    $before = '<span class="current red">'; // tag before the current crumb
+    $before = '<span class="current text-muted">'; // tag before the current crumb
     $after = '</span>'; // tag after the current crumb
 
     global $post;
