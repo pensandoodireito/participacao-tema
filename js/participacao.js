@@ -53,20 +53,6 @@ function carregar_noticias() {
     return false;
 }
 
-jQuery(function ($) {
-    $(window).scroll(sticky_relocate);
-    sticky_relocate();
-
-    // botão que fecha o menu
-    $('.fecha-menu').click(function() {
-        $('.indice .menu').slideToggle('slow');
-        $(".fecha-menu .fa").toggleClass('fa-angle-up fa-angle-down');
-    });
-
-    back_to_top($);
-
-});
-
 
 
 
