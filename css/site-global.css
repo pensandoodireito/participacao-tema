@@ -774,6 +774,19 @@ text-maroon
   -webkit-box-shadow: none;
   border-color: #cccccc;
 }
+.header .header-content #menu-top .dropdown .dropdown-menu li a {
+  color: #521e1b;
+  font-weight: 700;
+  font-size: 11px;
+}
+@media (max-width: 992px) {
+  .header .header-content #menu-top .dropdown .dropdown-menu li a {
+    color: #fff;
+  }
+  .header .header-content #menu-top .dropdown .dropdown-menu li a:hover {
+    color: #521e1b;
+  }
+}
 h1,
 h2,
 h3,
