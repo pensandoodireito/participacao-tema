@@ -557,3 +557,50 @@ function wp_custom_breadcrumbs() {
 
     }
 } // end wp_custom_breadcrumbs()
+
+add_action(
+    'wp_ajax_publicacoes_paginacao_infinita',
+    'publicacoes_paginacao_infinita'
+);
+add_action(
+    'wp_ajax_nopriv_publicacoes_paginacao_infinita',
+    'publicacoes_paginacao_infinita'
+);
+
+/* ReWrite para gerar endpoints de notícias e suas subcategorias */
+/* ================ REWRITE RULES ================ */
+add_action(
+    'generate_rewrite_rules',  function ($wp_rewrite) {
+        $new_rules = array(
+        "noticias/([^/]*)/?$" => 
+            "index.php?&categoria=" . $wp_rewrite->preg_index(1),
+        "noticias/?$" =>
+            "index.php?categoria=geral",
+        "editais/?$" =>
+            "index.php?categoria=editais",
+          );
+        $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+        return $wp_rewrite;
+    }
+);
+
+add_filter(
+    'query_vars', function ($public_query_vars) {
+        $public_query_vars[] = "categoria";
+        return $public_query_vars;
+    }
+);
+
+add_action(
+    'template_redirect', function () {
+        global $wp_query;
+
+        $categoria = $wp_query->get('categoria');
+        $tpl_fname = __DIR__."/noticias.php";
+
+        if ($categoria && file_exists($tpl_fname)) {
+            include $tpl_fname;
+            die;
+        }
+    }
+);
