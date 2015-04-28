@@ -529,7 +529,7 @@ function wp_custom_breadcrumbs() {
             $parent_id  = $post->post_parent;
             $breadcrumbs = array();
             while ($parent_id) {
-                $page = get_page($parent_id);
+                $page = get_post($parent_id);
                 $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '" class="red">' . get_the_title($page->ID) . '</a>';
                 $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '" class="red">' . get_the_title($page->ID) . '</a>';
                 $parent_id  = $page->post_parent;
@@ -572,7 +572,7 @@ add_action(
 add_action(
     'generate_rewrite_rules',  function ($wp_rewrite) {
         $new_rules = array(
-        "noticias/([^/]*)/?$" => 
+        "noticias/([^/]*)/?$" =>
             "index.php?&categoria=" . $wp_rewrite->preg_index(1),
         "noticias/?$" =>
             "index.php?categoria=geral",
