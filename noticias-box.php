@@ -4,7 +4,9 @@
             <?php
                 if ( has_post_thumbnail() ) {
                     the_post_thumbnail('noticia-lista', array('class' => "img-adptive"));
-                }
+                } else { ?>
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/noticia-padrao.gif" class="img-adptive" alt="Imagem notícia" />
+               <?php }
             ?>
         </div>
         <div class="col-xs-7 pl-0">
