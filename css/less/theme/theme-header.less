@@ -70,7 +70,7 @@
             border-color: #cccccc;
         }
         #menu-top {
-            .dropdown {
+            /*.dropdown {
                 .dropdown-menu {
                     li {
                         a {
@@ -81,12 +81,80 @@
                         @media(max-width: @screen-md) {
                             a {
                                 color: #fff;
-                                &:hover{ color:@color-vermelho-pd;}
+                                &:hover {
+                                    color: @color-vermelho-pd;
+                                }
                             }
                         }
                     }
                 }
             }
+        */
+            
+            // aqui começa o dropdown adaptado do bootstrap para o submenu do tema
+            // The dropdown wrapper (div)
+            .menu-item-has-children {
+                position: relative;
+                // The dropdown menu (ul)
+                .sub-menu {
+                    @media(max-width: @screen-sm) {
+                        position: relative;
+                        display: none; // none by default, but block on "open" of the menu
+                        float: none;
+                        width: 70%;
+                        padding:0;
+                        margin: 0px;
+                        background-color: @color-vermelho-pd;
+                        border:0;
+                        border-radius: 0;
+                        box-shadow: none;
+                        //background-clip: padding-box;
+                        > li > a {
+                            display: block;
+                            padding: 10px 10px !important;
+                            clear: both;
+                            line-height: @line-height-base;
+                            white-space: nowrap; // prevent links from randomly breaking onto new lines
+                            color: #fff !important;
+                            &:hover {
+                                background-color: #86332e;
+                            }
+                        }
+                        > li:last-child {
+                            border-bottom: 1px solid #fff;
+                        }
+                    }
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    z-index: @zindex-dropdown;
+                    display: none; // none by default, but block on "open" of the menu
+                    float: left;
+                    min-width: 160px;
+                    padding: 5px 0;
+                    margin: -10px 0px 0px 0px;
+                    list-style: none;
+                    font-size: @font-size-base;
+                    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+                    background-color: @dropdown-bg;
+                    border: 1px solid @dropdown-fallback-border; // IE8 fallback
+                    border: 1px solid @dropdown-border;
+                    border-radius: @border-radius-base;
+                    .box-shadow(0 6px 12px rgba(0, 0, 0, .175));
+                    background-clip: padding-box;
+                    > li > a {
+                        display: block;
+                        padding: 3px 20px;
+                        clear: both;
+                        line-height: @line-height-base;
+                        white-space: nowrap; // prevent links from randomly breaking onto new lines
+                        color: @color-vermelho-pd;
+                        font-weight: 700;
+                        font-size: 11px;
+                    }
+                }
+            }
+            // aqui encerra o dropdown
         }
     }
 }

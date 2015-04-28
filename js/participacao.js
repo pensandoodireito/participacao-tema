@@ -400,6 +400,17 @@ function carregar_noticias() {
 })(window.jQuery);
 
 //Chama o tipo de botão
-$(":file").filestyle({buttonBefore: true, buttonText: "Selecionar arquivo"});
+jQuery(":file").filestyle({buttonBefore: true, buttonText: "Selecionar arquivo"});
 
 
+
+
+// Submenu
+jQuery(document).ready(function(){                  
+    jQuery("#menu-secundario li").hover(function(){
+            jQuery(this).find('ul:first').css({visibility: "visible",display: "none"}).show(200);
+            },function(){
+            jQuery(this).find('ul:first').css({visibility: "hidden"}).hide(200);
+            });
+    }
+);
