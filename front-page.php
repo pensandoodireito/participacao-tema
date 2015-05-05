@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="mt-sm text-center">
-                <a href="<?php echo site_url("/marcocivil"); ?>" class="btn btn-danger font-roboto">Participe deste debate!</a>
+                <a href="<?php echo site_url("/marcocivil"); ?>" class="btn btn-danger font-roboto">Participe da Sistematização!</a>
             </div>
         </div>
     </div>
