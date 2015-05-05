@@ -261,16 +261,16 @@ function carregar_noticias() {
             } else {
                 this.$elementFilestyle.find(':text').val('');
             }
-            
+
             return files;
         },
 
         constructor : function() {
-            var _self = this, 
-                html = '', 
-                id = _self.$element.attr('id'), 
-                files = [], 
-                btn = '', 
+            var _self = this,
+                html = '',
+                id = _self.$element.attr('id'),
+                files = [],
+                btn = '',
                 $label;
 
             if (id === '' || !id) {
@@ -280,12 +280,12 @@ function carregar_noticias() {
                 });
             }
 
-            btn = '<span class="group-span-filestyle ' + (_self.options.input ? 'input-group-btn' : '') + '">' + 
-                  '<label for="' + id + '" class="btn ' + _self.options.buttonName + ' ' + 
-                    (_self.options.size == 'nr' ? '' : 'btn-' + _self.options.size) + '" ' + 
-                    (_self.options.disabled ? 'disabled="true"' : '') + '>' + 
-                        _self.htmlIcon() + _self.options.buttonText + 
-                  '</label>' + 
+            btn = '<span class="group-span-filestyle ' + (_self.options.input ? 'input-group-btn' : '') + '">' +
+                  '<label for="' + id + '" class="btn ' + _self.options.buttonName + ' ' +
+                    (_self.options.size == 'nr' ? '' : 'btn-' + _self.options.size) + '" ' +
+                    (_self.options.disabled ? 'disabled="true"' : '') + '>' +
+                        _self.htmlIcon() + _self.options.buttonText +
+                  '</label>' +
                   '</span>';
 
             html = _self.options.buttonBefore ? btn + _self.htmlInput() : _self.htmlInput() + btn;
@@ -363,7 +363,7 @@ function carregar_noticias() {
 
     $.fn.filestyle.defaults = {
         'buttonText' : 'Choose file',
-        'iconName' : 'glyphicon-folder-open',
+        'iconName' : 'fa fa-folder-open',
         'buttonName' : 'btn-default',
         'size' : 'nr',
         'input' : true,
@@ -406,7 +406,7 @@ jQuery(":file").filestyle({buttonBefore: true, buttonText: "Selecionar arquivo"}
 
 
 // Submenu
-jQuery(document).ready(function(){                  
+jQuery(document).ready(function(){
     jQuery("#menu-secundario li").hover(function(){
             jQuery(this).find('ul:first').css({visibility: "visible",display: "none"}).show(200);
             },function(){
