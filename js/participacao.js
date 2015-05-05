@@ -140,7 +140,7 @@ function carregar_noticias() {
             } else if (value === false) {
                 if (this.options.icon) {
                     this.options.icon = false;
-                    this.$elementFilestyle.find('.glyphicon').remove();
+                    this.$elementFilestyle.find('.fa').remove();
                 }
             } else {
                 return this.options.icon;
@@ -216,8 +216,8 @@ function carregar_noticias() {
 
         iconName : function(value) {
             if (value !== undefined) {
-                this.$elementFilestyle.find('.glyphicon').attr({
-                    'class' : '.glyphicon ' + this.options.iconName
+                this.$elementFilestyle.find('.fa').attr({
+                    'class' : '.fa ' + this.options.iconName
                 });
             } else {
                 return this.options.iconName;
@@ -226,7 +226,7 @@ function carregar_noticias() {
 
         htmlIcon : function() {
             if (this.options.icon) {
-                return '<span class="glyphicon ' + this.options.iconName + '"></span> ';
+                return '<span class="fa ' + this.options.iconName + '"></span> ';
             } else {
                 return '';
             }
