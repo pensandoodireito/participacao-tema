@@ -31,6 +31,10 @@ function back_to_top($) {
         return false;
     })
 }
+// Chama o botão back to top
+jQuery(function ($) {
+    back_to_top($);
+});
 
 function carregar_noticias() {
         jQuery(".container .ordinarynews").append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
