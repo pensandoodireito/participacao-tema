@@ -604,3 +604,35 @@ add_action(
         }
     }
 );
+
+// Functions to run on plugin activation
+if (isset($_GET['activated']) && is_admin()){
+
+    function get_page_by_name($pagename){
+        $pages = get_pages();
+        foreach ($pages as $page) if ($page->post_name == $pagename) return $page;
+            return false;
+    }
+
+    $page = get_page_by_name('MYPAGE');
+    if (!empty($page)) {
+    // page exists and is in $page
+    } else {
+    // page does not exist
+    }
+
+
+    //create 'cadastro' page
+    //
+    if (empty(get_page_by_name('Cadastro'))) {
+
+        $new_page = array(
+            'post_type' => 'page',
+            'post_title' => 'Cadastro',
+            'post_content' => '[pd_registration_form]',
+            'post_status' => 'publish',
+            'post_author' => 1,
+        );
+        wp_insert_post($new_page);
+    }
+}
