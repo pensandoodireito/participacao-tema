@@ -618,6 +618,8 @@ function participacao_create_pages() {
 
     //cria página 'cadastro' no 'blog principal'
     pd_create_page( array('titulo' => 'Cadastro', 'conteudo' => '[pd_registration_form]') );
+    //cria a página 'contato' no 'blog principal'
+    pd_create_page( array('titulo' => 'Contato', 'conteudo' => '[pd_registration_form]') );
 
     //Volta para o 'blog atual'
     restore_current_blog();
