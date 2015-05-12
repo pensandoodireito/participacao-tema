@@ -604,3 +604,25 @@ add_action(
         }
     }
 );
+
+/**
+ * Função que cria páginas (pages),
+ * em especial focando nos 'endpoints'
+ **/
+function participacao_create_pages() {
+
+    //Muda para o 'blog 1' (principal) pois é aonde a página de cadastro deve estar
+    // Esta mudança é necessária pois a função abaixo seria aplicada aos outros sites
+    // ao se ativar um subtema nos subsites, e a página de cadastro pertence ao site 'principal'
+    switch_to_blog('1');
+
+    //cria página 'cadastro' no 'blog principal'
+    pd_create_page( array('titulo' => 'Cadastro', 'conteudo' => '[pd_registration_form]') );
+
+    //Volta para o 'blog atual'
+    restore_current_blog();
+
+}
+// Chama a função apenas quando há troca de tema
+//   fundamentalmente quando o tema é ativado (e também desativado)
+add_action('after_switch_theme', 'participacao_create_pages');
