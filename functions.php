@@ -604,3 +604,21 @@ add_action(
         }
     }
 );
+
+// Functions to run on plugin activation
+if (isset($_GET['activated']) && is_admin()){
+
+    //create 'cadastro' page
+    //
+    if (empty(get_page_by_name('Cadastro'))) {
+
+        $new_page = array(
+            'post_type' => 'page',
+            'post_title' => 'Cadastro',
+            'post_content' => '[pd_registration_form]',
+            'post_status' => 'publish',
+            'post_author' => 1,
+        );
+        wp_insert_post($new_page);
+    }
+}
