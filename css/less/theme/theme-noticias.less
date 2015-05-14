@@ -1,0 +1,62 @@
+@import "../../../participacao-tema/css/less/elements.less";
+// Tabs
+// -------------------------
+// Tabs da area de notícias
+.tabs-social {
+    #twitter-widget-0 {
+        width: 100% !important;
+    }
+    .tabs-pd {
+        width: 100%;
+        border-bottom: none;
+        > li {
+            float: left;
+            width: 25%;
+            text-align: center;
+            // Make the list-items overlay the bottom border
+            margin-bottom: -1px;
+            // Actual tabs (as links)
+            > a {
+                line-height: @line-height-base;
+                // border: 1px solid transparent;
+                border-radius: 0;
+                background-color: @color-vermelho-pd;
+                color: #fff;
+                padding: 10px;
+                &:hover {
+                    //border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+                    background-color: #751119;
+                    color: #fff;
+                }
+            }
+            // Active state, and its :hover to override normal :hover
+            &.active > a {
+                &, &:hover, &:focus {
+                    color: #fff;
+                    background-color: #c52128;
+                    border: 0;
+                    border-bottom-color: transparent;
+                    cursor: default;
+                    color: #fff;
+                }
+            }
+        }
+        .active .tab-arrow {
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            bottom: 0;
+            left: 50%;
+            margin-bottom: -5px;
+            border-width: 5px 5px 0;
+            border-top-color: #c52128;
+        }
+    }
+    .tab-content {
+        background-color: #fff;
+        margin-top: -8px;
+    }
+}
