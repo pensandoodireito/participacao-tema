@@ -44,16 +44,12 @@ if (array_search(
             Filtrar notícia por categoria <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Assuntos Legislativos</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Debates Públicos</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Editais</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Entrevistas</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Eventos</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Opinião</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pesquisas</a></li> 
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mais Lidas</a></li>
+            <?php
+            foreach ($todas_categorias as $category) { ?>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo "/noticias/" . sanitize_title($category->name); ?>"><?php echo $category->name; ?></a></li>
+            <?php } ?>
             <li class="divider"></li>
-            <li><a href="#">Todas</a></li>            
+            <li><a href="/noticias">Todas</a></li>
           </ul>
         </div>
        </div> 
@@ -76,10 +72,15 @@ if (array_search(
         } ?>
     </div>
     </div>
-    <div class="row text-center mt-lg">
-      <button id="mais-noticias" type="button" class="btn btn-danger" onclick="carregar_noticias();">Mostrar mais notícias</button>
-    </div>
-
+    <?php
+      if (get_query_var('paged') < $ordinary_news->max_num_pages) {
+    ?>
+        <div class="row text-center mt-lg">
+            <button id="mais-noticias" type="button" class="btn btn-danger" onclick="carregar_noticias();">Mostrar mais notícias</button>
+        </div>
+    <?php
+      }
+    ?>
 </div>
 <?php
 } else {
