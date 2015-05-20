@@ -354,22 +354,6 @@ function participacao_salvar_meta( $meta ) {
     return $meta;
 }
 
-add_action('wpmu_activate_user', 'participacao_salvar_campos_usuario', 10, 3 );
-
-/**
- * Persiste os campos especiais salvos no signup
- *
- * @param $user_id
- * @param $password
- * @param $meta
- */
-function participacao_salvar_campos_usuario ($user_id, $password, $meta) {
-
-    update_user_meta($user_id, 'nickname', $meta['nice_name']);
-    wp_update_user( array ('ID' => $user_id, 'display_name' => $meta['nice_name']));
-
-}
-
 add_filter( 'wpmu_validate_user_signup', 'participacao_validacao', 10, 3 );
 
 /**
