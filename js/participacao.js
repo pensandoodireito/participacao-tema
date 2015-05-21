@@ -41,7 +41,7 @@ function carregar_noticias() {
         jQuery.ajax({
             url: participacao.ajaxurl,
             type: 'POST',
-            data: "action=participacao_paginacao_infinita&paged="+ participacao.paginaAtual,
+            data: "action=participacao_paginacao_infinita&paged="+ participacao.paginaAtual+"&cat="+categoriaAtual,
             success: function(html){
                 jQuery('#loader-gif').remove();
                 jQuery(".container .ordinarynews").append(html);
