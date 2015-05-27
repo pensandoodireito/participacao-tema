@@ -400,9 +400,13 @@ function participacao_paginacao_infinita(){
     $args = array(
         'paged' => $paged,
         'posts_per_page' => get_option('posts_per_page'),
-        'post__not_in' => get_option('sticky_posts'),
-        'category_name' => $_POST['cat']
+        'post__not_in' => get_option('sticky_posts')
     );
+
+    if (isset($_POST['cat'])) {
+        $args['category_name'] = $_POST['cat'];
+    }
+
     $ordinary_news = new WP_Query($args);
 
     if ($ordinary_news->have_posts()) {

@@ -38,10 +38,17 @@ jQuery(function ($) {
 
 function carregar_noticias() {
         jQuery(".container .ordinarynews").append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
+
+        var dataNoticias = "action=participacao_paginacao_infinita&paged="+ participacao.paginaAtual;
+
+        if (typeof(categoriaAtual) != "undefined" ) {
+            dataNoticias += "&cat="+categoriaAtual;
+        }
+
         jQuery.ajax({
             url: participacao.ajaxurl,
             type: 'POST',
-            data: "action=participacao_paginacao_infinita&paged="+ participacao.paginaAtual+"&cat="+categoriaAtual,
+            data: dataNoticias,
             success: function(html){
                 jQuery('#loader-gif').remove();
                 jQuery(".container .ordinarynews").append(html);
