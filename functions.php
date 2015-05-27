@@ -393,12 +393,15 @@ function participacao_remover_style_signup() {
  * Função ajax pra paginação infinita
  */
 function participacao_paginacao_infinita(){
+    global $wp_query;
+
     $paged = $_POST['paged'];
 
     $args = array(
         'paged' => $paged,
         'posts_per_page' => get_option('posts_per_page'),
-        'post__not_in' => get_option('sticky_posts')
+        'post__not_in' => get_option('sticky_posts'),
+        'category_name' => $_POST['cat']
     );
     $ordinary_news = new WP_Query($args);
 
