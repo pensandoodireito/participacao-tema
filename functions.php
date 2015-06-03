@@ -143,7 +143,7 @@ function participacao_settings_init(  ) {
         'Data de abertura do Debate',
         'participacao_data_abertura_render',
         'pluginPage',
-        'participaca_pluginPage_section'
+        'participacao_pluginPage_section'
     );
 
     add_settings_field(
@@ -151,7 +151,7 @@ function participacao_settings_init(  ) {
         'Data de encerramento do Debate',
         'participacao_data_encerramento_render',
         'pluginPage',
-        'participaca_pluginPage_section'
+        'participacao_pluginPage_section'
     );
 
     add_settings_field(
@@ -159,23 +159,15 @@ function participacao_settings_init(  ) {
         'Fase do Debate',
         'participacao_fase_debate_render',
         'pluginPage',
-        'participaca_pluginPage_section'
+        'participacao_pluginPage_section'
     );
 
     add_settings_field(
-        'participacao_Lei',
-        'Lei',
-        'participacao_lei_render',
+        'participacao_normas',
+        'Normas em discussão',
+        'participacao_normas_render',
         'pluginPage',
-        'participaca_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_contato',
-        'Contato',
-        'participacao_contato_render',
-        'pluginPage',
-        'participaca_pluginPage_section'
+        'participacao_pluginPage_section'
     );
 
     add_settings_field(
@@ -258,7 +250,7 @@ function participacao_data_abertura_render(  ) {
 
     $options = get_option( 'participacao_settings' );
     ?>
-    <input type="text" cols='20' name='participacao_settings[participacao_data_abertura]' value="<?php echo $options['participacao_data_abertura']; ?>"/>
+    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_data_abertura]' value="<?php echo $options['participacao_data_abertura']; ?>"/>
 <?php
 }
 
@@ -269,7 +261,7 @@ function participacao_data_encerramento_render(  ) {
 
     $options = get_option( 'participacao_settings' );
     ?>
-    <input type="text" cols='20' name='participacao_settings[participacao_data_encerramento]' value="<?php echo $options['participacao_data_encerramento']; ?>"/>
+    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_data_encerramento]' value="<?php echo $options['participacao_data_encerramento']; ?>"/>
 <?php
 }
 
@@ -280,29 +272,18 @@ function participacao_fase_debate_render(  ) {
 
     $options = get_option( 'participacao_settings' );
     ?>
-    <input type="text" cols='20' name='participacao_settings[participacao_fase_debate]' value="<?php echo $options['participacao_fase_debate']; ?>"/>
+    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_fase_debate]' value="<?php echo $options['participacao_fase_debate']; ?>"/>
 <?php
 }
 
 /**
  * Render do campo para a lei referida no debate
  */
-function participacao_lei_render(  ) {
+function participacao_normas_render(  ) {
 
     $options = get_option( 'participacao_settings' );
     ?>
-    <input type="text" cols='20' name='participacao_settings[participacao_lei]' value="<?php echo $options['participacao_lei']; ?>"/>
-<?php
-}
-
-/**
- * Render do campo para contato do debate
- */
-function participacao_contato_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input type="text" cols='20' name='participacao_settings[participacao_contato]' value="<?php echo $options['participacao_contato']; ?>"/>
+    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_normas]' value="<?php echo $options['participacao_normas']; ?>"/>
 <?php
 }
 
