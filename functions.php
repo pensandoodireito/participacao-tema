@@ -139,6 +139,46 @@ function participacao_settings_init(  ) {
     );
 
     add_settings_field(
+        'participacao_data_abertura',
+        'Data de abertura do Debate',
+        'participacao_data_abertura_render',
+        'pluginPage',
+        'participaca_pluginPage_section'
+    );
+
+    add_settings_field(
+        'participacao_data_encerramento',
+        'Data de encerramento do Debate',
+        'participacao_data_encerramento_render',
+        'pluginPage',
+        'participaca_pluginPage_section'
+    );
+
+    add_settings_field(
+        'participacao_fase_debate',
+        'Fase do Debate',
+        'participacao_fase_debate_render',
+        'pluginPage',
+        'participaca_pluginPage_section'
+    );
+
+    add_settings_field(
+        'participacao_Lei',
+        'Lei',
+        'participacao_lei_render',
+        'pluginPage',
+        'participaca_pluginPage_section'
+    );
+
+    add_settings_field(
+        'participacao_contato',
+        'Contato',
+        'participacao_contato_render',
+        'pluginPage',
+        'participaca_pluginPage_section'
+    );
+
+    add_settings_field(
         'participacao_twitter_embed',
         'Código do widget do Twitter (usar altura máxima de 350px)',
         'participacao_twitter_render',
@@ -209,6 +249,61 @@ function participacao_site_excerpt_render(  ) {
     </textarea>
 <?php
 
+}
+
+/**
+ * Render do campo para a data de abertura do debate
+ */
+function participacao_data_abertura_render(  ) {
+
+    $options = get_option( 'participacao_settings' );
+    ?>
+    <input type="text" cols='20' name='participacao_settings[participacao_data_abertura]' value="<?php echo $options['participacao_data_abertura']; ?>"/>
+<?php
+}
+
+/**
+ * Render do campo para a data de encerramento do debate
+ */
+function participacao_data_encerramento_render(  ) {
+
+    $options = get_option( 'participacao_settings' );
+    ?>
+    <input type="text" cols='20' name='participacao_settings[participacao_data_encerramento]' value="<?php echo $options['participacao_data_encerramento']; ?>"/>
+<?php
+}
+
+/**
+ * Render do campo para a fase atual do debate
+ */
+function participacao_fase_debate_render(  ) {
+
+    $options = get_option( 'participacao_settings' );
+    ?>
+    <input type="text" cols='20' name='participacao_settings[participacao_fase_debate]' value="<?php echo $options['participacao_fase_debate']; ?>"/>
+<?php
+}
+
+/**
+ * Render do campo para a lei referida no debate
+ */
+function participacao_lei_render(  ) {
+
+    $options = get_option( 'participacao_settings' );
+    ?>
+    <input type="text" cols='20' name='participacao_settings[participacao_lei]' value="<?php echo $options['participacao_lei']; ?>"/>
+<?php
+}
+
+/**
+ * Render do campo para contato do debate
+ */
+function participacao_contato_render(  ) {
+
+    $options = get_option( 'participacao_settings' );
+    ?>
+    <input type="text" cols='20' name='participacao_settings[participacao_contato]' value="<?php echo $options['participacao_contato']; ?>"/>
+<?php
 }
 
 /**
