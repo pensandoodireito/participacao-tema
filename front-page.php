@@ -1,7 +1,7 @@
 <?php get_header(); ?>
         <div class="container">
             <div class="row mt-md" id="debates">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="debate-item protecao">
                         <div class="text-center">
                     <a href="<?php echo site_url("/dadospessoais"); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/protecao-w.png" class="img-adptive" alt="Proteção de Dados Pessoais"></a>
@@ -20,7 +20,7 @@
                 <a href="<?php echo site_url("/dadospessoais"); ?>" class="btn btn-danger font-roboto">Participe deste debate!</a>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="debate-item marco-civil">
                 <div class="text-center">
                     <a href="<?php echo site_url("/marcocivil"); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/marcocivil-b.png" class="img-adptive" alt="Proteção de Dados Pessoais"></a>
@@ -37,6 +37,25 @@
             </div>
             <div class="mt-sm text-center">
                 <a href="<?php echo site_url("/marcocivil"); ?>" class="btn btn-danger font-roboto">Participe da Sistematização!</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="debate-item anticorrupcao">
+                <div class="text-center">
+                    <a href="<?php echo site_url("/anticorrupcao"); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logos/anticorrupcao-color.png" class="img-adptive" alt="Medidas Anticorrupção"></a>
+                </div>
+                <div class="description">
+                    <?php
+                    $page_anticorrupcao = get_page_by_title('Medidas Anticorrupção');
+
+                    if ($page_anticorrupcao != null) {
+                        echo $page_anticorrupcao->post_content;
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="mt-sm text-center">
+                <a href="<?php echo site_url("/anticorrupcao"); ?>" class="btn btn-danger font-roboto">Participe deste debate!</a>
             </div>
         </div>
     </div>
