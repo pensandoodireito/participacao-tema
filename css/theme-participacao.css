@@ -1,17 +1,23 @@
 #debates .debate-item {
   margin-top: 20px;
-  padding: 20px;
   min-height: 340px;
+  padding: 20px;
+  position: relative;
 }
 #debates .debate-item .description {
-  margin: 20px -20px -20px -20px;
-  padding: 10px 20px 20px 20px;
   background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px 20px 20px;
 }
-#debates .debate-item .description a,
+#debates .debate-item .description a {
+  color: #ffffff;
+}
 #debates .debate-item .description a:hover {
-  color: #fff;
+  color: #ffffff;
 }
 #debates .debate-item .img-responsive {
   display: inline !important;
@@ -21,4 +27,7 @@
 }
 #debates .debate-item.marco-civil {
   background: url("../images/debates/bck-debates-marco-civil.jpg") repeat top left #ffbe5c;
+}
+#debates .debate-item.anticorrupcao {
+  background: url("../images/debates/bck-debates-anticorrupcao.jpg") repeat center #273339;
 }
