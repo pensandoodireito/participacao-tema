@@ -1,0 +1,36 @@
+#debates {
+    .debate-item {
+        margin-top: 20px;
+        min-height: 340px;
+        padding: 20px;
+        position: relative;
+        .description {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            //margin: 20px -20px -20px -20px;
+            position: absolute;
+            bottom: 0;
+            left:0;
+            width: 100%;
+            padding: 10px 20px 20px 20px;
+            a {
+                color: #ffffff;
+                &:hover {
+                    color: #ffffff;
+                }
+            }
+        }
+        .img-responsive {
+            display: inline !important;
+        }
+        &.protecao {
+            background: url("../images/debates/bck-debates-dados-pessoais.jpg") repeat top left #034f2a;
+        }
+        &.marco-civil {
+            background: url("../images/debates/bck-debates-marco-civil.jpg") repeat top left #ffbe5c;
+        }
+        &.anticorrupcao {
+            background: url("../images/debates/bck-debates-anticorrupcao.jpg") repeat center #273339;
+        }
+    }
+}
