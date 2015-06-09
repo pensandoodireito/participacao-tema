@@ -546,8 +546,17 @@ function wp_custom_breadcrumbs() {
         echo '<div id="crumbs red">';
 
         if ( $blog_ID != 1 ) {
+            switch_to_blog(1);
+
             echo '<a href="' . get_site_url() . '" class="red">' . $home . '</a> ' . $delimiter . ' ';
-            echo '<a href="/debates/" class="red">Debates</a> ' . $delimiter . ' ';
+
+            $debates = get_posts(array('post_type' => 'debate', 'posts_per_page' => 1));
+            if (count($debates) > 0) {
+                echo '<a href="' . site_url('/debates/') . '" class="red">Debates</a> ' . $delimiter . ' ';
+            }
+
+            restore_current_blog();
+
             if ( is_home() || is_front_page() ) {
                 echo bloginfo('name') . ' ';
             } else {
@@ -583,13 +592,13 @@ function wp_custom_breadcrumbs() {
                 $post_type = get_post_type_object(get_post_type());
                 $slug = $post_type->rewrite;
                 echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/" class="red">' . $post_type->labels->name . '</a>';
-                if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . 'Página Atual' . $after;
+                if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
             } else {
                 $cat = get_the_category(); $cat = $cat[0];
                 $cats = get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
                 if ($showCurrent == 0) $cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
                 echo $cats;
-                if ($showCurrent == 1) echo $before . 'Página Atual' . $after;
+                if ($showCurrent == 1) echo $before . get_the_title() . $after;
             }
 
         } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
@@ -604,7 +613,7 @@ function wp_custom_breadcrumbs() {
             if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 
         } elseif ( is_page() && !$post->post_parent ) {
-            if ($showCurrent == 1) echo $before . 'Página Atual' . $after;
+            if ($showCurrent == 1) echo $before . get_the_title() . $after;
 
         } elseif ( is_page() && $post->post_parent ) {
             $parent_id  = $post->post_parent;
