@@ -36,8 +36,9 @@ jQuery(function ($) {
     back_to_top($);
 });
 
-function carregar_noticias() {
-        jQuery(".container .ordinarynews").append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
+function carregar_noticias(target) {
+    // ".container .ordinarynews"
+        jQuery(target).append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
 
         var dataNoticias = "action=participacao_paginacao_infinita&paged="+ participacao.paginaAtual;
 
@@ -51,11 +52,11 @@ function carregar_noticias() {
             data: dataNoticias,
             success: function(html){
                 jQuery('#loader-gif').remove();
-                jQuery(".container .ordinarynews").append(html);
+                jQuery(target).append(html);
 
                 participacao.paginaAtual++;
 
-                if (participacao.paginaAtual > participacaoPaginasMaximas) {
+                if (participacao.paginaAtual > participacao.paginasMaximas) {
                     jQuery("#mais-noticias").hide();
                 }
             }

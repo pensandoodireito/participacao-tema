@@ -59,14 +59,14 @@ if ($wp_query->query_vars['categoria'] != 'geral') {
             if ( $ordinary_news->have_posts() ) {
             ?>
                 <script>
-                    var participacaoPaginasMaximas = <?php echo $ordinary_news->max_num_pages; ?>;
+                    participacao.paginasMaximas = <?php echo $ordinary_news->max_num_pages; ?>;
                     var categoriaAtual = "<?php echo $args['category_name']; ?>";
                 </script>
                 <?php
 
                 while ($ordinary_news->have_posts()) {
                     $ordinary_news->the_post();
-                    get_template_part('noticias', 'box');
+                    get_template_part('content', 'archive');
                 }
             } else {
                 echo 'Nenhuma notícia encontrada.';

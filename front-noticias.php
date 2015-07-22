@@ -170,7 +170,7 @@
             if ($ordinary_news->have_posts()) {
                 while ($ordinary_news->have_posts()) {
                     $ordinary_news->the_post();
-                    get_template_part('noticias','box');
+                    get_template_part('content','archive');
                 }
             } ?>
         </div>

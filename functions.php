@@ -6,6 +6,8 @@ add_image_size( 'noticia-destaque', 555, 290, true );
 add_image_size( 'noticia-lista', 214, 137, true );
 
 function participacao_scripts() {
+    global $wp_query;
+
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js' , array('jquery'), false, true );
     wp_enqueue_script( 'participacao', get_template_directory_uri() . '/js/participacao.js' , array('jquery', 'bootstrap'), false, true );
 
@@ -13,7 +15,8 @@ function participacao_scripts() {
                                 'ajaxurl' => admin_url('admin-ajax.php'),
                                 'paginaAtual' => 2,
                                 'ajaxgif' => get_template_directory_uri() . '/images/ajax-loader.gif',
-                                'isHome' => is_home() ? 'true' : 'false'
+                                'isHome' => is_home() ? 'true' : 'false',
+                                'paginasMaximas' => $wp_query->max_num_pages
                                 );
 
     wp_localize_script( 'participacao', 'participacao', $participacao_data );
@@ -488,7 +491,7 @@ function participacao_paginacao_infinita(){
     if ($ordinary_news->have_posts()) {
         while ($ordinary_news->have_posts()) {
             $ordinary_news->the_post();
-            get_template_part('noticias','box');
+            get_template_part('content','archive');
         }
     }
 
