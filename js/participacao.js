@@ -37,7 +37,9 @@ jQuery(function ($) {
 });
 
 function carregar_noticias(target) {
-    // ".container .ordinarynews"
+        // Define o valor padrão se target não estiver definido
+        target = typeof target !== 'undefined' ? target : ".container .ordinarynews";
+
         jQuery(target).append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
 
         var dataNoticias = "action=participacao_paginacao_infinita&paged="+ participacao.paginaAtual;
