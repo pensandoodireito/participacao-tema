@@ -52,7 +52,6 @@ if ($wp_query->query_vars['categoria'] != 'geral') {
        </div>
    </div>
     <div class="row ordinarynews">
-        <div class="col-md-12">
             <?php
             $ordinary_news = new WP_Query($args);
 
@@ -72,7 +71,6 @@ if ($wp_query->query_vars['categoria'] != 'geral') {
                 echo 'Nenhuma notícia encontrada.';
             }
             ?>
-        </div>
     </div>
     <?php
       if (get_query_var('paged') < $ordinary_news->max_num_pages && $ordinary_news->max_num_pages > 1) {

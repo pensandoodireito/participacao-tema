@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-xs-12">
+<div class="col-sm-6 col-xs-12 line-4">
     <div class="row  mt-md">
         <div class="col-xs-5">
             <?php
