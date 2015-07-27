@@ -49,14 +49,14 @@
         <div class="header">
             <div class="container">
                 <div class="header-content">
-                    <div class="col-xs-3">
+                    <div class="col-xs-2">
                         <div id="logo-principal">
                             <a href="<?php echo network_home_url("/");  ?>">
                                 <h1>Portal do Projeto Pensando o Direito</h1>
                             </a>
                         </div>
                     </div>
-                    <div class="col-xs-9 pull-right" id="navegacao-top">
+                    <div class="col-xs-10 pull-right" id="navegacao-top">
                         <nav class="navbar">
                             <div class="container-fluid">
                                 <div class="navbar-header">
