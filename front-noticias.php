@@ -137,7 +137,7 @@
         </div>
         <br/>
         <div class="row text-center">
-            <button id="mais-noticias" type="button" class="btn btn-danger" onclick="carregar_noticias();">Mostrar mais notícias</button>
+            <a href="<?php echo site_url('/noticias'); ?>" id="mais-noticias" class="btn btn-danger">Mostrar mais notícias</a>
         </div>
     </div>
 </div>

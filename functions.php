@@ -575,8 +575,10 @@ function wp_custom_breadcrumbs() {
             if ($thisCat->parent != 0) echo get_category_parents($thisCat->parent, TRUE, ' ' . $delimiter . ' ');
             echo $before . 'categoria "' . single_cat_title('', false) . '"' . $after;
 
+        } elseif (get_query_var('cat') === '0') {
+            echo $before . 'Notícias' . $after;
         } elseif ( is_search() ) {
-            echo $before . 'Search results for "' . get_search_query() . '"' . $after;
+            echo $before . 'Resultados da procura por "' . get_search_query() . '"' . $after;
 
         } elseif ( is_day() ) {
             echo '<a href="' . get_year_link(get_the_time('Y')) . '" class="red">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
@@ -635,12 +637,12 @@ function wp_custom_breadcrumbs() {
             if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 
         } elseif ( is_tag() ) {
-            echo $before . 'Posts tagged "' . single_tag_title('', false) . '"' . $after;
+            echo $before . 'Posts com a palavra-chave "' . single_tag_title('', false) . '"' . $after;
 
         } elseif ( is_author() ) {
             global $author;
             $userdata = get_userdata($author);
-            echo $before . 'Articles posted by ' . $userdata->display_name . $after;
+            echo $before . 'Posts criados por ' . $userdata->display_name . $after;
 
         } elseif ( is_404() ) {
             echo $before . 'Error 404' . $after;
@@ -666,21 +668,14 @@ add_action(
     'generate_rewrite_rules',  function ($wp_rewrite) {
         $new_rules = array(
         "noticias/([^/]*)/?$" =>
-            "index.php?&categoria=" . $wp_rewrite->preg_index(1),
+            "index.php?&category_name=" . $wp_rewrite->preg_index(1),
         "noticias/?$" =>
-            "index.php?categoria=geral",
+            "index.php?category_name=geral",
         "editais/?$" =>
-            "index.php?categoria=editais",
+            "index.php?category_name=editais",
           );
         $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
         return $wp_rewrite;
-    }
-);
-
-add_filter(
-    'query_vars', function ($public_query_vars) {
-        $public_query_vars[] = "categoria";
-        return $public_query_vars;
     }
 );
 
@@ -688,10 +683,19 @@ add_action(
     'template_redirect', function () {
         global $wp_query;
 
-        $categoria = $wp_query->get('categoria');
+        $categoria = $wp_query->get('category_name');
         $tpl_fname = __DIR__."/noticias.php";
 
         if ($categoria && file_exists($tpl_fname)) {
+
+            // Modificação para quando a categoria for geral trazer todos os posts
+            if ($categoria == "geral") {
+                $args = $wp_query->query_vars;
+                unset($args['category_name']);
+                $args['cat'] = 0;
+                query_posts($args);
+            }
+
             include $tpl_fname;
             die;
         }
