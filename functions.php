@@ -549,13 +549,19 @@ function wp_custom_breadcrumbs() {
         echo '<div id="crumbs red">';
 
         if ( $blog_ID != 1 ) {
+            $current_theme = wp_get_theme();
+
             switch_to_blog(1);
 
             echo '<a href="' . get_site_url() . '" class="red">' . $home . '</a> ' . $delimiter . ' ';
 
-            $debates = get_posts(array('post_type' => 'debate', 'posts_per_page' => 1));
-            if (count($debates) > 0) {
-                echo '<a href="' . site_url('/debates/') . '" class="red">Debates</a> ' . $delimiter . ' ';
+            $tags = $current_theme->get('Tags');
+
+            if (!in_array('blog', $tags)) {
+                $debates = get_posts(array('post_type' => 'debate', 'posts_per_page' => 1));
+                if (count($debates) > 0) {
+                    echo '<a href="' . site_url('/debates/') . '" class="red">Debates</a> ' . $delimiter . ' ';
+                }
             }
 
             restore_current_blog();
