@@ -16,20 +16,22 @@ foreach ($todas_categorias as $category) {
         && $category->name != 'Sem categoria'
         && $category->name != '*RECATEGORIZAR'
     ) {
-        $categorias[] = $category->name;
+        $categorias[$category->slug] = $category->name;
     }
 }
 
-$args = array('posts_per_page' => get_option('posts_per_page'));
 $categoria_atual = 'Todas';
+$args = $wp_query->query_vars;
 
-if ($wp_query->query_vars['categoria'] != 'geral') {
-    foreach ($categorias as $categoria) {
-        if (sanitize_title($categoria) == $wp_query->query_vars['categoria']) {
-            $categoria_atual = $categoria;
-            $args['category_name'] = $categoria; //$wp_query->query_vars['categoria'];
+if (get_query_var('category_name') != 'geral') {
+    foreach ($categorias as $slug => $nome) {
+        if ($slug == $wp_query->query_vars['category_name']) {
+            $categoria_atual = $nome;
+            $args['category_name'] = $slug; //$wp_query->query_vars['categoria'];
         }
     }
+} else {
+    unset($args['category_name']);
 }
 ?>
 <div class="noticias container">
@@ -58,8 +60,9 @@ if ($wp_query->query_vars['categoria'] != 'geral') {
             if ( $ordinary_news->have_posts() ) {
             ?>
                 <script>
-                    participacao.paginasMaximas = <?php echo $ordinary_news->max_num_pages; ?>;
-                    var categoriaAtual = "<?php echo $args['category_name']; ?>";
+                    <?php if (isset($args['category_name'])) { ?>
+                        var categoriaAtual = "<?php echo $args['category_name']; ?>";
+                    <?php } ?>
                 </script>
                 <?php
 
@@ -76,7 +79,7 @@ if ($wp_query->query_vars['categoria'] != 'geral') {
       if (get_query_var('paged') < $ordinary_news->max_num_pages && $ordinary_news->max_num_pages > 1) {
     ?>
         <div class="row text-center mt-lg">
-            <button id="mais-noticias" type="button" class="btn btn-danger" onclick="carregar_noticias();">Mostrar mais notícias</button>
+            <button id="mais-noticias" type="button" class="btn btn-danger" onclick="carregar_noticias('.container .ordinarynews', '<?php echo $ordinary_news->max_num_pages; ?>');">Mostrar mais notícias</button>
         </div>
     <?php
       }

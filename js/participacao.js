@@ -36,9 +36,16 @@ jQuery(function ($) {
     back_to_top($);
 });
 
-function carregar_noticias(target) {
+function carregar_noticias(target, max_num_pages) {
         // Define o valor padrão se target não estiver definido
         target = typeof target !== 'undefined' ? target : ".container .ordinarynews";
+
+        // Redefine o número máximo de páginas se o parâmetro for passado
+        if (typeof max_num_pages !== 'undefined') {
+            participacao.paginasMaximas = max_num_pages;
+        } else {
+            participacao.paginasMaximas;
+        }
 
         jQuery(target).append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
 
