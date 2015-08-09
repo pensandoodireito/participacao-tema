@@ -24,20 +24,29 @@
                     <div class="imagem-destaque">
                         <?php
                         if ( has_post_thumbnail() ) {
-                        the_post_thumbnail('noticia-destaque', array('class' => "img-adptive"));
-                        } else { ?>
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/noticia-padrao.gif" class="img-adptive" alt="Imagem notícia" />
-                        <?php } ?>
+                            $title_size = 'h5';
+                            the_post_thumbnail('noticia-destaque', array('class' => "img-adptive"));
+                        }else{
+                            $title_size = 'h3';
+                        }?>
                     </div>
                     <div class="texto-destaque">
-                        <p class="h5 red">
+                        <?php if(has_post_thumbnail()):?>
+                            <small><?php has_post_thumbnail();?></small>
+                        <?php endif;?>
+                        <?php if(!has_post_thumbnail()):?>
+                            <?php the_date('d \d\e F \d\e Y','<small>','</small>');?>
+                        <?php endif;?>
+                        <p class="<?php echo $title_size;?> red">
                             <strong>
                             <a href="<?php the_permalink(); ?>">
                                 <?php the_title(); ?>
                             </a>
                             </strong>
                         </p>
-                        <small><?php the_date('d \d\e F \d\e Y'); ?></small>
+                        <?php if(has_post_thumbnail()):?>
+                        <?php the_date('d \d\e F \d\e Y','<small>','</small>');?>
+                        <?php endif;?>
                         <small><?php
                         $categories = get_the_category(get_the_ID());
                         $separator = ' | ';
