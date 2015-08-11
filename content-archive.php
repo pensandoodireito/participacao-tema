@@ -1,13 +1,13 @@
 <div class="col-sm-6 col-xs-12 line-4">
     <div class="row  mt-md">
-        <?php if ( has_post_thumbnail() ) : $col_size = 'col-xs-7'; $title_size = 'h6'; ?>
+        <?php if ( has_post_thumbnail() ) : $col_size = 'col-xs-7';  ?>
         <div class="col-xs-5">
             <?php the_post_thumbnail('noticia-lista', array('class' => "img-adptive")); ?>
         </div>
-        <?php else: $col_size = 'col-xs-12'; $title_size = 'h2'; endif;?>
+        <?php else: $col_size = 'col-xs-12'; endif;?>
         <div class="<?php echo $col_size;?> pl-0">
             <?php if(!has_post_thumbnail()): ?><small><?php the_time('d \d\e F \d\e Y');?></small><?php endif;?>
-            <p class="<?php echo $title_size;?> red mt-0">
+            <p class="h6 red mt-0">
                 <strong>
                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </strong>
