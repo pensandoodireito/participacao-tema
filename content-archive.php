@@ -1,21 +1,18 @@
 <div class="col-sm-6 col-xs-12 line-4">
     <div class="row  mt-md">
+        <?php if ( has_post_thumbnail() ) : $col_size = 'col-xs-7';  ?>
         <div class="col-xs-5">
-            <?php
-                if ( has_post_thumbnail() ) {
-                    the_post_thumbnail('noticia-lista', array('class' => "img-adptive"));
-                } else { ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/noticia-padrao.gif" class="img-adptive" alt="Imagem notícia" />
-               <?php }
-            ?>
+            <?php the_post_thumbnail('noticia-lista', array('class' => "img-adptive")); ?>
         </div>
-        <div class="col-xs-7 pl-0">
+        <?php else: $col_size = 'col-xs-12'; endif;?>
+        <div class="<?php echo $col_size;?> pl-0">
+            <?php if(!has_post_thumbnail()): ?><small><?php the_time('d \d\e F \d\e Y');?></small><?php endif;?>
             <p class="h6 red mt-0">
                 <strong>
                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </strong>
             </p>
-            <small><?php the_date('d \d\e F \d\e Y'); ?></small> |
+            <?php if(has_post_thumbnail()):?> <small><?php the_time('d \d\e F \d\e Y');?></small><?php endif;?> |
             <small><?php
                 $categories = get_the_category(get_the_ID());
                 $separator = ' | ';
