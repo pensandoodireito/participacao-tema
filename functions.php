@@ -513,6 +513,14 @@ function register_menu_secundario() {
 }
 add_action('init', 'register_menu_secundario');
 
+// Desafio numero 1 do edital
+// O Menu abaixo será criado para que ele seja carregado toda vez que for criado um novo site na rede
+// Menu Global. Necessário para ser criado nos novos temas
+function register_menu_global() {
+  register_nav_menu('menu-global', __('Menu Global'));
+}
+add_action('init', 'register_menu_global');
+
 // Modifica a formatação de um item de menu para adicionar a description
 function add_description_to_menu($item_output, $item, $depth, $args) {
     if ($args->theme_location == 'menu-primario') {
@@ -732,3 +740,33 @@ function participacao_create_pages() {
 // Chama a função apenas quando há troca de tema
 //   fundamentalmente quando o tema é ativado (e também desativado)
 add_action('after_switch_theme', 'participacao_create_pages');
+
+
+// Segunda opção da administração do banner através de widget
+// Cria o Novo Widget do Banner de Debates Públicos
+// O widget a ser adicionado na área é do tipo = Texto
+// Dentro do widget de texto deverá ser adicionado o HTML para aparecer no banner
+if ( function_exists('register_sidebar') ){
+	register_sidebar(array(
+		'name' => __( 'Widget Do Banner de Debates' ),
+		'id' => 'widget-banner',
+		'description' => __( 'Arraste os widgets desejados até aqui' ),
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '',
+		'after_title' => '',
+	));
+}
+
+
+// Permitir PHP no Widget de Texto nativo do Wordpress
+function php($html){
+if(strpos($html,"<"."?php")!==false){
+ob_start();
+eval("?".">".$html);
+$html=ob_get_contents();
+ob_end_clean();
+}
+return $html;
+}
+add_filter('widget_text','php',100);
