@@ -67,7 +67,20 @@
                                 </div>
                                 <div class="collapse navbar-collapse" id="menu-top">
                                     <?php echo get_search_form(); ?>
-                                    <?php wp_nav_menu( array( 'theme_location' => 'menu-secundario', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
+                                    <?php
+										//Desafio numero 1 do edital
+										//Preparação para a troca do menu quando é criado um novo site na rede
+										//Pegar o site atual
+										global $blog_id;
+										$site_atual = $blog_id;
+										switch_to_blog(1);
+										//Adiciona o menu global criado para os novos sites
+										wp_nav_menu(
+										   ( array( 'theme_location' => 'menu-global', 'menu_class' => 'nav navbar-nav navbar-right' ))
+										);
+										//Faz a troca para o site atual
+										switch_to_blog($site_atual);
+									?>
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
                         </nav>
@@ -78,7 +91,15 @@
         <div id="navegacao-destaque">
             <div class="container">
                 <div class="row">
-                    <?php wp_nav_menu( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ) ); ?>
+                
+                	    <?php
+							global $blog_id;
+							$site_atual2 = $blog_id;
+							switch_to_blog(1);
+							wp_nav_menu(
+							( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ))			);
+							switch_to_blog($site_atual2);
+						?>
                 </div> <!-- /row -->
             </div>
         </div>
