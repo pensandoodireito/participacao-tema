@@ -437,14 +437,22 @@ jQuery(document).ready(function(){
 );
 
 // torna o scroll na página suave, apenas usando o a classe .smoothscroll
-jQuery(function ($) {
+jQuery(function($) {
     $('.smoothscroll').on('click', function(event) {
-        var target = $( $(this).attr('href') );
-        if( target.length ) {
+        var target = $($(this).attr('href'));
+        if (target.length) {
             event.preventDefault();
             $('html, body').animate({
                 scrollTop: target.offset().top
             }, 600);
         }
     });
+    // Habilita o tooltip
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
 });
+
+
+
+
