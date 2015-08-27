@@ -448,3 +448,14 @@ jQuery(function ($) {
         }
     });
 });
+
+var WPLogin = {
+    login : function (login, senha, handler){
+        jQuery.post('/wp-login.php',{log:login,pwd:senha},
+            function(retorno){
+                isSucesso = retorno.indexOf('<strong>ERRO</strong>') === -1;
+                nome = (isSucesso)?jQuery(retorno).find('#wp-admin-bar-site-name a.ab-item').html():'Convidado';
+                handler(isSucesso, nome);
+            });
+    }
+};
