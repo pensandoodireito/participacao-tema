@@ -1,11 +1,11 @@
 // Base class
 .panel {
+    &.panel-submenu {
     margin-bottom: @line-height-computed;
     background-color: #fff;
     border: 0;
     border-radius: 0;
     box-shadow: 0px 2px 10px -4px rgba(50, 50, 50, 1);
-}
 // Panel contents
 .panel-body {
     padding: @panel-body-padding;
@@ -86,6 +86,8 @@
     color: #fff;
     > a {
         color: inherit;
+    }
+}
     }
 }
 // Classes para fazer o men fixar-se no scroll da tela
