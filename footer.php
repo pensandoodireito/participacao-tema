@@ -6,8 +6,8 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/images/structure/logo-pd-gray.png" class="img-responsive"
                      alt="Logo: Projeto Pensando o Direito">
             </div>
-            <div class="col-sm-5 footer-menu">
-                <ul class="list-inline mt-sm">
+            <div class="col-sm-5">
+                <ul class="list-inline mt-sm footer-menu">
                     <li><a href="/pensandoodireito/o-que-e/">CONHEÇA O PROJETO</a>
                     </li>
                     <li><a href="/pensandoodireito/debates/">DEBATES</a>
@@ -25,6 +25,20 @@
                     <li><a href="/pensandoodireito/parceiros/">Parceiros</a>
                     </li>
                     <li><a href="/pensandoodireito/contato/">Fale conosco</a>
+                    </li>
+                </ul>
+                <ul class="list-inline social-icons red">
+                    <li class="social-icons-rounded">
+                        <a href="https://www.facebook.com/projetopd" target="_blank" class="btn btn-rounded" data-toggle="tooltip" data-placement="top" title="Siga-nos no Facebook"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="social-icons-rounded">
+                        <a href="https://twitter.com/projetopd" target="_blank" class="btn btn-rounded" data-toggle="tooltip" data-placement="top" title="Siga-nos no Twitter"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="social-icons-rounded">
+                        <a href="https://www.youtube.com/user/pensandoodireito" target="_blank" class="btn btn-rounded" data-toggle="tooltip" data-placement="top" title="Siga-nos no YouTube"><i class="fa fa-youtube"></i></a>
+                    </li>
+                    <li class="social-icons-rounded">
+                        <a href="https://github.com/pensandoodireito" target="_blank" class="btn btn-rounded" data-toggle="tooltip" data-placement="top" title="Siga-nos no GitHub"><i class="fa fa-github"></i></a>
                     </li>
                 </ul>
             </div>
@@ -49,7 +63,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-12 mt-lg">
                 <p>Dúvidas, sugestões e contribuições mande um e-mail para <a href="mailto:<?php echo bloginfo('admin_email') ?>"><?php echo bloginfo('admin_email') ?></a></p>
             </div>
         </div>

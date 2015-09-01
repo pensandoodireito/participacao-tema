@@ -543,8 +543,9 @@ add_action('init', 'register_menu_secundario');
 function add_description_to_menu($item_output, $item, $depth, $args) {
     if ($args->theme_location == 'menu-primario') {
         $item_output = '<div class="navegacao-destaque-content">';
-        $item_output .= sprintf('<h5><a href="%s">%s</a></h5>', esc_html($item->url), esc_html($item->title));
-        $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description));
+        $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->title));
+        //Ocultando o texto do menu: 
+        //$item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description)); 
         $item_output .= '</div>';
     }
 
@@ -557,8 +558,8 @@ function wp_custom_breadcrumbs() {
 
     $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
     $delimiter = '<i class="fa fa-angle-right text-muted"></i>'; // delimiter between crumbs
-    $home = '<i class="fa fa-home fa-lg"></i>'; // text for the 'Home' link
-    $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
+    $home = 'Página inicial'; // text for the 'Home' link
+    $showCurrent = 0; // 1 - show current post/page title in breadcrumbs, 0 - don't show
     $before = '<span class="current text-muted">'; // tag before the current crumb
     $after = '</span>'; // tag after the current crumb
 
@@ -586,7 +587,7 @@ function wp_custom_breadcrumbs() {
             if (!in_array('blog', $tags)) {
                 $debates = get_posts(array('post_type' => 'debate', 'posts_per_page' => 1));
                 if (count($debates) > 0) {
-                    echo '<a href="' . site_url('/debates/') . '" class="red">Debates</a> ' . $delimiter . ' ';
+                    echo '<a href="' . site_url('/debates/') . '" class="red">Debates</a> ';
                 }
             }
 
@@ -596,35 +597,43 @@ function wp_custom_breadcrumbs() {
                 echo bloginfo('name') . ' ';
             } else {
                 echo '<a href="' . get_blog_details($blog_ID)->siteurl . '" class="red">';
-                echo bloginfo('name') . '</a> ' . $delimiter . ' ';
+                echo bloginfo('name') . '</a> ';
             }
         } else {
-            echo '<a href="' . $homeLink . '" class="red">' . $home . '</a> ' . $delimiter . ' ';
+            echo '<a href="' . $homeLink . '" class="red">' . $home . '</a> ';
         }
 
         if ( is_category() ) {
+            echo $delimiter . ' ';
             $thisCat = get_category(get_query_var('cat'), false);
             if ($thisCat->parent != 0) echo get_category_parents($thisCat->parent, TRUE, ' ' . $delimiter . ' ');
             echo $before . 'categoria "' . single_cat_title('', false) . '"' . $after;
 
         } elseif (get_query_var('cat') === '0') {
+            echo $delimiter . ' ';
             echo $before . 'Notícias' . $after;
+
         } elseif ( is_search() ) {
+            echo $delimiter . ' ';
             echo $before . 'Resultados da procura por "' . get_search_query() . '"' . $after;
 
         } elseif ( is_day() ) {
+            echo $delimiter . ' ';
             echo '<a href="' . get_year_link(get_the_time('Y')) . '" class="red">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
             echo '<a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '" class="red">' . get_the_time('F') . '</a> ' . $delimiter . ' ';
             echo $before . get_the_time('d') . $after;
 
         } elseif ( is_month() ) {
+            echo $delimiter . ' ';
             echo '<a href="' . get_year_link(get_the_time('Y')) . '" class="red">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
             echo $before . get_the_time('F') . $after;
 
         } elseif ( is_year() ) {
+            echo $delimiter . ' ';
             echo $before . get_the_time('Y') . $after;
 
         } elseif ( is_single() && !is_attachment() ) {
+            echo $delimiter . ' ';
             if ( get_post_type() != 'post' ) {
                 $post_type = get_post_type_object(get_post_type());
                 $slug = $post_type->rewrite;
@@ -639,10 +648,12 @@ function wp_custom_breadcrumbs() {
             }
 
         } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
+            echo $delimiter . ' ';
             $post_type = get_post_type_object(get_post_type());
             echo $before . $post_type->labels->name . $after;
 
         } elseif ( is_attachment() ) {
+            echo $delimiter . ' ';
             $parent = get_post($post->post_parent);
             $cat = get_the_category($parent->ID); $cat = $cat[0];
             echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
@@ -650,9 +661,13 @@ function wp_custom_breadcrumbs() {
             if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 
         } elseif ( is_page() && !$post->post_parent ) {
-            if ($showCurrent == 1) echo $before . get_the_title() . $after;
+            if ($showCurrent == 1) {
+                echo $delimiter . ' ';
+                echo $before . get_the_title() . $after;
+            }
 
         } elseif ( is_page() && $post->post_parent ) {
+            echo $delimiter . ' ';
             $parent_id  = $post->post_parent;
             $breadcrumbs = array();
             while ($parent_id) {
@@ -669,14 +684,17 @@ function wp_custom_breadcrumbs() {
             if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 
         } elseif ( is_tag() ) {
+            echo $delimiter . ' ';
             echo $before . 'Posts com a palavra-chave "' . single_tag_title('', false) . '"' . $after;
 
         } elseif ( is_author() ) {
+            echo $delimiter . ' ';
             global $author;
             $userdata = get_userdata($author);
             echo $before . 'Posts criados por ' . $userdata->display_name . $after;
 
         } elseif ( is_404() ) {
+            echo $delimiter . ' ';
             echo $before . 'Error 404' . $after;
         }
 

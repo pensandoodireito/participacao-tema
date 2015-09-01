@@ -18,3 +18,5 @@ wp-content/wp-cache-config.php
 .idea
 css/site-global.css
 css/theme-participacao.css
+
+css/*.css.map
