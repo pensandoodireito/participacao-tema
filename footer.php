@@ -60,6 +60,34 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modalcadastro" tabindex="-1" role="dialog" aria-labelledby="modalcadastro">
+    <div class="modal-dialog">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title red font-roboto">Login</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="email">Usuário</label>
+                    <input type="text" class="form-control" id="username"
+                           placeholder="Seu e-mail">
+                </div>
+                <div class="form-group mt-md">
+                    <label for="senha">Sua senha:</label>
+                    <input type="password" class="form-control" id="senha"
+                           placeholder="Sua senha">
+                </div>
+                <button type="button" class="btn btn-danger">Entrar</button>
+            </div>
+            <div class="modal-footer">
+                <p><a href="#" class="remember_me">Esqueceu a senha?</a> | <a href="/cadastro">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php wp_footer(); ?>
 
