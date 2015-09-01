@@ -481,7 +481,7 @@ jQuery(function($) {
                      $.post('/wp-login.php',{'log':_username, 'pwd':_senha});
                  }else{
                     var modalBody = $('#modalcadastro .modal-body');
-                     modalBody.find('alert').remove();
+                     modalBody.find('.alert').remove();
                      modalBody.prepend($('<div />').addClass('alert alert-danger').attr('role','alert').html('Usuário ou senha inválidos!'));
                  }
             });
