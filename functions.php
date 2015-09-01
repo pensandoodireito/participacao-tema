@@ -517,8 +517,9 @@ add_action('init', 'register_menu_secundario');
 function add_description_to_menu($item_output, $item, $depth, $args) {
     if ($args->theme_location == 'menu-primario') {
         $item_output = '<div class="navegacao-destaque-content">';
-        $item_output .= sprintf('<h5><a href="%s">%s</a></h5>', esc_html($item->url), esc_html($item->title));
-        $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description));
+        $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->title));
+        //Ocultando o texto do menu: 
+        //$item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description)); 
         $item_output .= '</div>';
     }
 
@@ -531,7 +532,7 @@ function wp_custom_breadcrumbs() {
 
     $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
     $delimiter = '<i class="fa fa-angle-right text-muted"></i>'; // delimiter between crumbs
-    $home = '<i class="fa fa-home fa-lg"></i>'; // text for the 'Home' link
+    $home = 'Página inicial'; // text for the 'Home' link
     $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
     $before = '<span class="current text-muted">'; // tag before the current crumb
     $after = '</span>'; // tag after the current crumb
