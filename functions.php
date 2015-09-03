@@ -16,12 +16,13 @@ function login_ajax_request()
     if(!$object instanceof WP_User){
         $json = json_encode(false);
     }else{
+        wp_signon(array('user_login' => $username,'user_password' => $password));
         unset($object->data->ID);
         unset($object->data->user_pass);
         $json = json_encode($object->data);
     }
 
-    header("Content-type: application/json");
+    header("Content-type: application/json", true);
     die($json);
 }
 

@@ -458,8 +458,9 @@ jQuery(function($) {
         $('#modalcadastro .modal-body button').html('Renovar senha');
     });
 
-    $('#modalcadastro').on('shown.bs.modal', function (e) {
-        $('#modalcadastro #senha').parent().show(400);
+    $('#modalcadastro').on('hidden.bs.modal', function (e) {
+        $('#modalcadastro .alert').remove();
+        $('#modalcadastro #senha').parent().show();
         $('#modalcadastro .modal-body button').html('Entrar');
     });
 
@@ -484,7 +485,6 @@ jQuery(function($) {
                      $('.logged').show(300);
                      $('.unlogged').hide();
                      $('.logged .user-display-name').html(objeto.display_name);
-                     $.post('/wp-login.php',{'log':usuario, 'pwd':senha});
                  }else{
                     var modalBody = _this.find('.modal-body');
                      modalBody.find('.alert').remove();
@@ -504,7 +504,6 @@ var Login = {
             }, 'json');
     },
     remember : function(username){
-        return jQuery.post('/wp-login.php?action=lostpassword',{'user_login':username});
+        return jQuery.post('/wp-login.php',{'action':'lostpassword','user_login':username});
     }
 };
-
