@@ -436,8 +436,30 @@ jQuery(document).ready(function(){
     }
 );
 
+
+
+
 // torna o scroll na página suave, apenas usando o a classe .smoothscroll
 jQuery(function($) {
+
+    var msgSucesso =
+        $('<div />').addClass('panel-body bg-success pt-lg text-center').append(
+            $('<p />').addClass('mt-md h4').append($('<strong />').html('Agora verifique seu e-mail.'))
+        ).append(
+            $('<h3 />').addClass('font-roboto text-success').append($('<i />').addClass('fa fa-check')).append('Cadastro realizado com sucesso!')
+        ).append(
+            $('<p />').append('Você receberá um e-mail de confirmação, basta clicar no link e você poderá participar de qualquer debate do projeto! Obrigado!')
+        );
+
+    var msgErro =
+        $('<div />').addClass('panel-body bg-danger pt-lg text-center').append(
+            $('<h3 />').addClass('font-roboto text-success').append($('<i />').addClass('fa fa-exclamation-circle')).append('Ooops!')
+        ).append(
+            $('<p />').addClass('mt-md h4').append($('<strong />').html('Ocorreu um erro durante o seu cadastro.'))
+        ).append(
+            $('<p />').append('Tente novamente em alguns instantes')
+        );
+
     $('.smoothscroll').on('click', function(event) {
         var target = $($(this).attr('href'));
         if (target.length) {
@@ -445,6 +467,23 @@ jQuery(function($) {
             $('html, body').animate({
                 scrollTop: target.offset().top
             }, 600);
+        }
+    });
+
+    $('#form-cadastro form').validator().on('submit', function (e) {
+        var _form = $(this);
+        if (!e.isDefaultPrevented()) {
+            e.preventDefault();
+            $.post('/wp-admin/admin-ajax.php?action=signup_ajax', $(this).serialize(),function( jsonRetorno ){
+                if(jsonRetorno.success){
+                    _form.parent().parent().parent().parent().html(msgSucesso);
+                }else{
+                    _form.parent().parent().parent().parent().html(msgErro);
+                }
+            }, 'json').fail(function(){
+                _form.parent().parent().parent().parent().html(msgErro);
+            });
+
         }
     });
 
