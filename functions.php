@@ -5,6 +5,30 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'noticia-destaque', 555, 290, true );
 add_image_size( 'noticia-lista', 214, 137, true );
 
+function login_ajax_request()
+{
+    $username = isset($_POST['username'])?$_POST['username']:null;
+    $password = isset($_POST['password'])?$_POST['password']:null;
+
+    $object = wp_authenticate($username, $password);
+
+
+    if(!$object instanceof WP_User){
+        $json = json_encode(false);
+    }else{
+        wp_signon(array('user_login' => $username,'user_password' => $password));
+        unset($object->data->ID);
+        unset($object->data->user_pass);
+        $json = json_encode($object->data);
+    }
+
+    header("Content-type: application/json", true);
+    die($json);
+}
+
+add_action( 'wp_ajax_login_ajax_request', 'login_ajax_request' );
+add_action( 'wp_ajax_nopriv_login_ajax_request', 'login_ajax_request' );
+
 function participacao_scripts() {
     global $wp_query;
 
@@ -33,14 +57,17 @@ add_action( 'wp_enqueue_scripts', 'participacao_scripts' );
 function participacao_get_logged_user() {
     if ( is_user_logged_in() ) {
         $current_user = wp_get_current_user();
-
-        return 'Olá ' . $current_user->display_name . '! <a href="' . wp_logout_url() .'">Logout?</a>';
+        $display_name = $current_user->display_name;
+        $loggedStyle = ' style="display:inline"';
+        $unloggedStyle = ' style="display:none"';
+    }else{
+        $display_name = '';
+        $loggedStyle = ' style="display:none"';
+        $unloggedStyle = ' style="display:inline"';
     }
-    else {
 
-        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a href="' . wp_login_url($_SERVER['REQUEST_URI']) .'">Faça seu login</a>';
-
-    }
+    return '<span class="logged" '.$loggedStyle.'>Olá <span class="user-display-name">' . $display_name . '</span>! <a href="' . wp_logout_url() .'">Logout?</a></span>
+    <span class="unlogged" '.$unloggedStyle.'><a href="' . wp_registration_url() .'">Cadastre-se</a> | <a href="#" login-url="' . wp_login_url($_SERVER['REQUEST_URI']) .'" data-toggle="modal" data-target="#modalcadastro">Faça seu login</a></span>';
 }
 
 /**

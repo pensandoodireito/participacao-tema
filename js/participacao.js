@@ -436,8 +436,30 @@ jQuery(document).ready(function(){
     }
 );
 
+
+
+
 // torna o scroll na página suave, apenas usando o a classe .smoothscroll
 jQuery(function($) {
+
+    var msgSucesso =
+        $('<div />').addClass('panel-body bg-success pt-lg text-center').append(
+            $('<p />').addClass('mt-md h4').append($('<strong />').html('Agora verifique seu e-mail.'))
+        ).append(
+            $('<h3 />').addClass('font-roboto text-success').append($('<i />').addClass('fa fa-check')).append('Cadastro realizado com sucesso!')
+        ).append(
+            $('<p />').append('Você receberá um e-mail de confirmação, basta clicar no link e você poderá participar de qualquer debate do projeto! Obrigado!')
+        );
+
+    var msgErro =
+        $('<div />').addClass('panel-body bg-danger pt-lg text-center').append(
+            $('<h3 />').addClass('font-roboto text-success').append($('<i />').addClass('fa fa-exclamation-circle')).append('Ooops!')
+        ).append(
+            $('<p />').addClass('mt-md h4').append($('<strong />').html('Ocorreu um erro durante o seu cadastro.'))
+        ).append(
+            $('<p />').append('Tente novamente em alguns instantes')
+        );
+
     $('.smoothscroll').on('click', function(event) {
         var target = $($(this).attr('href'));
         if (target.length) {
@@ -447,20 +469,80 @@ jQuery(function($) {
             }, 600);
         }
     });
+
+    $('#form-cadastro form').validator().on('submit', function (e) {
+        var _form = $(this);
+        if (!e.isDefaultPrevented()) {
+            e.preventDefault();
+            $.post('/wp-admin/admin-ajax.php?action=signup_ajax', $(this).serialize(),function( jsonRetorno ){
+                if(jsonRetorno.success){
+                    _form.parent().parent().parent().parent().html(msgSucesso);
+                }else{
+                    _form.parent().parent().parent().parent().html(msgErro);
+                }
+            }, 'json').fail(function(){
+                _form.parent().parent().parent().parent().html(msgErro);
+            });
+
+        }
+    });
+
     // Habilita o tooltip
     $(function() {
         $('[data-toggle="tooltip"]').tooltip()
     });
+
+    $('#modalcadastro a.remember_me').on('click', function(){
+        $('#modalcadastro #senha').parent().hide(400);
+        $('#modalcadastro .modal-body button').html('Renovar senha');
+    });
+
+    $('#modalcadastro').on('hidden.bs.modal', function (e) {
+        $('#modalcadastro .alert').remove();
+        $('#modalcadastro #senha').parent().show();
+        $('#modalcadastro .modal-body button').html('Entrar');
+    });
+
+    $('#modalcadastro').submit(function( e ){
+        e.preventDefault();
+
+        var _this = $(this);
+
+        var usuario = _this.find('#username').val();
+        var senha = _this.find('#senha').val();
+
+        if(_this.find('.modal-body button').html()=='Renovar senha')
+        {
+            Login.remember();
+            setTimeout(function(){
+                _this.modal('toggle');
+            }, 3000);
+        }else{
+            Login.auth(usuario, senha, function( objeto ){
+                 if(objeto){
+                     _this.modal('toggle');
+                     $('.logged').show(300);
+                     $('.unlogged').hide();
+                     $('.logged .user-display-name').html(objeto.display_name);
+                 }else{
+                    var modalBody = _this.find('.modal-body');
+                     modalBody.find('.alert').remove();
+                     modalBody.prepend($('<div />').addClass('alert alert-danger').attr('role','alert').html('Usuário ou senha inválidos!'));
+                 }
+            });
+        }
+    });
 });
 
-var WPLogin = {
-    login : function (login, senha, handler){
-        jQuery.post('/wp-login.php',{log:login,pwd:senha},
-            function(retorno){
-                isSucesso = retorno.indexOf('<strong>ERRO</strong>') === -1;
-                nome = (isSucesso)?jQuery(retorno).find('#wp-admin-bar-site-name a.ab-item').html():'Convidado';
-                handler(isSucesso, nome);
-            });
+var Login = {
+    auth : function (username, password, handler){
+        jQuery.post('/wp-admin/admin-ajax.php',
+            {"action":"login_ajax_request","username":username,"password":password},
+            function( objeto ){
+                return handler(objeto);
+            }, 'json');
+    },
+    remember : function(username){
+        return jQuery.post('/wp-login.php',{'action':'lostpassword','user_login':username});
     }
 };
-
