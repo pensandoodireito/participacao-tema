@@ -161,46 +161,6 @@ function participacao_settings_init(  ) {
     );
 
     add_settings_field(
-        'participacao_site_excerpt',
-        'Resumo da descrição do debate para capa',
-        'participacao_site_excerpt_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_data_abertura',
-        'Data de abertura do Debate',
-        'participacao_data_abertura_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_data_encerramento',
-        'Data de encerramento do Debate',
-        'participacao_data_encerramento_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_fase_debate',
-        'Fase do Debate',
-        'participacao_fase_debate_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_normas',
-        'Normas em discussão',
-        'participacao_normas_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
         'participacao_twitter_embed',
         'Código do widget do Twitter (usar altura máxima de 350px)',
         'participacao_twitter_render',
@@ -256,64 +216,6 @@ function participacao_sitelogo_preview_render() {
     <div id="upload_logo_preview" style="min-height: 100px;">
         <img style="max-width:100%; <?php echo (!isset($options['logo']) ? "display: none;" : ""); ?>"  src="<?php echo esc_url( $options['logo'] ); ?>" />
     </div>
-<?php
-}
-
-/**
- * Render do campo para o resumo da descrição do site
- */
-function participacao_site_excerpt_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <textarea cols='20' rows='2' name='participacao_settings[participacao_site_excerpt]'>
-        <?php echo $options['participacao_site_excerpt']; ?>
-    </textarea>
-<?php
-
-}
-
-/**
- * Render do campo para a data de abertura do debate
- */
-function participacao_data_abertura_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_data_abertura]' value="<?php echo $options['participacao_data_abertura']; ?>"/>
-<?php
-}
-
-/**
- * Render do campo para a data de encerramento do debate
- */
-function participacao_data_encerramento_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_data_encerramento]' value="<?php echo $options['participacao_data_encerramento']; ?>"/>
-<?php
-}
-
-/**
- * Render do campo para a fase atual do debate
- */
-function participacao_fase_debate_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_fase_debate]' value="<?php echo $options['participacao_fase_debate']; ?>"/>
-<?php
-}
-
-/**
- * Render do campo para a lei referida no debate
- */
-function participacao_normas_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_normas]' value="<?php echo $options['participacao_normas']; ?>"/>
 <?php
 }
 
