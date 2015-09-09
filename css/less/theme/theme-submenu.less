@@ -1,11 +1,11 @@
 // Base class
 .panel {
+    &.panel-submenu, &.panel-default {
     margin-bottom: @line-height-computed;
     background-color: #fff;
     border: 0;
     border-radius: 0;
     box-shadow: 0px 2px 10px -4px rgba(50, 50, 50, 1);
-}
 // Panel contents
 .panel-body {
     padding: @panel-body-padding;
@@ -72,7 +72,7 @@
     padding: 8px;
     margin: 0px;
     border-bottom: 0;
-    background-color: #bc3f38;
+    //background-color: #bc3f38;
     border: 0;
     border-radius: 0;
 }
@@ -83,9 +83,11 @@
     font-size: 15px;
     font-family: @font-family-roboto;
     font-weight: 700;
-    color: #fff;
+    //color: #fff;
     > a {
         color: inherit;
+    }
+}
     }
 }
 // Classes para fazer o men fixar-se no scroll da tela
