@@ -33,6 +33,7 @@ function participacao_scripts() {
     global $wp_query;
 
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js' , array('jquery'), false, true );
+    wp_enqueue_script( 'validator', get_template_directory_uri() . '/js/validator.min.js' , array('jquery', 'bootstrap'), false, true );
     wp_enqueue_script( 'participacao', get_template_directory_uri() . '/js/participacao.js' , array('jquery', 'bootstrap'), false, true );
 
     $participacao_data = array(
