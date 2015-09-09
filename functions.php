@@ -5,6 +5,11 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'noticia-destaque', 555, 290, true );
 add_image_size( 'noticia-lista', 214, 137, true );
 
+function logout_ajax_request(){
+    header("Content-type: application/json", true);
+    die(json_encode(array('logoutUrl' => wp_logout_url())));
+}
+
 function login_ajax_request()
 {
     $username = isset($_POST['username'])?$_POST['username']:null;
@@ -28,6 +33,9 @@ function login_ajax_request()
 
 add_action( 'wp_ajax_login_ajax_request', 'login_ajax_request' );
 add_action( 'wp_ajax_nopriv_login_ajax_request', 'login_ajax_request' );
+
+add_action( 'wp_ajax_logout_ajax_request', 'logout_ajax_request' );
+add_action( 'wp_ajax_nopriv_logout_ajax_request', 'logout_ajax_request' );
 
 function participacao_scripts() {
     global $wp_query;
