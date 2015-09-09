@@ -514,6 +514,13 @@ jQuery(function($) {
                  if(objeto){
                      _this.modal('toggle');
                      $('.logged').show(300);
+                     $.get('/wp-admin/admin-ajax.php',{'action':'logout_ajax_request'},function(objeto){
+                         var tpmElement = document.createElement('div');
+                         tpmElement.innerHTML = objeto.logoutUrl;
+                         var decoded = tpmElement.firstChild.nodeValue;
+                         $('.logged a').attr('href',decoded);
+                     },'json')
+                     $('.logged a')
                      $('.unlogged').hide();
                      $('.logged .user-display-name').html(objeto.display_name);
                  }else{
