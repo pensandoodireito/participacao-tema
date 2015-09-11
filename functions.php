@@ -22,7 +22,6 @@ function login_ajax_request()
         $json = json_encode(false);
     }else{
         wp_signon(array('user_login' => $username,'user_password' => $password));
-        unset($object->data->ID);
         unset($object->data->user_pass);
         $json = json_encode($object->data);
     }
