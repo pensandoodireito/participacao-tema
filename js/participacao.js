@@ -516,6 +516,7 @@ jQuery(function($) {
                  if(objeto){
                      _this.modal('toggle');
                      $('.logged').show(300);
+                     $('body').trigger('user_logged_in', objeto);
                      $.get('/wp-admin/admin-ajax.php',{'action':'logout_ajax_request'},function(objeto){
                          var tpmElement = document.createElement('div');
                          tpmElement.innerHTML = objeto.logoutUrl;
