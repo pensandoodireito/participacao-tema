@@ -486,12 +486,14 @@ jQuery(function($) {
 
     $('#modalcadastro a.remember_me').on('click', function(){
         $('#modalcadastro #senha').parent().hide(400);
+        $('#modalcadastro #senha').removeAttr('required');
         $('#modalcadastro .modal-body button').html('Renovar senha');
     });
 
     $('#modalcadastro').on('hidden.bs.modal', function (e) {
         $('#modalcadastro .alert').remove();
         $('#modalcadastro #senha').parent().show();
+        $('#modalcadastro #senha').attr('required', true);
         $('#modalcadastro .modal-body button').html('Entrar');
     });
 
