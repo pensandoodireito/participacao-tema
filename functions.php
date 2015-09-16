@@ -559,10 +559,11 @@ function wp_custom_breadcrumbs() {
             }
 
         } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
-            echo $delimiter . ' ';
             $post_type = get_post_type_object(get_post_type());
-            echo $before . $post_type->labels->name . $after;
-
+            if ($post_type) {
+                echo $delimiter . ' ';
+                echo $before . $post_type->labels->name . $after;
+            }
         } elseif ( is_attachment() ) {
             echo $delimiter . ' ';
             $parent = get_post($post->post_parent);
