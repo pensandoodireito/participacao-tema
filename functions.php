@@ -75,7 +75,7 @@ function participacao_get_logged_user() {
     }
 
     return '<span class="logged" '.$loggedStyle.'>Olá <span class="user-display-name">' . $display_name . '</span>! <a href="' . wp_logout_url() .'">Logout?</a></span>
-    <span class="unlogged" '.$unloggedStyle.'><a href="' . wp_registration_url() .'">Cadastre-se</a> | <a href="#" login-url="' . wp_login_url($_SERVER['REQUEST_URI']) .'" data-toggle="modal" data-target="#modalcadastro">Faça seu login</a></span>';
+    <span class="unlogged" '.$unloggedStyle.'><a href="' . wp_registration_url() .'">Cadastre-se</a> <a href="#" class="login-btn" login-url="' . wp_login_url($_SERVER['REQUEST_URI']) .'" data-toggle="modal" data-target="#modalcadastro">Faça seu login</a></span>';
 }
 
 /**
