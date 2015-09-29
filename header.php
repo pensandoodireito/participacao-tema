@@ -57,7 +57,7 @@
                       </a>
                     </div>
                   </div>
-                  <div class="col-xs-12 col-sm-6 col-md-2">
+                  <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="row">
                       <ul class="list-inline social-icons white">
                         <li class="social-icons-rounded">
@@ -75,7 +75,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-xs-12 col-sm-12 col-md-8 pull-right" id="navegacao-top">
+                  <div class="col-xs-12 col-sm-12 col-md-7 pull-right" id="navegacao-top">
                     <nav class="navbar">
                         <div class="navbar-header">
                           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-top">
@@ -100,9 +100,9 @@
                         <?php wp_nav_menu( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ) ); ?>
                     </div>
                     <div class="col-md-4 text-right">
-                        <p class="mt-xs">
-                            <strong><?php echo participacao_get_logged_user(); ?></strong>
-                        </p>
+                        <div class="login-content">
+                            <?php echo participacao_get_logged_user(); ?>
+                        </div>
                     </div>
                 </div>
                 <!-- /row -->

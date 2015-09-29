@@ -76,7 +76,7 @@ function participacao_get_logged_user() {
     }
 
     return '<span class="logged" '.$loggedStyle.'>Olá <span class="user-display-name">' . $display_name . '</span>! <a href="' . wp_logout_url() .'">Logout?</a></span>
-    <span class="unlogged" '.$unloggedStyle.'><a href="' . wp_registration_url() .'">Cadastre-se</a> | <a href="#" login-url="' . wp_login_url($_SERVER['REQUEST_URI']) .'" data-toggle="modal" data-target="#modalcadastro">Faça seu login</a></span>';
+    <span class="unlogged" '.$unloggedStyle.'><a href="' . wp_registration_url() .'">Cadastre-se</a> <a href="#" class="login-btn" login-url="' . wp_login_url($_SERVER['REQUEST_URI']) .'" data-toggle="modal" data-target="#modalcadastro">Faça seu login</a></span>';
 }
 
 /**
@@ -560,10 +560,11 @@ function wp_custom_breadcrumbs() {
             }
 
         } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
-            echo $delimiter . ' ';
             $post_type = get_post_type_object(get_post_type());
-            echo $before . $post_type->labels->name . $after;
-
+            if ($post_type) {
+                echo $delimiter . ' ';
+                echo $before . $post_type->labels->name . $after;
+            }
         } elseif ( is_attachment() ) {
             echo $delimiter . ' ';
             $parent = get_post($post->post_parent);
