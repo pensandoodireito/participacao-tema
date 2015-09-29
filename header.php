@@ -100,9 +100,9 @@
                         <?php wp_nav_menu( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ) ); ?>
                     </div>
                     <div class="col-md-4 text-right">
-                        <p class="mt-xs">
-                            <strong><?php echo participacao_get_logged_user(); ?></strong>
-                        </p>
+                        <div class="login-content">
+                            <?php echo participacao_get_logged_user(); ?>
+                        </div>
                     </div>
                 </div>
                 <!-- /row -->
