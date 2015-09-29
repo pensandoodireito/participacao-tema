@@ -497,6 +497,15 @@ jQuery(function($) {
         $('#modalcadastro .modal-body button').html('Entrar');
     });
 
+    $('.logged a').on('click', function(e){
+        e.preventDefault();
+        Login.logout(function( retorno ){
+            $('.unlogged').show();
+            $('.logged').hide();
+            $('body').trigger('user_logged_out');
+        });
+    });
+
     $('#modalcadastro').submit(function( e ){
         e.preventDefault();
 
@@ -517,13 +526,6 @@ jQuery(function($) {
                      _this.modal('toggle');
                      $('.logged').show(300);
                      $('body').trigger('user_logged_in', objeto);
-                     $.get('/wp-admin/admin-ajax.php',{'action':'logout_ajax_request'},function(objeto){
-                         var tpmElement = document.createElement('div');
-                         tpmElement.innerHTML = objeto.logoutUrl;
-                         var decoded = tpmElement.firstChild.nodeValue;
-                         $('.logged a').attr('href',decoded);
-                     },'json')
-                     $('.logged a')
                      $('.unlogged').hide();
                      $('.logged .user-display-name').html(objeto.display_name);
                  }else{
@@ -546,5 +548,8 @@ var Login = {
     },
     remember : function(username){
         return jQuery.post('/wp-login.php',{'action':'lostpassword','user_login':username});
+    },
+    logout : function(handler){
+        return jQuery.get('/wp-admin/admin-ajax.php',{'action':'logout_ajax_request'},handler);
     }
 };

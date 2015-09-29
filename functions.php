@@ -7,7 +7,8 @@ add_image_size( 'noticia-lista', 214, 137, true );
 
 function logout_ajax_request(){
     header("Content-type: application/json", true);
-    die(json_encode(array('logoutUrl' => wp_logout_url())));
+    wp_logout();
+    die;
 }
 
 function login_ajax_request()
