@@ -47,55 +47,75 @@
         </div>
         <!-- /Barra Brasil -->
         <div class="header">
-            <div class="container">
+          <div class="container">
+            <div class="row">
                 <div class="header-content">
-                    <div class="col-xs-2">
-                        <div id="logo-principal">
-                            <a href="<?php echo network_home_url("/");  ?>">
-                                <h1>Portal do Projeto Pensando o Direito</h1>
-                            </a>
+                  <div class="col-xs-12 col-sm-6 col-md-2">
+                    <div id="logo-principal">
+                      <a href="<?php echo network_home_url("/");  ?>">
+                        <h1>Portal do Projeto Pensando o Direito</h1>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="row">
+                      <ul class="list-inline social-icons white">
+                        <li class="social-icons-rounded">
+                          <a href="https://www.facebook.com/projetopd" target="_blank" class="btn btn-rounded" data-toggle="tooltip" data-placement="top" title="Siga-nos no Facebook"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="social-icons-rounded">
+                          <a href="https://twitter.com/projetopd" target="_blank" class="btn btn-rounded" data-toggle="tooltip" data-placement="top" title="Siga-nos no Twitter"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="social-icons-rounded">
+                          <a href="https://www.youtube.com/user/pensandoodireito" target="_blank" class="btn btn-rounded" data-toggle="tooltip" data-placement="top" title="Siga-nos no YouTube"><i class="fa fa-youtube"></i></a>
+                        </li>
+                        <li class="social-icons-rounded">
+                          <a href="https://github.com/pensandoodireito" target="_blank" class="btn btn-rounded" data-toggle="tooltip" data-placement="top" title="Siga-nos no GitHub"><i class="fa fa-github"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-7 pull-right" id="navegacao-top">
+                    <nav class="navbar">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-top">
+                          <i class="fa fa-caret-square-o-down"></i> Menu </button>
                         </div>
-                    </div>
-                    <div class="col-xs-10 pull-right" id="navegacao-top">
-                        <nav class="navbar">
-                            <div class="container-fluid">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#menu-top">
-                                    <i class="fa fa-caret-square-o-down"></i> Menu
-                                    </button>
-                                </div>
-                                <div class="collapse navbar-collapse" id="menu-top">
-                                    <?php echo get_search_form(); ?>
-                                    <?php wp_nav_menu( array( 'theme_location' => 'menu-secundario', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
-                                </div><!-- /.navbar-collapse -->
-                            </div><!-- /.container-fluid -->
-                        </nav>
-                    </div>
+                        <div class="collapse navbar-collapse" id="menu-top">
+                          <?php echo get_search_form(); ?>
+                          <?php wp_nav_menu( array( 'theme_location' => 'menu-secundario', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </nav>
+                  </div>
                 </div>
             </div>
-        </div> <!-- class header-->
+          </div>
+        </div>
+        <!-- /header -->
         <div id="navegacao-destaque">
             <div class="container">
                 <div class="row">
-                    <?php wp_nav_menu( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ) ); ?>
-                </div> <!-- /row -->
+                    <div class="col-md-8">
+                        <?php wp_nav_menu( array( 'theme_location' => 'menu-primario', 'menu_class' => 'navegacao-destaque-list' ) ); ?>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <div class="login-content">
+                            <?php echo participacao_get_logged_user(); ?>
+                        </div>
+                    </div>
+                </div>
+                <!-- /row -->
             </div>
         </div>
-    </div>
-</div>
-    <div class="conteudo">
-        <div class="container mt-sm">
-            <div class="row">
-                <div class="col-md-8">
-                    <!-- breadcrumb -->
-                    <?php wp_custom_breadcrumbs(); ?>
-                    <!-- /breadcrumb -->
+
+        <div class="conteudo">
+            <div class="container">
+              <div class="row mt-sm mb-sm">
+                <div class="col-md-12">
+                  <!-- breadcrumb -->
+                  <?php wp_custom_breadcrumbs(); ?>
+                  <!-- /breadcrumb -->
                 </div>
-                <div class="col-md-4 text-right">
-                    <p>
-                    <strong class="mt-xs ml-md"><?php echo participacao_get_logged_user(); ?></strong>
-                    </p>
-                </div>
+              </div>
             </div>
-        </div>

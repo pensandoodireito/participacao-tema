@@ -11,10 +11,11 @@ wp-content/cache/
 wp-content/upgrade/
 wp-content/uploads/
 wp-content/wp-cache-config.php
-
 .DS_Store
 /css/Less/prepros.cfg
 /css/less/prepros.cfg
 .idea
 css/site-global.css
 css/theme-participacao.css
+
+css/*.css.map

@@ -3,16 +3,15 @@
     //box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.3);
     .header-content {
         .clearfix();
-        
         position: relative;
         color: #fff;
-        position: relative;
         height: auto;
         //background: url('@{image-path-pd}/@{image-path-structure-pd}/bck-white-header.jpg') repeat-y top left @color-vermelho-pd;
         a {
             color: #fff;
             text-decoration: none;
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
                 color: #fff;
                 text-decoration: underline;
             }
@@ -21,25 +20,19 @@
             }
         }
         #logo-principal {
-            float: left;
-            margin: 0 0 0 -15px;
             padding: 0;
             width: 135px;
-            @media(max-width: 775px) {
-                margin: 0 0 0 -15px;
+            @media(max-width: @screen-sm) {
+                margin: 0 auto;
             }
+
             h1 {
                 margin: 0;
                 padding: 0;
                 text-indent: -90000px;
                 width: 135px;
                 height: 59px;
-                background: url('@{image-path-pd}/@{image-path-structure-pd}/logo-pd-br-verm.jpg') no-repeat top left;
-                @media(max-width: 775px) {
-                    float: none !important;
-                    display: block;
-                    width: 100%;
-                }
+                background: url('@{image-path-pd}/@{image-path-structure-pd}/logo-pd-branca.png') no-repeat top left;
             }
         }
         #ferramentas-acessibilidade {
@@ -47,6 +40,12 @@
             font-size: 16px;
             @media(max-width: 500px) {
                 display: none;
+            }
+        }
+        #busca {
+            width: 30%;
+            @media(max-width: @screen-sm) {
+                width: 100%;
             }
         }
         #busca .busca-pd .input-group-btn > .btn {
@@ -89,7 +88,6 @@
                 }
             }
         */
-            
             // aqui começa o dropdown adaptado do bootstrap para o submenu do tema
             // The dropdown wrapper (div)
             .menu-item-has-children {
@@ -101,10 +99,10 @@
                         display: none; // none by default, but block on "open" of the menu
                         float: none;
                         width: 70%;
-                        padding:0;
+                        padding: 0;
                         margin: 0px;
                         background-color: @color-vermelho-pd;
-                        border:0;
+                        border: 0;
                         border-radius: 0;
                         box-shadow: none;
                         //background-clip: padding-box;

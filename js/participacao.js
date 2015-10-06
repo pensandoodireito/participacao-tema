@@ -437,10 +437,24 @@ jQuery(document).ready(function(){
 );
 
 // torna o scroll na página suave, apenas usando o a classe .smoothscroll
-jQuery(function ($) {
+jQuery(function($) {
+
+    var msgSucesso =
+        $('<div />').addClass('panel-body bg-success pt-lg text-center')
+            .append($('<h3 />').addClass('font-roboto text-success').append($('<i />').addClass('fa fa-check')).append('Cadastro realizado com sucesso!'))
+            .append($('<p />').addClass('mt-md h4').append($('<strong />').html('Agora verifique seu e-mail.')))
+            .append($('<p />').append('Você receberá um e-mail de confirmação, basta clicar no link e você poderá participar de qualquer debate do projeto! Obrigado!')
+        );
+
+    var msgErro =
+        $('<div />').addClass('panel-body bg-danger pt-lg text-center')
+            .append($('<h3 />').addClass('font-roboto red').append($('<i />').addClass('fa fa-exclamation-circle')).append('Ooops!'))
+            .append($('<p />').addClass('mt-md h4').append($('<strong />').html('Ocorreu um erro durante o seu cadastro.')))
+            .append($('<p />').append('Tente novamente em alguns instantes'));
+
     $('.smoothscroll').on('click', function(event) {
-        var target = $( $(this).attr('href') );
-        if( target.length ) {
+        var target = $($(this).attr('href'));
+        if (target.length) {
             event.preventDefault();
             $('html, body').animate({
                 scrollTop: target.offset().top
@@ -529,14 +543,18 @@ jQuery(function ($) {
 
 });
 
-var WPLogin = {
-    login : function (login, senha, handler){
-        jQuery.post('/wp-login.php',{log:login,pwd:senha},
-            function(retorno){
-                isSucesso = retorno.indexOf('<strong>ERRO</strong>') === -1;
-                nome = (isSucesso)?jQuery(retorno).find('#wp-admin-bar-site-name a.ab-item').html():'Convidado';
-                handler(isSucesso, nome);
-            });
+var Login = {
+    auth : function (username, password, handler){
+        jQuery.post('/wp-admin/admin-ajax.php',
+            {"action":"login_ajax_request","username":username,"password":password},
+            function( objeto ){
+                return handler(objeto);
+            }, 'json');
+    },
+    remember : function(username){
+        return jQuery.post('/wp-login.php',{'action':'lostpassword','user_login':username});
+    },
+    logout : function(handler){
+        return jQuery.get('/wp-admin/admin-ajax.php',{'action':'logout_ajax_request'},handler);
     }
 };
-

@@ -1,8 +1,12 @@
 <div class="col-md-4">
+    <?php if ( is_active_sidebar( 'sidebar_widgets' ) ) : ?>
+        <?php dynamic_sidebar( 'sidebar_widgets' ); ?>
+    <?php endif; ?>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="red font-roboto">Mais notícias:</h4>
         </div>
+
         <div class="panel-body">
             <?php
             $mais_noticias = new WP_Query(

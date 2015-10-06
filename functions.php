@@ -5,10 +5,43 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'noticia-destaque', 555, 290, true );
 add_image_size( 'noticia-lista', 214, 137, true );
 
+function logout_ajax_request(){
+    header("Content-type: application/json", true);
+    wp_logout();
+    die;
+}
+
+function login_ajax_request()
+{
+    $username = isset($_POST['username'])?$_POST['username']:null;
+    $password = isset($_POST['password'])?$_POST['password']:null;
+
+    $object = wp_authenticate($username, $password);
+
+
+    if(!$object instanceof WP_User){
+        $json = json_encode(false);
+    }else{
+        wp_signon(array('user_login' => $username,'user_password' => $password));
+        unset($object->data->user_pass);
+        $json = json_encode($object->data);
+    }
+
+    header("Content-type: application/json", true);
+    die($json);
+}
+
+add_action( 'wp_ajax_login_ajax_request', 'login_ajax_request' );
+add_action( 'wp_ajax_nopriv_login_ajax_request', 'login_ajax_request' );
+
+add_action( 'wp_ajax_logout_ajax_request', 'logout_ajax_request' );
+add_action( 'wp_ajax_nopriv_logout_ajax_request', 'logout_ajax_request' );
+
 function participacao_scripts() {
     global $wp_query;
 
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js' , array('jquery'), false, true );
+    wp_enqueue_script( 'validator', get_template_directory_uri() . '/js/validator.min.js' , array('jquery', 'bootstrap'), false, true );
     wp_enqueue_script( 'participacao', get_template_directory_uri() . '/js/participacao.js' , array('jquery', 'bootstrap'), false, true );
 
     $participacao_data = array(
@@ -30,20 +63,21 @@ add_action( 'wp_enqueue_scripts', 'participacao_scripts' );
  *
  * @return string
  */
-function participacao_get_logged_user() {
-    if ( is_user_logged_in() ) {
+function participacao_get_logged_user()
+{
+    if (is_user_logged_in()) {
         $current_user = wp_get_current_user();
-
-        return 'Olá ' . $current_user->display_name . '! <a href="' . wp_logout_url() .'">Logout?</a>';
+        $display_name = $current_user->display_name;
+        $loggedStyle = ' style="display:inline"';
+        $unloggedStyle = ' style="display:none"';
+    } else {
+        $display_name = '';
+        $loggedStyle = ' style="display:none"';
+        $unloggedStyle = ' style="display:inline"';
     }
-    else {
-
-        return '<span class="logged" '.$loggedStyle.'>Olá <span class="user-display-name">' . $display_name . '</span>! <a href="' . wp_logout_url() .'">Logout?</a></span>
-        <span class="unlogged" '.$unloggedStyle.'><a href="#'.wp_registration_url().'" data-toggle="modal" data-target="#registrationModal">Cadastre-se</a> <a href="#" class="login-btn" login-url="' . wp_login_url($_SERVER['REQUEST_URI']) .'" data-toggle="modal" data-target="#loginModal">Faça seu login</a></span>';
-    }
-
+    return '<span class="logged" ' . $loggedStyle . '>Olá <span class="user-display-name">' . $display_name . '</span>! <a href="' . wp_logout_url() . '">Logout?</a></span>
+    <span class="unlogged" ' . $unloggedStyle . '><a href="#' . wp_registration_url() . '" data-toggle="modal" data-target="#registrationModal">Cadastre-se</a> <a href="#'.wp_login_url($_SERVER['REQUEST_URI']).'" class="login-btn" data-toggle="modal" data-target="#loginModal">Faça seu login</a></span>';
 }
-
 /**
  * Retornar o link para o espaço de participação. Se o delibera
  * está ativo, retorna o link do delibera, se não, tenta retornar
@@ -135,46 +169,6 @@ function participacao_settings_init(  ) {
     );
 
     add_settings_field(
-        'participacao_site_excerpt',
-        'Resumo da descrição do debate para capa',
-        'participacao_site_excerpt_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_data_abertura',
-        'Data de abertura do Debate',
-        'participacao_data_abertura_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_data_encerramento',
-        'Data de encerramento do Debate',
-        'participacao_data_encerramento_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_fase_debate',
-        'Fase do Debate',
-        'participacao_fase_debate_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
-        'participacao_normas',
-        'Normas em discussão',
-        'participacao_normas_render',
-        'pluginPage',
-        'participacao_pluginPage_section'
-    );
-
-    add_settings_field(
         'participacao_twitter_embed',
         'Código do widget do Twitter (usar altura máxima de 350px)',
         'participacao_twitter_render',
@@ -230,64 +224,6 @@ function participacao_sitelogo_preview_render() {
     <div id="upload_logo_preview" style="min-height: 100px;">
         <img style="max-width:100%; <?php echo (!isset($options['logo']) ? "display: none;" : ""); ?>"  src="<?php echo esc_url( $options['logo'] ); ?>" />
     </div>
-<?php
-}
-
-/**
- * Render do campo para o resumo da descrição do site
- */
-function participacao_site_excerpt_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <textarea cols='20' rows='2' name='participacao_settings[participacao_site_excerpt]'>
-        <?php echo $options['participacao_site_excerpt']; ?>
-    </textarea>
-<?php
-
-}
-
-/**
- * Render do campo para a data de abertura do debate
- */
-function participacao_data_abertura_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_data_abertura]' value="<?php echo $options['participacao_data_abertura']; ?>"/>
-<?php
-}
-
-/**
- * Render do campo para a data de encerramento do debate
- */
-function participacao_data_encerramento_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_data_encerramento]' value="<?php echo $options['participacao_data_encerramento']; ?>"/>
-<?php
-}
-
-/**
- * Render do campo para a fase atual do debate
- */
-function participacao_fase_debate_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_fase_debate]' value="<?php echo $options['participacao_fase_debate']; ?>"/>
-<?php
-}
-
-/**
- * Render do campo para a lei referida no debate
- */
-function participacao_normas_render(  ) {
-
-    $options = get_option( 'participacao_settings' );
-    ?>
-    <input class="regular-text" type="text" cols='20' name='participacao_settings[participacao_normas]' value="<?php echo $options['participacao_normas']; ?>"/>
 <?php
 }
 
@@ -518,8 +454,9 @@ add_action('init', 'register_menu_secundario');
 function add_description_to_menu($item_output, $item, $depth, $args) {
     if ($args->theme_location == 'menu-primario') {
         $item_output = '<div class="navegacao-destaque-content">';
-        $item_output .= sprintf('<h5><a href="%s">%s</a></h5>', esc_html($item->url), esc_html($item->title));
-        $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description));
+        $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->title));
+        //Ocultando o texto do menu: 
+        //$item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description)); 
         $item_output .= '</div>';
     }
 
@@ -532,8 +469,8 @@ function wp_custom_breadcrumbs() {
 
     $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
     $delimiter = '<i class="fa fa-angle-right text-muted"></i>'; // delimiter between crumbs
-    $home = '<i class="fa fa-home fa-lg"></i>'; // text for the 'Home' link
-    $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
+    $home = 'Página inicial'; // text for the 'Home' link
+    $showCurrent = 0; // 1 - show current post/page title in breadcrumbs, 0 - don't show
     $before = '<span class="current text-muted">'; // tag before the current crumb
     $after = '</span>'; // tag after the current crumb
 
@@ -561,7 +498,7 @@ function wp_custom_breadcrumbs() {
             if (!in_array('blog', $tags)) {
                 $debates = get_posts(array('post_type' => 'debate', 'posts_per_page' => 1));
                 if (count($debates) > 0) {
-                    echo '<a href="' . site_url('/debates/') . '" class="red">Debates</a> ' . $delimiter . ' ';
+                    echo '<a href="' . site_url('/debates/') . '" class="red">Debates</a> ';
                 }
             }
 
@@ -571,35 +508,43 @@ function wp_custom_breadcrumbs() {
                 echo bloginfo('name') . ' ';
             } else {
                 echo '<a href="' . get_blog_details($blog_ID)->siteurl . '" class="red">';
-                echo bloginfo('name') . '</a> ' . $delimiter . ' ';
+                echo bloginfo('name') . '</a> ';
             }
         } else {
-            echo '<a href="' . $homeLink . '" class="red">' . $home . '</a> ' . $delimiter . ' ';
+            echo '<a href="' . $homeLink . '" class="red">' . $home . '</a> ';
         }
 
         if ( is_category() ) {
+            echo $delimiter . ' ';
             $thisCat = get_category(get_query_var('cat'), false);
             if ($thisCat->parent != 0) echo get_category_parents($thisCat->parent, TRUE, ' ' . $delimiter . ' ');
             echo $before . 'categoria "' . single_cat_title('', false) . '"' . $after;
 
         } elseif (get_query_var('cat') === '0') {
+            echo $delimiter . ' ';
             echo $before . 'Notícias' . $after;
+
         } elseif ( is_search() ) {
+            echo $delimiter . ' ';
             echo $before . 'Resultados da procura por "' . get_search_query() . '"' . $after;
 
         } elseif ( is_day() ) {
+            echo $delimiter . ' ';
             echo '<a href="' . get_year_link(get_the_time('Y')) . '" class="red">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
             echo '<a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '" class="red">' . get_the_time('F') . '</a> ' . $delimiter . ' ';
             echo $before . get_the_time('d') . $after;
 
         } elseif ( is_month() ) {
+            echo $delimiter . ' ';
             echo '<a href="' . get_year_link(get_the_time('Y')) . '" class="red">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
             echo $before . get_the_time('F') . $after;
 
         } elseif ( is_year() ) {
+            echo $delimiter . ' ';
             echo $before . get_the_time('Y') . $after;
 
         } elseif ( is_single() && !is_attachment() ) {
+            echo $delimiter . ' ';
             if ( get_post_type() != 'post' ) {
                 $post_type = get_post_type_object(get_post_type());
                 $slug = $post_type->rewrite;
@@ -615,9 +560,12 @@ function wp_custom_breadcrumbs() {
 
         } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
             $post_type = get_post_type_object(get_post_type());
-            echo $before . $post_type->labels->name . $after;
-
+            if ($post_type) {
+                echo $delimiter . ' ';
+                echo $before . $post_type->labels->name . $after;
+            }
         } elseif ( is_attachment() ) {
+            echo $delimiter . ' ';
             $parent = get_post($post->post_parent);
             $cat = get_the_category($parent->ID); $cat = $cat[0];
             echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
@@ -625,9 +573,13 @@ function wp_custom_breadcrumbs() {
             if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 
         } elseif ( is_page() && !$post->post_parent ) {
-            if ($showCurrent == 1) echo $before . get_the_title() . $after;
+            if ($showCurrent == 1) {
+                echo $delimiter . ' ';
+                echo $before . get_the_title() . $after;
+            }
 
         } elseif ( is_page() && $post->post_parent ) {
+            echo $delimiter . ' ';
             $parent_id  = $post->post_parent;
             $breadcrumbs = array();
             while ($parent_id) {
@@ -644,14 +596,17 @@ function wp_custom_breadcrumbs() {
             if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 
         } elseif ( is_tag() ) {
+            echo $delimiter . ' ';
             echo $before . 'Posts com a palavra-chave "' . single_tag_title('', false) . '"' . $after;
 
         } elseif ( is_author() ) {
+            echo $delimiter . ' ';
             global $author;
             $userdata = get_userdata($author);
             echo $before . 'Posts criados por ' . $userdata->display_name . $after;
 
         } elseif ( is_404() ) {
+            echo $delimiter . ' ';
             echo $before . 'Error 404' . $after;
         }
 
