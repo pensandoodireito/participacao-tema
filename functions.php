@@ -38,9 +38,10 @@ function participacao_get_logged_user() {
     }
     else {
 
-        return  '<a href="' . wp_registration_url() .'">Cadastre-se</a> | <a href="' . wp_login_url($_SERVER['REQUEST_URI']) .'">Faça seu login</a>';
-
+        return '<span class="logged" '.$loggedStyle.'>Olá <span class="user-display-name">' . $display_name . '</span>! <a href="' . wp_logout_url() .'">Logout?</a></span>
+        <span class="unlogged" '.$unloggedStyle.'><a href="#'.wp_registration_url().'" data-toggle="modal" data-target="#registrationModal">Cadastre-se</a> <a href="#" class="login-btn" login-url="' . wp_login_url($_SERVER['REQUEST_URI']) .'" data-toggle="modal" data-target="#loginModal">Faça seu login</a></span>';
     }
+
 }
 
 /**
@@ -719,8 +720,6 @@ function participacao_create_pages() {
     // ao se ativar um subtema nos subsites, e a página de cadastro pertence ao site 'principal'
     switch_to_blog('1');
 
-    //cria página 'cadastro' no 'blog principal'
-    pd_create_page( array('titulo' => 'Cadastro', 'conteudo' => '[pd_registration_form]') );
     //cria a página 'contato' no 'blog principal'
     pd_create_page( array('titulo' => 'Contato', 'conteudo' => '[pd_registration_form]') );
 

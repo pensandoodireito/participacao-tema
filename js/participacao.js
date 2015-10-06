@@ -447,6 +447,86 @@ jQuery(function ($) {
             }, 600);
         }
     });
+
+    $('#form-cadastro form').validator().on('submit', function (e) {
+        var _form = $(this);
+        if (!e.isDefaultPrevented()) {
+            e.preventDefault();
+            $.post('/wp-admin/admin-ajax.php?action=signup_ajax', $(this).serialize(),function( jsonRetorno ){
+                if(jsonRetorno.success){
+                    _form.parent().parent().parent().html(msgSucesso);
+                }else{
+                    _form.parent().parent().parent().html(msgErro);
+                }
+            }, 'json').fail(function(){
+                _form.parent().parent().parent().html(msgErro);
+            });
+
+        }
+    });
+
+    // Habilita o tooltip
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+
+    $('#loginModal a.remember_me').on('click', function(){
+        $('#loginModal #senha').parent().hide(400);
+        $('#loginModal #senha').removeAttr('required');
+        $('#loginModal .modal-body button').html('Renovar senha');
+    });
+
+    $('#loginModal').on('hidden.bs.modal', function (e) {
+        $('#loginModal .alert').remove();
+        $('#loginModal #senha').parent().show();
+        $('#loginModal #senha').attr('required', true);
+        $('#loginModal .modal-body button').html('Entrar');
+    });
+
+    $('.logged a').on('click', function(e){
+        e.preventDefault();
+        Login.logout(function( retorno ){
+            $('.unlogged').show();
+            $('.logged').hide();
+            $('body').trigger('user_logged_out');
+        });
+    });
+
+    $('#loginModal').on('submit',function( e ){
+        e.preventDefault();
+
+        var _this = $(this);
+
+        var usuario = _this.find('#username').val();
+        var senha = _this.find('#senha').val();
+
+        if(_this.find('.modal-body button').html()=='Renovar senha')
+        {
+            Login.remember();
+            setTimeout(function(){
+                _this.modal('toggle');
+            }, 3000);
+        }else{
+            Login.auth(usuario, senha, function( objeto ){
+                 if(objeto){
+                     _this.modal('toggle');
+                     $('.logged').show(300);
+                     $('body').trigger('user_logged_in', objeto);
+                     $('.unlogged').hide();
+                     $('.logged .user-display-name').html(objeto.display_name);
+                 }else{
+                    var modalBody = _this.find('.modal-body');
+                     modalBody.find('.alert').remove();
+                     modalBody.prepend($('<div />').addClass('alert alert-danger').attr('role','alert').html('Usuário ou senha inválidos!'));
+                 }
+            });
+        }
+    });
+
+    $('#registrationModal').on('show.bs.modal', function(e){
+        $('#loginModal').modal('hide');
+    });
+
 });
 
 var WPLogin = {
@@ -459,3 +539,4 @@ var WPLogin = {
             });
     }
 };
+
