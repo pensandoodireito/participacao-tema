@@ -537,8 +537,17 @@ jQuery(function($) {
         }
     });
 
+    var regModalOriginal = false;
+    if(!regModalOriginal){
+        regModalOriginal = $('#registrationModal').clone().html();
+    }
+
     $('#registrationModal').on('show.bs.modal', function(e){
         $('#loginModal').modal('hide');
+    });
+
+    $('#registrationModal').on('hide.bs.modal', function(e){
+        $('#registrationModal').html(regModalOriginal);
     });
 
 });
