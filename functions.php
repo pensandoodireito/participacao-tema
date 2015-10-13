@@ -466,155 +466,180 @@ function add_description_to_menu($item_output, $item, $depth, $args) {
 add_filter('walker_nav_menu_start_el', 'add_description_to_menu', 1, 4);
 
 /* BREADCRUMB */
-function wp_custom_breadcrumbs() {
+function wp_custom_breadcrumbs( $levels = array() ) {
+	$delimiter = '<i class="fa fa-angle-right text-muted"></i>'; // delimiter between crumbs
+	$before    = '<span class="current text-muted">'; // tag before the current crumb
+	$after     = '</span>'; // tag after the current crumb
 
-    $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
-    $delimiter = '<i class="fa fa-angle-right text-muted"></i>'; // delimiter between crumbs
-    $home = 'Página inicial'; // text for the 'Home' link
-    $showCurrent = 0; // 1 - show current post/page title in breadcrumbs, 0 - don't show
-    $before = '<span class="current text-muted">'; // tag before the current crumb
-    $after = '</span>'; // tag after the current crumb
+	if ( $levels ) {
+		$levels = get_breadcumbs_level();
+	}
 
-    global $post;
-    $homeLink = get_bloginfo('url');
+	if ( $levels ) {
+		echo '<div id="crumbs red">';
+		$links = array();
 
-    $blog_ID = get_current_blog_id();
+		foreach ( $levels as $level ) {
+			if ( isset( $level[1] ) ) {
+				$links[] = $before . '<a href="' . $level[1] . '" class="red">' . $level[0] . '</a>' . $after;
+			} else {
+				$links[] = $before . $level[0] . $after;
+			}
+		}
 
-    if ( (is_home() || is_front_page()) && $blog_ID == 1 ) {
-
-        if ($showOnHome == 1) echo '<div id="crumbs red"><a href="' . $homeLink . '" class="red">' . $home . '</a></div>';
-
-    } else {
-        echo '<div id="crumbs red">';
-
-        if ( $blog_ID != 1 ) {
-            $current_theme = wp_get_theme();
-
-            switch_to_blog(1);
-
-            echo '<a href="' . get_site_url() . '" class="red">' . $home . '</a> ' . $delimiter . ' ';
-
-            $tags = $current_theme->get('Tags');
-
-            if (!in_array('blog', $tags)) {
-                $debates = get_posts(array('post_type' => 'debate', 'posts_per_page' => 1));
-                if (count($debates) > 0) {
-                    echo '<a href="' . site_url('/debates/') . '" class="red">Debates</a> ';
-                }
-            }
-
-            restore_current_blog();
-
-            if ( is_home() || is_front_page() ) {
-                echo bloginfo('name') . ' ';
-            } else {
-                echo '<a href="' . get_blog_details($blog_ID)->siteurl . '" class="red">';
-                echo bloginfo('name') . '</a> ';
-            }
-        } else {
-            echo '<a href="' . $homeLink . '" class="red">' . $home . '</a> ';
-        }
-
-        if ( is_category() ) {
-            echo $delimiter . ' ';
-            $thisCat = get_category(get_query_var('cat'), false);
-            if ($thisCat->parent != 0) echo get_category_parents($thisCat->parent, TRUE, ' ' . $delimiter . ' ');
-            echo $before . 'categoria "' . single_cat_title('', false) . '"' . $after;
-
-        } elseif (get_query_var('cat') === '0') {
-            echo $delimiter . ' ';
-            echo $before . 'Notícias' . $after;
-
-        } elseif ( is_search() ) {
-            echo $delimiter . ' ';
-            echo $before . 'Resultados da procura por "' . get_search_query() . '"' . $after;
-
-        } elseif ( is_day() ) {
-            echo $delimiter . ' ';
-            echo '<a href="' . get_year_link(get_the_time('Y')) . '" class="red">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
-            echo '<a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '" class="red">' . get_the_time('F') . '</a> ' . $delimiter . ' ';
-            echo $before . get_the_time('d') . $after;
-
-        } elseif ( is_month() ) {
-            echo $delimiter . ' ';
-            echo '<a href="' . get_year_link(get_the_time('Y')) . '" class="red">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
-            echo $before . get_the_time('F') . $after;
-
-        } elseif ( is_year() ) {
-            echo $delimiter . ' ';
-            echo $before . get_the_time('Y') . $after;
-
-        } elseif ( is_single() && !is_attachment() ) {
-            echo $delimiter . ' ';
-            if ( get_post_type() != 'post' ) {
-                $post_type = get_post_type_object(get_post_type());
-                $slug = $post_type->rewrite;
-                echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/" class="red">' . $post_type->labels->name . '</a>';
-                if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
-            } else {
-                $cat = get_the_category(); $cat = $cat[0];
-                $cats = get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
-                if ($showCurrent == 0) $cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
-                echo $cats;
-                if ($showCurrent == 1) echo $before . get_the_title() . $after;
-            }
-
-        } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
-            $post_type = get_post_type_object(get_post_type());
-            if ($post_type) {
-                echo $delimiter . ' ';
-                echo $before . $post_type->labels->name . $after;
-            }
-        } elseif ( is_attachment() ) {
-            echo $delimiter . ' ';
-            $parent = get_post($post->post_parent);
-            $cat = get_the_category($parent->ID); $cat = $cat[0];
-            echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
-            echo '<a href="' . get_permalink($parent) . '" class="red">' . $parent->post_title . '</a>';
-            if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
-
-        } elseif ( is_page() && !$post->post_parent ) {
-            if ($showCurrent == 1) {
-                echo $delimiter . ' ';
-                echo $before . get_the_title() . $after;
-            }
-
-        } elseif ( is_page() && $post->post_parent ) {
-            echo $delimiter . ' ';
-            $parent_id  = $post->post_parent;
-            $breadcrumbs = array();
-            while ($parent_id) {
-                $page = get_post($parent_id);
-                $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '" class="red">' . get_the_title($page->ID) . '</a>';
-                $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '" class="red">' . get_the_title($page->ID) . '</a>';
-                $parent_id  = $page->post_parent;
-            }
-            $breadcrumbs = array_reverse($breadcrumbs);
-            for ($i = 0; $i < count($breadcrumbs); $i++) {
-                echo $breadcrumbs[$i];
-                if ($i != count($breadcrumbs)-1) echo ' ' . $delimiter . ' ';
-            }
-            if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
-
-        } elseif ( is_tag() ) {
-            echo $delimiter . ' ';
-            echo $before . 'Posts com a palavra-chave "' . single_tag_title('', false) . '"' . $after;
-
-        } elseif ( is_author() ) {
-            echo $delimiter . ' ';
-            global $author;
-            $userdata = get_userdata($author);
-            echo $before . 'Posts criados por ' . $userdata->display_name . $after;
-
-        } elseif ( is_404() ) {
-            echo $delimiter . ' ';
-            echo $before . 'Error 404' . $after;
-        }
-
-        echo '</div>';
-
-    }
+		echo implode( ' ' . $delimiter . ' ', $links );
+		echo '</div>';
+	}
 } // end wp_custom_breadcrumbs()
+
+function get_breadcumbs_level() {
+	$showOnHome  = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
+	$home        = 'Página inicial'; // text for the 'Home' link
+	$showCurrent = 0; // 1 - show current post/page title in breadcrumbs, 0 - don't show
+	$levels      = array();
+
+	global $post;
+	$homeLink = get_bloginfo( 'url' );
+
+	$blog_ID = get_current_blog_id();
+	if ( ( is_home() || is_front_page() ) && $blog_ID == 1 ) {
+		if ( $showOnHome == 1 ) {
+			$levels[] = array( $home, $homeLink );
+		}
+
+	} else {
+		if ( $blog_ID != 1 ) {
+			$current_theme = wp_get_theme();
+
+			switch_to_blog( 1 );
+
+			$levels[] = array( $home, get_site_url() );
+
+			$tags = $current_theme->get( 'Tags' );
+
+			if ( ! in_array( 'blog', $tags ) ) {
+				$debates = get_posts( array( 'post_type' => 'debate', 'posts_per_page' => 1 ) );
+				if ( count( $debates ) > 0 ) {
+					$levels[] = array( "Debates", site_url( '/debates/' ) );
+				}
+			}
+
+			restore_current_blog();
+
+			if ( is_home() || is_front_page() ) {
+				$levels[] = array( get_bloginfo( 'name' ), );
+			} else {
+				$levels[] = array( get_bloginfo( 'name' ), get_blog_details( $blog_ID )->siteurl );
+			}
+		} else {
+			$levels[] = array( $home, $homeLink );
+		}
+
+		if ( is_category() ) {
+			$thisCat = get_category( get_query_var( 'cat' ), false );
+			if ( $thisCat->parent != 0 ) {
+				foreach ( explode( '|', get_category_parents( $thisCat->parent, true, '|' ) ) as $parent ) {
+					if ( $parent ) {
+						$levels[] = array( $parent );
+					}
+				}
+			}
+			$levels[] = array( single_cat_title( 'categoria ', false ) );
+
+		} elseif ( get_query_var( 'cat' ) === '0' ) {
+			$levels[] = array( 'Notícias' );
+
+		} elseif ( is_search() ) {
+			$levels[] = array( 'Resultados da procura por "' . get_search_query() . '"' );
+
+		} elseif ( is_day() ) {
+			$levels[] = array( get_the_time( 'Y' ), get_year_link( get_the_time( 'Y' ) ) );
+			$levels[] = array( get_the_time( 'F' ), get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) );
+			$levels[] = array( get_the_time( 'd' ) );
+
+		} elseif ( is_month() ) {
+			$levels[] = array( get_the_time( 'Y' ), get_year_link( get_the_time( 'Y' ) ) );
+			$levels[] = array( get_the_time( 'F' ) );
+
+		} elseif ( is_year() ) {
+			$levels[] = array( get_the_time( 'Y' ) );
+
+		} elseif ( is_single() && ! is_attachment() ) {
+			if ( get_post_type() != 'post' ) {
+				$post_type = get_post_type_object( get_post_type() );
+				$slug      = $post_type->rewrite;
+				$levels[]  = array( $post_type->labels->name, $homeLink . '/' . $slug['slug'] . '/' );
+				if ( $showCurrent == 1 ) {
+					$levels[] = array( get_the_title() );
+				}
+			} else {
+				$cat = get_the_category();
+				$cat = $cat[0];
+				foreach ( explode( '|', get_category_parents( $cat, true, '|' ) ) as $parent ) {
+					if ( $parent ) {
+						$levels[] = array( $parent );
+					}
+				}
+			}
+
+		} elseif ( ! is_single() && ! is_page() && get_post_type() != 'post' && ! is_404() ) {
+			$post_type = get_post_type_object( get_post_type() );
+			if ( $post_type ) {
+				$levels[] = array( $post_type->labels->name );
+			}
+		} elseif ( is_attachment() ) {
+			$parent = get_post( $post->post_parent );
+			$cat    = get_the_category( $parent->ID );
+			$cat    = $cat[0];
+
+			foreach ( explode( '|', get_category_parents( $cat, true, '|' ) ) as $parent ) {
+				if ( $parent ) {
+					$levels[] = array( $parent );
+				}
+			}
+			$levels[] = array( $parent->post_title, get_permalink( $parent ) );
+
+			if ( $showCurrent == 1 ) {
+				$levels[] = array( get_the_title() );
+			}
+
+		} elseif ( is_page() && ! $post->post_parent ) {
+			if ( $showCurrent == 1 ) {
+				$levels[] = array( get_the_title() );
+			}
+
+		} elseif ( is_page() && $post->post_parent ) {
+			$parent_id   = $post->post_parent;
+			$breadcrumbs = array();
+
+			while ( $parent_id ) {
+				$page          = get_post( $parent_id );
+				$breadcrumbs[] = array( get_the_title( $page->ID ), get_permalink( $page->ID ) );
+				$parent_id     = $page->post_parent;
+			}
+
+			$breadcrumbs = array_reverse( $breadcrumbs );
+			$levels      = array_merge( $levels, $breadcrumbs );
+
+			if ( $showCurrent == 1 ) {
+				$levels[] = array( get_the_title() );
+			}
+
+		} elseif ( is_tag() ) {
+			$levels[] = array( single_tag_title( 'Posts com a palavra-chave ', false ) );
+
+		} elseif ( is_author() ) {
+			global $author;
+			$userdata = get_userdata( $author );
+			$levels[] = array( 'Posts criados por ' . $userdata->display_name );
+
+		} elseif ( is_404() ) {
+			$levels[] = array( 'Erro 404' );
+		}
+	}
+
+	return $levels;
+}
 
 add_action(
     'wp_ajax_publicacoes_paginacao_infinita',

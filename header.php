@@ -109,13 +109,15 @@
             </div>
         </div>
 
-        <div class="conteudo">
-            <div class="container">
-              <div class="row mt-sm mb-sm">
-                <div class="col-md-12">
-                  <!-- breadcrumb -->
-                  <?php wp_custom_breadcrumbs(); ?>
-                  <!-- /breadcrumb -->
-                </div>
-              </div>
-            </div>
+        <?php $breadCrumbsLevels = get_breadcumbs_level(); ?>
+        <?php if ( $breadCrumbsLevels ): ?>
+	        <div class="container">
+		        <div class="row mt-sm mb-sm">
+			        <div class="col-md-12">
+				        <!-- breadcrumb -->
+				        <?php wp_custom_breadcrumbs( $breadCrumbsLevels ); ?>
+				        <!-- /breadcrumb -->
+			        </div>
+		        </div>
+	        </div>
+        <?php endif; ?>
