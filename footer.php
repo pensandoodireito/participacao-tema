@@ -73,6 +73,13 @@
         </div>
     </div>
 </div>
+<div id="registrationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <?php echo do_shortcode("[pd_registration_form]");?>
+        </div>
+    </div>
+</div>
 
 <?php wp_footer(); ?>
 

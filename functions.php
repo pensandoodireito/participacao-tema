@@ -63,22 +63,21 @@ add_action( 'wp_enqueue_scripts', 'participacao_scripts' );
  *
  * @return string
  */
-function participacao_get_logged_user() {
-    if ( is_user_logged_in() ) {
+function participacao_get_logged_user()
+{
+    if (is_user_logged_in()) {
         $current_user = wp_get_current_user();
         $display_name = $current_user->display_name;
         $loggedStyle = ' style="display:inline"';
         $unloggedStyle = ' style="display:none"';
-    }else{
+    } else {
         $display_name = '';
         $loggedStyle = ' style="display:none"';
         $unloggedStyle = ' style="display:inline"';
     }
-
-    return '<span class="logged" '.$loggedStyle.'>Olá <span class="user-display-name">' . $display_name . '</span>! <a href="' . wp_logout_url() .'">Logout?</a></span>
-    <span class="unlogged" '.$unloggedStyle.'><a href="' . wp_registration_url() .'">Cadastre-se</a> <a href="#" class="login-btn" login-url="' . wp_login_url($_SERVER['REQUEST_URI']) .'" data-toggle="modal" data-target="#modalcadastro">Faça seu login</a></span>';
+    return '<span class="logged" ' . $loggedStyle . '>Olá <span class="user-display-name">' . $display_name . '</span>! <a href="' . wp_logout_url() . '">Logout?</a></span>
+    <span class="unlogged" ' . $unloggedStyle . '><a href="#' . wp_registration_url() . '" data-toggle="modal" data-target="#registrationModal">Cadastre-se</a> <a href="#'.wp_login_url($_SERVER['REQUEST_URI']).'" class="login-btn" data-toggle="modal" data-target="#loginModal">Faça seu login</a></span>';
 }
-
 /**
  * Retornar o link para o espaço de participação. Se o delibera
  * está ativo, retorna o link do delibera, se não, tenta retornar
@@ -701,8 +700,6 @@ function participacao_create_pages() {
     // ao se ativar um subtema nos subsites, e a página de cadastro pertence ao site 'principal'
     switch_to_blog('1');
 
-    //cria página 'cadastro' no 'blog principal'
-    pd_create_page( array('titulo' => 'Cadastro', 'conteudo' => '[pd_registration_form]') );
     //cria a página 'contato' no 'blog principal'
     pd_create_page( array('titulo' => 'Contato', 'conteudo' => '[pd_registration_form]') );
 

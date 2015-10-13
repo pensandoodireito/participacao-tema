@@ -484,17 +484,17 @@ jQuery(function($) {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
-    $('#modalcadastro a.remember_me').on('click', function(){
-        $('#modalcadastro #senha').parent().hide(400);
-        $('#modalcadastro #senha').removeAttr('required');
-        $('#modalcadastro .modal-body button').html('Renovar senha');
+    $('#loginModal a.remember_me').on('click', function(){
+        $('#loginModal #senha').parent().hide(400);
+        $('#loginModal #senha').removeAttr('required');
+        $('#loginModal .modal-body button').html('Renovar senha');
     });
 
-    $('#modalcadastro').on('hidden.bs.modal', function (e) {
-        $('#modalcadastro .alert').remove();
-        $('#modalcadastro #senha').parent().show();
-        $('#modalcadastro #senha').attr('required', true);
-        $('#modalcadastro .modal-body button').html('Entrar');
+    $('#loginModal').on('hidden.bs.modal', function (e) {
+        $('#loginModal .alert').remove();
+        $('#loginModal #senha').parent().show();
+        $('#loginModal #senha').attr('required', true);
+        $('#loginModal .modal-body button').html('Entrar');
     });
 
     $('.logged a').on('click', function(e){
@@ -506,7 +506,7 @@ jQuery(function($) {
         });
     });
 
-    $('#modalcadastro').submit(function( e ){
+    $('#loginModal').on('submit',function( e ){
         e.preventDefault();
 
         var _this = $(this);
@@ -536,6 +536,20 @@ jQuery(function($) {
             });
         }
     });
+
+    var regModalOriginal = false;
+    if(!regModalOriginal){
+        regModalOriginal = $('#registrationModal').clone().html();
+    }
+
+    $('#registrationModal').on('show.bs.modal', function(e){
+        $('#loginModal').modal('hide');
+    });
+
+    $('#registrationModal').on('hide.bs.modal', function(e){
+        $('#registrationModal').html(regModalOriginal);
+    });
+
 });
 
 var Login = {
