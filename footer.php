@@ -73,14 +73,7 @@
         </div>
     </div>
 </div>
-<div id="registrationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <?php echo do_shortcode("[pd_registration_form]");?>
-        </div>
-    </div>
-</div>
-
+<?php echo do_shortcode("[pd_registration_form]");?>
 <?php wp_footer(); ?>
 
 <script defer="defer" async="async" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
