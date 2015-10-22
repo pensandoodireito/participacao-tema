@@ -1,4 +1,4 @@
-<section class="mt-lg">
+<section class="mt-md">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-7">
