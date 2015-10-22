@@ -1,63 +1,69 @@
 #barra-brasil .brasil-flag {
-    height: 32px;
+  height: 32px;
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    font-family: @font-family-opensans;
-    font-size: @font-size-base;
-    line-height: @line-height-base;
-    color: @text-color;
-    background-color: #fff;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: @font-family-opensans;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: #fff;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//Faz o conteudo ficr 100% de altura
+.conteudo {
+  height: 100%;
+  display: initial;
 }
 
 // Links
 a {
-    color: @link-color-blue;
-    text-decoration: none;
-    &:hover,
-    &:focus {
-        color: @link-hover-color-blue;
-        text-decoration: underline;
-    }
-    &:focus {
-        .tab-focus();
-    }
-    &.nounderline {
-        text-decoration: none!important;
-    }
+  color: @link-color-blue;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: @link-hover-color-blue;
+    text-decoration: underline;
+  }
+  &:focus {
+    .tab-focus();
+  }
+  &.nounderline {
+    text-decoration: none !important;
+  }
 }
 
 // Classes genérias
 // Imagens adaptativas
 .img-adptive {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .img-full {
-    width: 100%;
-    height: auto !important;
+  width: 100%;
+  height: auto !important;
 }
 
 // Classes de alinhamento do wordpress
 .aligncenter {
-    text-align: center;
+  text-align: center;
 }
 
 .alignleft {
-    text-align: left;
+  text-align: left;
 }
 
 .alignright {
-    text-align: right;
+  text-align: right;
 }
 
 // ---------------------------------------------------------------
@@ -65,31 +71,31 @@ a {
 /* Tamanhos de Fontes */
 
 .fontsize-xs {
-    font-size: 8px;
+  font-size: 8px;
 }
 
 .fontsize-sm {
-    font-size: 11px;
+  font-size: 11px;
 }
 
 .fontsize-md {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .fontsize-lg {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .fontsize-xl {
-    font-size: 21px;
+  font-size: 21px;
 }
 
 .fontsize-xxl {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .upper {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 // ---------------------------------------------------------------
@@ -97,27 +103,27 @@ a {
 /* Dividers */
 
 .divider-top {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #c8c8c8;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #c8c8c8;
 }
 
 .divider-right {
-    margin-right: 10px;
-    padding-right: 10px;
-    border-right: 1px solid #c8c8c8;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #c8c8c8;
 }
 
 .divider-bottom {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #c8c8c8;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c8c8c8;
 }
 
 .divider-left {
-    margin-left: 10px;
-    padding-left: 10px;
-    border-left: 1px solid #c8c8c8;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid #c8c8c8;
 }
 
 // ---------------------------------------------------------------
@@ -125,35 +131,35 @@ a {
 /* Cores genéricas, para div inteiras */
 
 .red {
+  color: @text-color-red;
+  &a,
+  a {
     color: @text-color-red;
-    &a,
-    a {
-        color: @text-color-red;
-    }
+  }
 }
 
 .white {
+  color: #fff;
+  &a,
+  a {
     color: #fff;
-    &a,
-    a {
-        color: #fff;
-    }
+  }
 }
 
 .yellow {
+  color: #fff600;
+  &a,
+  a {
     color: #fff600;
-    &a,
-    a {
-        color: #fff600;
-    }
+  }
 }
 
 .blue {
+  color: #3973b1;
+  &a,
+  a {
     color: #3973b1;
-    &a,
-    a {
-        color: #3973b1;
-    }
+  }
 }
 
 // ---------------------------------------------------------------
@@ -161,125 +167,124 @@ a {
 /* Cores genéricas, para textos */
 
 .text-red {
-    color: @red !important;
-    &a,
-    a {
-        color: ;
-    }
+  color: @red !important;
+  &a,
+  a {
+    color:;
+  }
 }
 
 .text-yellow {
-    color: @yellow !important;
-    &a,
-    a {
-        color: @yellow;
-    }
+  color: @yellow !important;
+  &a,
+  a {
+    color: @yellow;
+  }
 }
 
 .text-aqua {
-    color: @aqua !important;
-    &a,
-    a {
-        color: @aqua;
-    }
+  color: @aqua !important;
+  &a,
+  a {
+    color: @aqua;
+  }
 }
 
 .text-blue {
-    color: @blue !important;
-    &a,
-    a {
-        color: @blue;
-    }
+  color: @blue !important;
+  &a,
+  a {
+    color: @blue;
+  }
 }
 
 .text-black {
-    color: @black !important;
-    &a,
-    a {
-        color: @black;
-    }
+  color: @black !important;
+  &a,
+  a {
+    color: @black;
+  }
 }
 
 .text-light-blue {
-    color: @light-blue !important;
-    &a,
-    a {
-        color: @light-blue;
-    }
+  color: @light-blue !important;
+  &a,
+  a {
+    color: @light-blue;
+  }
 }
 
 .text-green {
-    color: @green !important;
-    &a,
-    a {
-        color: @green;
-    }
+  color: @green !important;
+  &a,
+  a {
+    color: @green;
+  }
 }
 
 .text-navy {
-    color: @navy !important;
-    &a,
-    a {
-        color: @navy;
-    }
+  color: @navy !important;
+  &a,
+  a {
+    color: @navy;
+  }
 }
 
 .text-teal {
-    color: @teal !important;
-    &a,
-    a {
-        color: @teal;
-    }
+  color: @teal !important;
+  &a,
+  a {
+    color: @teal;
+  }
 }
 
 .text-olive {
-    color: @olive !important;
-    &a,
-    a {
-        color: @olive;
-    }
+  color: @olive !important;
+  &a,
+  a {
+    color: @olive;
+  }
 }
 
 .text-lime {
-    color: @lime !important;
-    &a,
-    a {
-        color: @lime;
-    }
+  color: @lime !important;
+  &a,
+  a {
+    color: @lime;
+  }
 }
 
 .text-orange {
-    color: @orange !important;
-    &a,
-    a {
-        color: @orange;
-    }
+  color: @orange !important;
+  &a,
+  a {
+    color: @orange;
+  }
 }
 
 .text-fuchsia {
-    color: @fuchsia !important;
-    &a,
-    a {
-        color: @fuchsia;
-    }
+  color: @fuchsia !important;
+  &a,
+  a {
+    color: @fuchsia;
+  }
 }
 
 .text-purple {
-    color: @purple !important;
-    &a,
-    a {
-        color: @purple;
-    }
+  color: @purple !important;
+  &a,
+  a {
+    color: @purple;
+  }
 }
 
 .text-maroon {
-    color: @maroon !important;
-    &a,
-    a {
-        color: @maroon;
-    }
+  color: @maroon !important;
+  &a,
+  a {
+    color: @maroon;
+  }
 }
-
 
 /*
 text-red
@@ -304,241 +309,241 @@ text-maroon
 /* Rolagens */
 
 .rol-vert {
-    display: block;
-    overflow: auto;
-    overflow-x: hidden;
+  display: block;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .rol-hor {
-    display: block;
-    overflow: auto;
-    overflow-y: hidden;
+  display: block;
+  overflow: auto;
+  overflow-y: hidden;
 }
 
 .rol-hor-vert {
-    display: block;
-    overflow: auto;
+  display: block;
+  overflow: auto;
 }
 
 .overflow-hide {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 //  Linhas 
 .line-1 {
-    height: 60px;
+  height: 60px;
 }
 
 .line-2 {
-    height: 110px;
+  height: 110px;
 }
 
 .line-3 {
-    height: 130px;
+  height: 130px;
 }
 
 .line-4 {
-    height: 170px;
+  height: 170px;
 }
 
 .line-5 {
-    height: 230px;
+  height: 230px;
 }
 
 .line-6 {
-    height: 290px;
+  height: 290px;
 }
 
 .line-7 {
-    height: 350px;
+  height: 350px;
 }
 
 .line-8 {
-    height: 410px;
+  height: 410px;
 }
 
 .line-9 {
-    height: 470px;
+  height: 470px;
 }
 
 .line-10 {
-    height: 530px;
+  height: 530px;
 }
 
 .line-11 {
-    height: 590px;
+  height: 590px;
 }
 
 .line-12 {
-    height: 650px;
+  height: 650px;
 }
 
 .line-13 {
-    height: 710px;
+  height: 710px;
 }
 
 .line-14 {
-    height: 770px;
+  height: 770px;
 }
 
 .line-15 {
-    height: 830px;
+  height: 830px;
 }
 
 .line-16 {
-    height: 890px;
+  height: 890px;
 }
 
 .height-full {
-    height: 100%;
-    min-height: 100%;
+  height: 100%;
+  min-height: 100%;
 }
 
 //Força tamanhos
 .width-auto {
-    width: auto;
+  width: auto;
 }
 
 .width-grid-1 {
-    width: 60px;
+  width: 60px;
 }
 
 .width-grid-2 {
-    width: 140px;
+  width: 140px;
 }
 
 .width-grid-3 {
-    width: 220px;
+  width: 220px;
 }
 
 .width-grid-4 {
-    width: 300px;
+  width: 300px;
 }
 
 .width-grid-5 {
-    width: 380px;
+  width: 380px;
 }
 
 .width-grid-6 {
-    width: 460px;
+  width: 460px;
 }
 
 .width-grid-7 {
-    width: 540px;
+  width: 540px;
 }
 
 .width-grid-8 {
-    width: 620px;
+  width: 620px;
 }
 
 .width-grid-9 {
-    width: 700px;
+  width: 700px;
 }
 
 .width-grid-10 {
-    width: 780px;
+  width: 780px;
 }
 
 .width-grid-11 {
-    width: 860px;
+  width: 860px;
 }
 
 .width-grid-12 {
-    width: 940px;
+  width: 940px;
 }
 
 // ---------------------------------------------------------------
 //Cursores
 .cursor-default {
-    &:hover {
-        cursor: default;
-    }
+  &:hover {
+    cursor: default;
+  }
 }
 
 .cursor-pointer {
-    &:hover {
-        cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .cursor-help {
-    &:hover {
-        cursor: help;
-    }
+  &:hover {
+    cursor: help;
+  }
 }
 
 .cursor-text {
-    &:hover {
-        cursor: text;
-    }
+  &:hover {
+    cursor: text;
+  }
 }
 
 .cursor-move {
-    &:hover {
-        cursor: move;
-    }
+  &:hover {
+    cursor: move;
+  }
 }
 
 .cursor-wait {
-    &:hover {
-        cursor: wait;
-    }
+  &:hover {
+    cursor: wait;
+  }
 }
 
 .cursor-progress {
-    &:hover {
-        cursor: progress;
-    }
+  &:hover {
+    cursor: progress;
+  }
 }
 
 .cursor-crosshair {
-    &:hover {
-        cursor: crosshair;
-    }
+  &:hover {
+    cursor: crosshair;
+  }
 }
 
 // Botão back to top: 
 .back-to-top {
-    position: fixed;
-    bottom: 2em;
-    right: 0px;
+  position: fixed;
+  bottom: 2em;
+  right: 0px;
+  text-decoration: none;
+  background-color: rgba(188, 63, 56, 0.8);
+  font-size: 12px;
+  padding: 1em;
+  display: none;
+  cursor: pointer;
+  a {
+    color: #fff;
     text-decoration: none;
-    background-color: rgba(188, 63, 56, 0.8);
-    font-size: 12px;
-    padding: 1em;
-    display: none;
-    cursor: pointer;
-    a {
-        color: #fff;
-        text-decoration: none;
-        &:hover {
-            color: #fff !important;
-        }
-    }
     &:hover {
-        background-color: rgba(188, 63, 56, 1);
+      color: #fff !important;
     }
+  }
+  &:hover {
+    background-color: rgba(188, 63, 56, 1);
+  }
 }
 
 .gradient-mesh {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 26%);
-    border-radius: 0 0 6px 6px;
-    bottom: 0;
-    width: 100%;
-    position: absolute;
-    padding-top: 20%;
-    margin-bottom: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 26%);
+  border-radius: 0 0 6px 6px;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  padding-top: 20%;
+  margin-bottom: 0;
 }
 
 // positions
 .pos-absolute {
-    position: absolute;
+  position: absolute;
 }
 
 .pos-relative {
-    position: relative;
+  position: relative;
 }
 
 .pos-fixed {
-    position: fixed;
+  position: fixed;
 }
