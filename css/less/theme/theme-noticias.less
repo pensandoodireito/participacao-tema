@@ -1,62 +1,204 @@
 @import "../../../participacao-tema/css/less/elements.less";
+
 // Tabs
 // -------------------------
 // Tabs da area de notícias
 .tabs-social {
-    #twitter-widget-0 {
-        width: 100% !important;
-    }
-    .tabs-pd {
-        width: 100%;
-        border-bottom: none;
-        > li {
-            float: left;
-            width: 25%;
-            text-align: center;
-            // Make the list-items overlay the bottom border
-            margin-bottom: -1px;
-            // Actual tabs (as links)
-            > a {
-                line-height: @line-height-base;
-                // border: 1px solid transparent;
-                border-radius: 0;
-                background-color: @color-vermelho-pd;
-                color: #fff;
-                padding: 10px;
-                &:hover {
-                    //border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
-                    background-color: #751119;
-                    color: #fff;
-                }
-            }
-            // Active state, and its :hover to override normal :hover
-            &.active > a {
-                &, &:hover, &:focus {
-                    color: #fff;
-                    background-color: #c52128;
-                    border: 0;
-                    border-bottom-color: transparent;
-                    cursor: default;
-                    color: #fff;
-                }
-            }
+  #twitter-widget-0 {
+    width: 100% !important;
+  }
+  .tabs-pd {
+    width: 100%;
+    border-bottom: none;
+    > li {
+      float: left;
+      width: 25%;
+      text-align: center;
+      // Make the list-items overlay the bottom border
+      margin-bottom: -1px;
+      // Actual tabs (as links)
+      > a {
+        line-height: @line-height-base;
+        // border: 1px solid transparent;
+        border-radius: 0;
+        background-color: @color-vermelho-pd;
+        color: #fff;
+        padding: 10px;
+        &:hover {
+          //border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+          background-color: #751119;
+          color: #fff;
         }
-        .active .tab-arrow {
-            display: block;
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-style: solid;
-            bottom: 0;
-            left: 50%;
-            margin-bottom: -5px;
-            border-width: 5px 5px 0;
-            border-top-color: #c52128;
+      }
+      // Active state, and its :hover to override normal :hover
+      &.active > a {
+        &, &:hover, &:focus {
+          color: #fff;
+          background-color: #c52128;
+          border: 0;
+          border-bottom-color: transparent;
+          cursor: default;
+          color: #fff;
         }
+      }
     }
-    .tab-content {
-        background-color: #fff;
-        margin-top: -8px;
+    .active .tab-arrow {
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      bottom: 0;
+      left: 50%;
+      margin-bottom: -5px;
+      border-width: 5px 5px 0;
+      border-top-color: #c52128;
     }
+  }
+  .tab-content {
+    background-color: #fff;
+    margin-top: -8px;
+  }
+}
+
+.noticias {
+  .not-list {
+    li {
+      border-bottom: 1px dashed #cecece;
+      margin: 0px 0px 10px 0px;
+      padding: 0px 0px 10px 0px;
+    }
+    .not-fill {
+      .clearfix();
+
+      .not-text {
+        .not-titulo {
+          a {
+            font-size: 15px;
+            font-weight: 700;
+            color: @color-vermelho-pd;
+            &:hover {
+              color: @text-color-red;
+            }
+          }
+        }
+        .not-tag {
+          a {
+            font-size: 11px;
+          }
+        }
+      }
+      &.has-image {
+        .not-image {
+          padding-top: 15px;
+          float: left;
+          width: 30%;
+          display: block;
+          @media (max-width: @screen-md) {
+            width: 40%;
+          }
+          @media (max-width: @screen-sm) {
+            width: 100%;
+          }
+        }
+        .not-text {
+          float: left;
+          width: 67%;
+          margin-left: 3%;
+          @media (max-width: @screen-md) {
+            width: 57%;
+          }
+          @media (max-width: @screen-sm) {
+            width: 100%;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+    .not-hat {
+      a {
+        font-family: @font-family-roboto;
+        font-size: 15px;
+        font-weight: 700;
+        color: #bc3f38;
+        &:hover {
+          color: #d35c58;
+        }
+      }
+    }
+  }
+}
+
+.pensando-videos {
+  .panel.panel-default {
+    border: 1px solid #c4c4c4;
+    border-top: 3px solid @color-vermelho-pd;
+    box-shadow: none;
+    border-radius: 3px;
+
+  }
+  header {
+    h2, a {
+      margin: 0px;
+      font-size: 15px;
+      color: @color-vermelho-pd;
+      font-family: @font-family-roboto;
+      font-weight: 700;
+    }
+  }
+  .video-description{
+    h3{
+      a {
+        font-size: 15px;
+        font-weight: 700;
+        color: @color-vermelho-pd;
+        &:hover {
+          color: @text-color-red;
+        }
+      }
+    }
+  }
+}
+
+
+.agenda {
+  .panel.panel-default {
+    border: 1px solid #c4c4c4;
+    box-shadow: none;
+    border-radius: 3px;
+
+  }
+  .panel-heading {
+    padding: 15px !important;
+    border-bottom: 1px solid #c4c4c4 !important;
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(243,243,243,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3f3f3', GradientType=0 );
+    h2 {
+      margin: 0px;
+      font-size: 18px;
+      color: @text-color-red;
+      font-family: @font-family-roboto;
+      font-weight: normal;
+    }
+
+  }
+  .agenda-description{
+    h3{
+      a {
+        font-size: 15px;
+        font-weight: 700;
+        color: @color-vermelho-pd;
+        &:hover {
+          color: @text-color-red;
+        }
+      }
+    }
+  }
 }
