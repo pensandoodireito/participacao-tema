@@ -1,21 +1,15 @@
-<div class="noticias mt-md">
+<section class="mt-lg">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-xs-12">
-				<?php
-				$sticky_posts = display_sticky_news();
-				display_latest_news( $sticky_posts );
-				?>
-				<div class="row text-center">
-					<a href="<?php echo site_url( '/noticias' ); ?>" id="mais-noticias" class="btn btn-danger">
-						Todas as notícias
-					</a>
-				</div>
+			<div class="col-md-7">
+				<section class="noticias noticias-home">
+					<?php $sticky_posts = display_sticky_news(); ?>
+					<?php display_latest_news( $sticky_posts ); ?>
+				</section>
 			</div>
-			<!-- AGENDA -->
-			<div class="col-sm-6 col-xs-12">
-				<?php get_template_part('agenda'); ?>
+			<div class="col-md-5">
+				<?php dynamic_sidebar('barra-lateral') ?>
 			</div>
 		</div>
 	</div>
-</div>
+</section>

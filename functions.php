@@ -771,6 +771,7 @@ function display_sticky_news() {
 	$news = get_sticky_news( 3 );
 	$ids  = array();
 	if ( $news->have_posts() ) {
+        echo '<ul class="not-list list-unstyled destaques">';
 		global $isFirstSticky;
 		$isFirstSticky = true; //usada no template content-sticky
 		while ( $news->have_posts() ) {
@@ -779,6 +780,7 @@ function display_sticky_news() {
 			get_template_part( 'content', 'sticky' );
 			$isFirstSticky = false;
 		}
+        echo '</ul>';
 	}
 
 	return $ids;
@@ -786,19 +788,27 @@ function display_sticky_news() {
 
 function display_latest_news( $ignore = array() ) {
 
-	echo '<div class="row ordinarynews">';
-	$cat_news = get_latest_news( $ignore );
+	$cat_news = get_latest_news( $ignore, 2 );
 
 	foreach ( $cat_news as $cat => $news ) {
 		if ( $news->have_posts() ) {
-			$category = get_category( $cat );
-			echo '<p class="h4 red">' . $category->cat_name . '</p>';
+			$category = get_category( $cat ); ?>
+
+			<ul class="not-list list-unstyled mt-md">
+			<h2 class="not-hat">
+				<a href="<?= get_category_link( $category->term_id ); ?>"  title="<?= esc_attr( sprintf( __( "Veja todas as notícias em %s" ), $category->name ) ) ?>">
+					<?= $category->cat_name; ?>
+				</a>
+			</h2>
+
+			<?php
+
 			while ( $news->have_posts() ) {
 				$news->the_post();
-				get_template_part( 'content', 'archive' );
+				get_template_part( 'content', 'noticias_capa' );
 			}
+			echo '</ul>';
 		}
 	}
 
-	echo '</div>';
 }
