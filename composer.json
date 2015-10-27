@@ -1,21 +1,26 @@
 {
-    "name": "pensandoodireito/participacao-tema",
-    "version": "0.0.1",
-    "type": "wordpress-theme",
-    "description": "Tema para o site Pensando o Direito",
-    "keywords": ["theme", "wordpress", "democracy", "participação"],
-    "homepage": "https://github.com/pensandoodireito/participacao-tema",
-    "license": "GPL-2",
-    "authors": [
-        {
-            "name": "Marco Antonio Konopacki",
-            "email": "marco.konopacki@mj.gov.br",
-            "homepage": "http://participacao.mj.gov.br/",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "composer/installers": "~1.0",
-        "johnpbloch/wordpress": ">=3.8"
+  "name": "pensandoodireito/participacao-tema",
+  "version": "0.0.1",
+  "type": "wordpress-theme",
+  "description": "Tema para o site Pensando o Direito",
+  "keywords": [
+    "theme",
+    "wordpress",
+    "democracy",
+    "participação"
+  ],
+  "homepage": "https://github.com/pensandoodireito/participacao-tema",
+  "license": "GPL-2",
+  "authors": [
+    {
+      "name": "Marco Antonio Konopacki",
+      "email": "marco.konopacki@mj.gov.br",
+      "homepage": "http://participacao.mj.gov.br/",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "composer/installers": "~1.0",
+    "johnpbloch/wordpress": ">=3.8"
+  }
 }
