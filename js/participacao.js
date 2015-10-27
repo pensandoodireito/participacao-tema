@@ -462,7 +462,7 @@ jQuery(function($) {
         }
     });
 
-    $('#form-cadastro form').validator().on('submit', function (e) {
+    var signUpFunc = function (e) {
         var _form = $(this);
         if (!e.isDefaultPrevented()) {
             e.preventDefault();
@@ -477,7 +477,9 @@ jQuery(function($) {
             });
 
         }
-    });
+    };
+
+    $('#form-cadastro form').validator().on('submit', signUpFunc);
 
     // Habilita o tooltip
     $(function() {
@@ -544,10 +546,13 @@ jQuery(function($) {
 
     $('#registrationModal').on('show.bs.modal', function(e){
         $('#loginModal').modal('hide');
+        $(this).find('form').attr('novalidate', true);
+        $(this).find('form button').addClass('disabled');
     });
 
     $('#registrationModal').on('hide.bs.modal', function(e){
-        $('#registrationModal').html(regModalOriginal);
+        $(this).html(regModalOriginal);
+        $(this).find('form').validator().on('submit', signUpFunc);
     });
 
 });
