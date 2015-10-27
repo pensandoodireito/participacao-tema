@@ -1,5 +1,3 @@
-
-
 function sticky_relocate() {
     var window_top = jQuery(window).scrollTop();
     if (jQuery('#fixa-menu-eixo').length > 0) {
@@ -15,7 +13,7 @@ function sticky_relocate() {
 function back_to_top($) {
     var offset = 220;
     var duration = 500;
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > offset) {
             $('.back-to-top').fadeIn(duration);
         } else {
@@ -23,7 +21,7 @@ function back_to_top($) {
         }
     });
 
-    $('.back-to-top').click(function(event) {
+    $('.back-to-top').click(function (event) {
         event.preventDefault();
         $('html, body').animate({
             scrollTop: 0
@@ -37,46 +35,42 @@ jQuery(function ($) {
 });
 
 function carregar_noticias(target, max_num_pages) {
-        // Define o valor padrão se target não estiver definido
-        target = typeof target !== 'undefined' ? target : ".container .ordinarynews";
+    // Define o valor padrão se target não estiver definido
+    target = typeof target !== 'undefined' ? target : ".container .ordinarynews";
 
-        // Redefine o número máximo de páginas se o parâmetro for passado
-        if (typeof max_num_pages !== 'undefined') {
-            participacao.paginasMaximas = max_num_pages;
-        } else {
-            participacao.paginasMaximas;
-        }
+    // Redefine o número máximo de páginas se o parâmetro for passado
+    if (typeof max_num_pages !== 'undefined') {
+        participacao.paginasMaximas = max_num_pages;
+    } else {
+        participacao.paginasMaximas;
+    }
 
-        jQuery(target).append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
+    jQuery(target).append('<div class="col-sm-6 col-xs-12" id="loader-gif">Carregando mais notícias... <img src="' + participacao.ajaxgif + '"/></div>');
 
-        var dataNoticias = "action=participacao_paginacao_infinita&paged="+ participacao.paginaAtual;
+    var dataNoticias = "action=participacao_paginacao_infinita&paged=" + participacao.paginaAtual;
 
-        if (typeof(categoriaAtual) != "undefined" ) {
-            dataNoticias += "&cat="+categoriaAtual;
-        }
+    if (typeof(categoriaAtual) != "undefined") {
+        dataNoticias += "&cat=" + categoriaAtual;
+    }
 
-        jQuery.ajax({
-            url: participacao.ajaxurl,
-            type: 'POST',
-            data: dataNoticias,
-            success: function(html){
-                jQuery('#loader-gif').remove();
-                jQuery(target).append(html);
+    jQuery.ajax({
+        url: participacao.ajaxurl,
+        type: 'POST',
+        data: dataNoticias,
+        success: function (html) {
+            jQuery('#loader-gif').remove();
+            jQuery(target).append(html);
 
-                participacao.paginaAtual++;
+            participacao.paginaAtual++;
 
-                if (participacao.paginaAtual > participacao.paginasMaximas) {
-                    jQuery("#mais-noticias").hide();
-                }
+            if (participacao.paginaAtual > participacao.paginasMaximas) {
+                jQuery("#mais-noticias").hide();
             }
-        });
+        }
+    });
 
     return false;
 }
-
-
-
-
 
 
 // (Ver a possibilidade de colocar em outro arquivo)
@@ -90,27 +84,28 @@ function carregar_noticias(target, max_num_pages) {
  * Version 1.1.2
  * Licensed under the MIT license.
  */
-(function($) {"use strict";
+(function ($) {
+    "use strict";
 
-    var Filestyle = function(element, options) {
+    var Filestyle = function (element, options) {
         this.options = options;
         this.$elementFilestyle = [];
         this.$element = $(element);
     };
 
     Filestyle.prototype = {
-        clear : function() {
+        clear: function () {
             this.$element.val('');
             this.$elementFilestyle.find(':text').val('');
             this.$elementFilestyle.find('.badge').remove();
         },
 
-        destroy : function() {
+        destroy: function () {
             this.$element.removeAttr('style').removeData('filestyle').val('');
             this.$elementFilestyle.remove();
         },
 
-        disabled : function(value) {
+        disabled: function (value) {
             if (value === true) {
                 if (!this.options.disabled) {
                     this.$element.attr('disabled', 'true');
@@ -128,7 +123,7 @@ function carregar_noticias(target, max_num_pages) {
             }
         },
 
-        buttonBefore : function(value) {
+        buttonBefore: function (value) {
             if (value === true) {
                 if (!this.options.buttonBefore) {
                     this.options.buttonBefore = true;
@@ -152,7 +147,7 @@ function carregar_noticias(target, max_num_pages) {
             }
         },
 
-        icon : function(value) {
+        icon: function (value) {
             if (value === true) {
                 if (!this.options.icon) {
                     this.options.icon = true;
@@ -168,7 +163,7 @@ function carregar_noticias(target, max_num_pages) {
             }
         },
 
-        input : function(value) {
+        input: function (value) {
             if (value === true) {
                 if (!this.options.input) {
                     this.options.input = true;
@@ -200,7 +195,7 @@ function carregar_noticias(target, max_num_pages) {
             }
         },
 
-        size : function(value) {
+        size: function (value) {
             if (value !== undefined) {
                 var btn = this.$elementFilestyle.find('label'), input = this.$elementFilestyle.find('input');
 
@@ -215,7 +210,7 @@ function carregar_noticias(target, max_num_pages) {
             }
         },
 
-        buttonText : function(value) {
+        buttonText: function (value) {
             if (value !== undefined) {
                 this.options.buttonText = value;
                 this.$elementFilestyle.find('label span').html(this.options.buttonText);
@@ -224,28 +219,28 @@ function carregar_noticias(target, max_num_pages) {
             }
         },
 
-        buttonName : function(value) {
+        buttonName: function (value) {
             if (value !== undefined) {
                 this.options.buttonName = value;
                 this.$elementFilestyle.find('label').attr({
-                    'class' : 'btn ' + this.options.buttonName
+                    'class': 'btn ' + this.options.buttonName
                 });
             } else {
                 return this.options.buttonName;
             }
         },
 
-        iconName : function(value) {
+        iconName: function (value) {
             if (value !== undefined) {
                 this.$elementFilestyle.find('.fa').attr({
-                    'class' : '.fa ' + this.options.iconName
+                    'class': '.fa ' + this.options.iconName
                 });
             } else {
                 return this.options.iconName;
             }
         },
 
-        htmlIcon : function() {
+        htmlIcon: function () {
             if (this.options.icon) {
                 return '<span class="fa ' + this.options.iconName + '"></span> ';
             } else {
@@ -253,7 +248,7 @@ function carregar_noticias(target, max_num_pages) {
             }
         },
 
-        htmlInput : function() {
+        htmlInput: function () {
             if (this.options.input) {
                 return '<input type="text" class="form-control ' + (this.options.size == 'nr' ? '' : 'input-' + this.options.size) + '" disabled> ';
             } else {
@@ -263,11 +258,11 @@ function carregar_noticias(target, max_num_pages) {
 
         // puts the name of the input files
         // return files
-        pushNameFiles : function() {
+        pushNameFiles: function () {
             var content = '', files = [];
             if (this.$element[0].files === undefined) {
                 files[0] = {
-                    'name' : this.$element[0] && this.$element[0].value
+                    'name': this.$element[0] && this.$element[0].value
                 };
             } else {
                 files = this.$element[0].files;
@@ -286,7 +281,7 @@ function carregar_noticias(target, max_num_pages) {
             return files;
         },
 
-        constructor : function() {
+        constructor: function () {
             var _self = this,
                 html = '',
                 id = _self.$element.attr('id'),
@@ -297,22 +292,22 @@ function carregar_noticias(target, max_num_pages) {
             if (id === '' || !id) {
                 id = 'filestyle-' + $('.bootstrap-filestyle').length;
                 _self.$element.attr({
-                    'id' : id
+                    'id': id
                 });
             }
 
             btn = '<span class="group-span-filestyle ' + (_self.options.input ? 'input-group-btn' : '') + '">' +
-                  '<label for="' + id + '" class="btn ' + _self.options.buttonName + ' ' +
-                    (_self.options.size == 'nr' ? '' : 'btn-' + _self.options.size) + '" ' +
-                    (_self.options.disabled ? 'disabled="true"' : '') + '>' +
-                        _self.htmlIcon() + _self.options.buttonText +
-                  '</label>' +
-                  '</span>';
+                '<label for="' + id + '" class="btn ' + _self.options.buttonName + ' ' +
+                (_self.options.size == 'nr' ? '' : 'btn-' + _self.options.size) + '" ' +
+                (_self.options.disabled ? 'disabled="true"' : '') + '>' +
+                _self.htmlIcon() + _self.options.buttonText +
+                '</label>' +
+                '</span>';
 
             html = _self.options.buttonBefore ? btn + _self.htmlInput() : _self.htmlInput() + btn;
 
             _self.$elementFilestyle = $('<div class="bootstrap-filestyle input-group">' + html + '</div>');
-            _self.$elementFilestyle.find('.group-span-filestyle').attr('tabindex', "0").keypress(function(e) {
+            _self.$elementFilestyle.find('.group-span-filestyle').attr('tabindex', "0").keypress(function (e) {
                 if (e.keyCode === 13 || e.charCode === 32) {
                     _self.$elementFilestyle.find('label').click();
                     return false;
@@ -321,8 +316,8 @@ function carregar_noticias(target, max_num_pages) {
 
             // hidding input file and add filestyle
             _self.$element.css({
-                'position' : 'absolute',
-                'clip' : 'rect(0px 0px 0px 0px)' // using 0px for work in IE8
+                'position': 'absolute',
+                'clip': 'rect(0px 0px 0px 0px)' // using 0px for work in IE8
             }).attr('tabindex', "-1").after(_self.$elementFilestyle);
 
             if (_self.options.disabled) {
@@ -330,7 +325,7 @@ function carregar_noticias(target, max_num_pages) {
             }
 
             // Getting input file value
-            _self.$element.change(function() {
+            _self.$element.change(function () {
                 var files = _self.pushNameFiles();
 
                 if (_self.options.input == false && _self.options.badge) {
@@ -349,7 +344,7 @@ function carregar_noticias(target, max_num_pages) {
             // Check if browser is Firefox
             if (window.navigator.userAgent.search(/firefox/i) > -1) {
                 // Simulating choose file for firefox
-                _self.$elementFilestyle.find('label').click(function() {
+                _self.$elementFilestyle.find('label').click(function () {
                     _self.$element.click();
                     return false;
                 });
@@ -359,8 +354,8 @@ function carregar_noticias(target, max_num_pages) {
 
     var old = $.fn.filestyle;
 
-    $.fn.filestyle = function(option, value) {
-        var get = '', element = this.each(function() {
+    $.fn.filestyle = function (option, value) {
+        var get = '', element = this.each(function () {
             if ($(this).attr('type') === 'file') {
                 var $this = $(this), data = $this.data('filestyle'), options = $.extend({}, $.fn.filestyle.defaults, option, typeof option === 'object' && option);
 
@@ -369,13 +364,13 @@ function carregar_noticias(target, max_num_pages) {
                     data.constructor();
                 }
 
-                if ( typeof option === 'string') {
+                if (typeof option === 'string') {
                     get = data[option](value);
                 }
             }
         });
 
-        if ( typeof get !== undefined) {
+        if (typeof get !== undefined) {
             return get;
         } else {
             return element;
@@ -383,36 +378,36 @@ function carregar_noticias(target, max_num_pages) {
     };
 
     $.fn.filestyle.defaults = {
-        'buttonText' : 'Choose file',
-        'iconName' : 'fa fa-folder-open',
-        'buttonName' : 'btn-default',
-        'size' : 'nr',
-        'input' : true,
-        'badge' : true,
-        'icon' : true,
-        'buttonBefore' : false,
-        'disabled' : false
+        'buttonText': 'Choose file',
+        'iconName': 'fa fa-folder-open',
+        'buttonName': 'btn-default',
+        'size': 'nr',
+        'input': true,
+        'badge': true,
+        'icon': true,
+        'buttonBefore': false,
+        'disabled': false
     };
 
-    $.fn.filestyle.noConflict = function() {
+    $.fn.filestyle.noConflict = function () {
         $.fn.filestyle = old;
         return this;
     };
 
     // Data attributes register
-    $(function() {
-        $('.filestyle').each(function() {
+    $(function () {
+        $('.filestyle').each(function () {
             var $this = $(this), options = {
 
-                'input' : $this.attr('data-input') === 'false' ? false : true,
-                'icon' : $this.attr('data-icon') === 'false' ? false : true,
-                'buttonBefore' : $this.attr('data-buttonBefore') === 'true' ? true : false,
-                'disabled' : $this.attr('data-disabled') === 'true' ? true : false,
-                'size' : $this.attr('data-size'),
-                'buttonText' : $this.attr('data-buttonText'),
-                'buttonName' : $this.attr('data-buttonName'),
-                'iconName' : $this.attr('data-iconName'),
-                'badge' : $this.attr('data-badge') === 'false' ? false : true
+                'input': $this.attr('data-input') === 'false' ? false : true,
+                'icon': $this.attr('data-icon') === 'false' ? false : true,
+                'buttonBefore': $this.attr('data-buttonBefore') === 'true' ? true : false,
+                'disabled': $this.attr('data-disabled') === 'true' ? true : false,
+                'size': $this.attr('data-size'),
+                'buttonText': $this.attr('data-buttonText'),
+                'buttonName': $this.attr('data-buttonName'),
+                'iconName': $this.attr('data-iconName'),
+                'badge': $this.attr('data-badge') === 'false' ? false : true
             };
 
             $this.filestyle(options);
@@ -424,20 +419,18 @@ function carregar_noticias(target, max_num_pages) {
 jQuery(":file").filestyle({buttonBefore: true, buttonText: "Selecionar arquivo"});
 
 
-
-
 // Submenu
-jQuery(document).ready(function(){
-    jQuery("#menu-secundario li").hover(function(){
-            jQuery(this).find('ul:first').css({visibility: "visible",display: "none"}).show(200);
-            },function(){
+jQuery(document).ready(function () {
+        jQuery("#menu-secundario li").hover(function () {
+            jQuery(this).find('ul:first').css({visibility: "visible", display: "none"}).show(200);
+        }, function () {
             jQuery(this).find('ul:first').css({visibility: "hidden"}).hide(200);
-            });
+        });
     }
 );
 
 // torna o scroll na página suave, apenas usando o a classe .smoothscroll
-jQuery(function($) {
+jQuery(function ($) {
 
     var msgSucesso =
         $('<div />').addClass('panel-body bg-success pt-lg text-center')
@@ -452,7 +445,7 @@ jQuery(function($) {
             .append($('<p />').addClass('mt-md h4').append($('<strong />').html('Ocorreu um erro durante o seu cadastro.')))
             .append($('<p />').append('Tente novamente em alguns instantes'));
 
-    $('.smoothscroll').on('click', function(event) {
+    $('.smoothscroll').on('click', function (event) {
         var target = $($(this).attr('href'));
         if (target.length) {
             event.preventDefault();
@@ -466,13 +459,13 @@ jQuery(function($) {
         var _form = $(this);
         if (!e.isDefaultPrevented()) {
             e.preventDefault();
-            $.post('/wp-admin/admin-ajax.php?action=signup_ajax', $(this).serialize(),function( jsonRetorno ){
-                if(jsonRetorno.success){
+            $.post('/wp-admin/admin-ajax.php?action=signup_ajax', $(this).serialize(), function (jsonRetorno) {
+                if (jsonRetorno.success) {
                     _form.parent().parent().parent().html(msgSucesso);
-                }else{
+                } else {
                     _form.parent().parent().parent().html(msgErro);
                 }
-            }, 'json').fail(function(){
+            }, 'json').fail(function () {
                 _form.parent().parent().parent().html(msgErro);
             });
 
@@ -482,11 +475,11 @@ jQuery(function($) {
     $('#form-cadastro form').validator().on('submit', signUpFunc);
 
     // Habilita o tooltip
-    $(function() {
+    $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
-    $('#loginModal a.remember_me').on('click', function(){
+    $('#loginModal a.remember_me').on('click', function () {
         $('#loginModal #senha').parent().hide(400);
         $('#loginModal #senha').removeAttr('required');
         $('#loginModal .modal-body button').html('Renovar senha');
@@ -499,16 +492,16 @@ jQuery(function($) {
         $('#loginModal .modal-body button').html('Entrar');
     });
 
-    $('.logged a').on('click', function(e){
+    $('.logged a').on('click', function (e) {
         e.preventDefault();
-        Login.logout(function( retorno ){
+        Login.logout(function (retorno) {
             $('.unlogged').show();
             $('.logged').hide();
             $('body').trigger('user_logged_out');
         });
     });
 
-    $('#loginModal').on('submit',function( e ){
+    $('#loginModal').on('submit', function (e) {
         e.preventDefault();
 
         var _this = $(this);
@@ -516,41 +509,40 @@ jQuery(function($) {
         var usuario = _this.find('#username').val();
         var senha = _this.find('#senha').val();
 
-        if(_this.find('.modal-body button').html()=='Renovar senha')
-        {
+        if (_this.find('.modal-body button').html() == 'Renovar senha') {
             Login.remember();
-            setTimeout(function(){
+            setTimeout(function () {
                 _this.modal('toggle');
             }, 3000);
-        }else{
-            Login.auth(usuario, senha, function( objeto ){
-                 if(objeto){
-                     _this.modal('toggle');
-                     $('.logged').show(300);
-                     $('body').trigger('user_logged_in', objeto);
-                     $('.unlogged').hide();
-                     $('.logged .user-display-name').html(objeto.display_name);
-                 }else{
+        } else {
+            Login.auth(usuario, senha, function (objeto) {
+                if (objeto) {
+                    _this.modal('toggle');
+                    $('.logged').show(300);
+                    $('body').trigger('user_logged_in', objeto);
+                    $('.unlogged').hide();
+                    $('.logged .user-display-name').html(objeto.display_name);
+                } else {
                     var modalBody = _this.find('.modal-body');
-                     modalBody.find('.alert').remove();
-                     modalBody.prepend($('<div />').addClass('alert alert-danger').attr('role','alert').html('Usuário ou senha inválidos!'));
-                 }
+                    modalBody.find('.alert').remove();
+                    modalBody.prepend($('<div />').addClass('alert alert-danger').attr('role', 'alert').html('Usuário ou senha inválidos!'));
+                }
             });
         }
     });
 
     var regModalOriginal = false;
-    if(!regModalOriginal){
+    if (!regModalOriginal) {
         regModalOriginal = $('#registrationModal').clone().html();
     }
 
-    $('#registrationModal').on('show.bs.modal', function(e){
+    $('#registrationModal').on('show.bs.modal', function (e) {
         $('#loginModal').modal('hide');
         $(this).find('form').attr('novalidate', true);
         $(this).find('form button').addClass('disabled');
     });
 
-    $('#registrationModal').on('hide.bs.modal', function(e){
+    $('#registrationModal').on('hide.bs.modal', function (e) {
         $(this).html(regModalOriginal);
         $(this).find('form').validator().on('submit', signUpFunc);
     });
@@ -558,17 +550,17 @@ jQuery(function($) {
 });
 
 var Login = {
-    auth : function (username, password, handler){
+    auth: function (username, password, handler) {
         jQuery.post('/wp-admin/admin-ajax.php',
-            {"action":"login_ajax_request","username":username,"password":password},
-            function( objeto ){
+            {"action": "login_ajax_request", "username": username, "password": password},
+            function (objeto) {
                 return handler(objeto);
             }, 'json');
     },
-    remember : function(username){
-        return jQuery.post('/wp-login.php',{'action':'lostpassword','user_login':username});
+    remember: function (username) {
+        return jQuery.post('/wp-login.php', {'action': 'lostpassword', 'user_login': username});
     },
-    logout : function(handler){
-        return jQuery.get('/wp-admin/admin-ajax.php',{'action':'logout_ajax_request'},handler);
+    logout: function (handler) {
+        return jQuery.get('/wp-admin/admin-ajax.php', {'action': 'logout_ajax_request'}, handler);
     }
 };

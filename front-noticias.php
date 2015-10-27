@@ -8,7 +8,7 @@
 				</section>
 			</div>
 			<div class="col-md-5">
-				<?php dynamic_sidebar('barra-lateral') ?>
+				<?php dynamic_sidebar( 'barra-lateral' ) ?>
 			</div>
 		</div>
 	</div>
