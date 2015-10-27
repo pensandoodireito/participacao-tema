@@ -6,13 +6,12 @@
         </div>
         <?php else: $col_size = 'col-xs-12'; endif;?>
         <div class="<?php echo $col_size;?> pl-0">
-            <?php if(!has_post_thumbnail()): ?><small><?php the_time('d \d\e F \d\e Y');?></small><?php endif;?>
             <p class="h6 red mt-0">
                 <strong>
                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </strong>
             </p>
-            <?php if(has_post_thumbnail()):?> <small><?php the_time('d \d\e F \d\e Y');?></small><?php endif;?> |
+            <small><?php the_time('d \d\e F \d\e Y');?></small> |
             <small><?php
                 $categories = get_the_category(get_the_ID());
                 $separator = ' | ';

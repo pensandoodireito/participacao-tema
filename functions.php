@@ -455,8 +455,8 @@ function add_description_to_menu($item_output, $item, $depth, $args) {
     if ($args->theme_location == 'menu-primario') {
         $item_output = '<div class="navegacao-destaque-content">';
         $item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->title));
-        //Ocultando o texto do menu: 
-        //$item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description)); 
+        //Ocultando o texto do menu:
+        //$item_output .= sprintf('<p><a href="%s">%s</a></p>', esc_html($item->url), esc_html($item->description));
         $item_output .= '</div>';
     }
 
@@ -711,3 +711,104 @@ function participacao_create_pages() {
 // Chama a função apenas quando há troca de tema
 //   fundamentalmente quando o tema é ativado (e também desativado)
 add_action('after_switch_theme', 'participacao_create_pages');
+
+
+function get_sticky_news( $max = 1 ) {
+// Captura o último sticky post se não o ultimo post qualquer
+    $args        = array(
+        'posts_per_page'      => $max,
+        'post__in'            => get_option( 'sticky_posts' ),
+        'ignore_sticky_posts' => 1
+    );
+    $sticky_news = new WP_Query( $args );
+
+    return $sticky_news;
+}
+
+function get_latest_categories($ignore=array()) {
+	$posts = wp_get_recent_posts(
+		array(
+			'exclude'     => $ignore,
+			'post_status' => 'publish'
+		)
+	);
+
+	$categories = array();
+	foreach ( $posts as $post ) {
+		$postID = $post["ID"];
+		$cat    = get_the_category( $post["ID"] );
+		if ( $cat && ! in_array( $cat[0]->term_id, $categories ) ) {
+			$categories[] = $cat[0]->term_id;
+		}
+		$ignore[] = $postID;
+	}
+
+	return array( $categories, $ignore );
+}
+
+function get_latest_news( $ignore = array(), $max_categories = 3, $max_news_per_category = 3 ) {
+	$categories = array();
+	$ignoreCat  = $ignore;
+	while ( count( $categories ) < $max_categories ) {
+		list( $categories, $ignoreCat ) = get_latest_categories( $ignoreCat );
+	}
+
+	$categories = array_slice( $categories, 0, $max_categories );
+	foreach ( $categories as $category ) {
+		$args = array(
+			'posts_per_page' => $max_news_per_category,
+			'cat'            => $category,
+			'post__not_in'   => $ignore,
+		);
+
+		$news[ $category ] = new WP_Query( $args );
+	}
+
+	return $news;
+}
+
+function display_sticky_news() {
+	$news = get_sticky_news( 3 );
+	$ids  = array();
+	if ( $news->have_posts() ) {
+        echo '<ul class="not-list list-unstyled destaques">';
+		global $isFirstSticky;
+		$isFirstSticky = true; //usada no template content-sticky
+		while ( $news->have_posts() ) {
+			$news->the_post();
+			$ids[] = get_the_ID();
+			get_template_part( 'content', 'sticky' );
+			$isFirstSticky = false;
+		}
+        echo '</ul>';
+	}
+
+	return $ids;
+}
+
+function display_latest_news( $ignore = array() ) {
+
+	$cat_news = get_latest_news( $ignore, 2 );
+
+	foreach ( $cat_news as $cat => $news ) {
+		if ( $news->have_posts() ) {
+			$category = get_category( $cat ); ?>
+
+			<ul class="not-list list-unstyled mt-md">
+			<h2 class="not-hat">
+				<a href="<?= get_category_link( $category->term_id ); ?>"  title="<?= esc_attr( sprintf( __( "Veja todas as notícias em %s" ), $category->name ) ) ?>">
+					<?= $category->cat_name; ?>
+				</a>
+			</h2>
+
+			<?php
+
+			while ( $news->have_posts() ) {
+				$news->the_post();
+				get_template_part( 'content', 'noticias_capa' );
+			}
+			echo '</ul>';
+		}
+	}
+
+}
