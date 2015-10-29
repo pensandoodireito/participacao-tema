@@ -1,6 +1,6 @@
 <div class="col-md-4">
-    <?php if ( is_active_sidebar( 'sidebar_widgets' ) ) : ?>
-        <?php dynamic_sidebar( 'sidebar_widgets' ); ?>
+    <?php if ( is_active_sidebar( 'barra-lateral-interna' ) ) : ?>
+        <?php dynamic_sidebar( 'barra-lateral-interna' ); ?>
     <?php endif; ?>
     <div class="panel panel-default">
         <div class="panel-heading">

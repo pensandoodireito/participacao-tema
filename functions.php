@@ -812,3 +812,17 @@ function display_latest_news( $ignore = array() ) {
 	}
 
 }
+
+function participacao_widgets_init() {
+    register_sidebar( array(
+        'name'          => 'Barra Lateral Interna',
+        'id'            => 'barra-lateral-interna',
+        'description'   => 'Itens a serem apresentados na barra lateral nas páginas internas',
+        'before_widget' => '<div id="%1$s" class="widget %2$s panel panel-default">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<div class="panel-heading"><h4 class="red font-roboto">',
+        'after_title'   => '</h2></div>',
+    ) );
+}
+
+add_action( 'widgets_init', 'participacao_widgets_init' );
