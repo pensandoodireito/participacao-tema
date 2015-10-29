@@ -200,6 +200,29 @@ function participacao_settings_init(  ) {
         'participacao_pluginPage_section'
     );
 
+    add_settings_field(
+        'participacao_max_sticky_news',
+        'Quantidade máxima de notícias de destaque',
+        'participacao_max_sticky_news_render',
+        'pluginPage',
+        'participacao_pluginPage_section'
+    );
+
+    add_settings_field(
+        'participacao_max_categories_news',
+        'Quantidade máxima de categorias de notícias a serem exibidas',
+        'participacao_max_categories_news_render',
+        'pluginPage',
+        'participacao_pluginPage_section'
+    );
+
+    add_settings_field(
+        'participacao_max_news_per_category',
+        'Quantidade máxima de notícias a serem exibidas para cada categoria',
+        'participacao_max_news_per_category_render',
+        'pluginPage',
+        'participacao_pluginPage_section'
+    );
 
 }
 
@@ -273,8 +296,32 @@ function participacao_diaspora_render(  ) {
     <textarea cols='40' rows='5' name='participacao_settings[participacao_diaspora_embed]'>
         <?php echo $options['participacao_diaspora_embed']; ?>
     </textarea>
-<?php
+    <?php
 
+}
+
+function participacao_max_sticky_news_render() { ?>
+	<input type="text" name='participacao_settings[participacao_max_sticky_news]'
+	       value="<?php echo filter_int_option( 'participacao_max_sticky_news' ); ?>">
+	<?php
+}
+
+function participacao_max_categories_news_render() { ?>
+	<input type="text" name='participacao_settings[participacao_max_categories_news]'
+	       value="<?php echo filter_int_option( 'participacao_max_categories_news' ) ?>">
+	<?php
+}
+
+function participacao_max_news_per_category_render() { ?>
+	<input type="text" name='participacao_settings[participacao_max_news_per_category]'
+	       value="<?php echo filter_int_option( 'participacao_max_news_per_category' ); ?>">
+	<?php
+}
+
+function filter_int_option( $setting, $default = 3 ) {
+	$options = get_option( 'participacao_settings' );
+
+	return isset( $options[ $setting ] ) && is_numeric( $options[ $setting ] ) ? (int) $options[ $setting ] : $default;
 }
 
 function participacao_options_page(  ) {
@@ -768,10 +815,10 @@ function get_latest_news( $ignore = array(), $max_categories = 3, $max_news_per_
 }
 
 function display_sticky_news() {
-	$news = get_sticky_news( 3 );
+	$news = get_sticky_news( filter_int_option( 'participacao_max_sticky_news' ) );
 	$ids  = array();
 	if ( $news->have_posts() ) {
-        echo '<ul class="not-list list-unstyled destaques">';
+		echo '<ul class="not-list list-unstyled destaques">';
 		global $isFirstSticky;
 		$isFirstSticky = true; //usada no template content-sticky
 		while ( $news->have_posts() ) {
@@ -780,15 +827,17 @@ function display_sticky_news() {
 			get_template_part( 'content', 'sticky' );
 			$isFirstSticky = false;
 		}
-        echo '</ul>';
+		echo '</ul>';
 	}
 
 	return $ids;
 }
 
 function display_latest_news( $ignore = array() ) {
+	$max_categories        = filter_int_option( 'participacao_max_categories_news' );
+	$max_news_per_category = filter_int_option( 'participacao_max_news_per_category' );
 
-	$cat_news = get_latest_news( $ignore, 2 );
+	$cat_news = get_latest_news( $ignore, $max_categories, $max_news_per_category );
 
 	foreach ( $cat_news as $cat => $news ) {
 		if ( $news->have_posts() ) {
@@ -796,7 +845,8 @@ function display_latest_news( $ignore = array() ) {
 
 			<ul class="not-list list-unstyled mt-md">
 			<h2 class="not-hat">
-				<a href="<?= get_category_link( $category->term_id ); ?>"  title="<?= esc_attr( sprintf( __( "Veja todas as notícias em %s" ), $category->name ) ) ?>">
+				<a href="<?= get_category_link( $category->term_id ); ?>"
+				   title="<?= esc_attr( sprintf( __( "Veja todas as notícias em %s" ), $category->name ) ) ?>">
 					<?= $category->cat_name; ?>
 				</a>
 			</h2>
@@ -810,5 +860,4 @@ function display_latest_news( $ignore = array() ) {
 			echo '</ul>';
 		}
 	}
-
 }
