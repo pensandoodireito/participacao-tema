@@ -810,5 +810,11 @@ function display_latest_news( $ignore = array() ) {
 			echo '</ul>';
 		}
 	}
-
 }
+
+function participacao_load_widgets() {
+    require_once get_template_directory() . '/social_tabs_widget-class.php';
+    register_widget( 'social_tabs_widget' );
+}
+
+add_action( 'widgets_init', 'participacao_load_widgets' );
