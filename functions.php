@@ -794,8 +794,14 @@ function get_latest_categories($ignore=array()) {
 }
 
 function get_latest_news( $ignore = array(), $max_categories = 3, $max_news_per_category = 3 ) {
-	$categories = array();
-	$ignoreCat  = $ignore;
+	$categories    = array();
+	$ignoreCat     = $ignore;
+	$allCategories = get_categories();
+
+	if ( count( $allCategories ) < $max_categories ) {
+		$max_categories = count( $allCategories );
+	}
+	
 	while ( count( $categories ) < $max_categories ) {
 		list( $categories, $ignoreCat ) = get_latest_categories( $ignoreCat );
 	}
