@@ -15,7 +15,7 @@ class Mais_Noticias extends WP_Widget {
 		$mais_noticias = new WP_Query(
 			array(
 				'post_type' => array('post'),
-				'posts_per_page' => $instance['quantidade'],
+				'posts_per_page' => $instance['quantidade']  - 1,
 				'post__not_in' => array(get_the_ID())
 			)
 		);
