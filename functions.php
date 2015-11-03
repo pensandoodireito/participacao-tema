@@ -835,6 +835,9 @@ function participacao_widgets_init() {
 
 	require_once "class-mais-noticias-widget.php";
     register_widget('Mais_Noticias');
+
+	require_once 'class-video-widget.php';
+	register_widget( 'Video_Widget' );
 }
 
 add_action( 'widgets_init', 'participacao_widgets_init' );
