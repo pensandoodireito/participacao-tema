@@ -832,6 +832,9 @@ function participacao_widgets_init() {
         'before_title'  => '<div class="panel-heading"><h4 class="red font-roboto">',
         'after_title'   => '</h4></div>',
     ) );
+
+	require_once "class-mais-noticias-widget.php";
+    register_widget('Mais_Noticias');
 }
 
 add_action( 'widgets_init', 'participacao_widgets_init' );
