@@ -3,6 +3,8 @@
 /**
  * http://www.wpbeginner.com/wp-themes/how-to-add-dynamic-widget-ready-sidebars-in-wordpress/
  */
+
+require_once "class/simple_html_dom.php";
 class Video_Widget extends WP_Widget {
 
 	function __construct() {
@@ -17,45 +19,59 @@ class Video_Widget extends WP_Widget {
 		);
 	}
 
+	private function get_embed_content( $content ){
+		$dom = str_get_html( $content );
+		if($dom->find('iframe')){
+			foreach($dom->find('iframe') as $iframe){
+				if(strpos($iframe->src, 'youtube.com') !== false){
+					return $iframe->src;
+				}
+			}
+		}
+		return false;
+	}
+
 	// Creating widget front-end
 	// This is where the action happens
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance['title'] );
 		// before and after widget arguments are defined by themes
+		$sticky = get_option( 'sticky_posts' );
+		//$posts  = get_posts('numberposts=1&orderby=post_date&order=DESC&post_format=post-format-video');
 
 		$params    = array(
-			'post_type'      => array( 'video' ),
-			'pagination'     => false,
-			'posts_per_page' => '1',
-			'order'          => 'DESC',
-			'meta_query'     => array(
+			'pagination'             => false,
+			'posts_per_page'         => '1',
+			'posts_per_archive_page' => '1',
+			'post__in'  => $sticky,
+			'post_type'=> 'post',
+			'post_status' => 'publish',
+			'tax_query' => array(
 				array(
-					'key'     => 'video_destaque',
-					'value'   => '1',
-					'compare' => '=',
-				),
+					'taxonomy' => 'post_format',
+					'field' => 'slug',
+					'terms' => array( 'post-format-video' )
+				)
 			)
 		);
 		$the_query = new WP_Query( $params );
 
-		if ( $the_query->have_posts() ) :
-			while ( $the_query->have_posts() ) :
+		if ( $the_query->have_posts() && isset($sticky[0])) :
 				$the_query->the_post();
-				$youtube_url = get_post_meta( get_the_ID(), 'video_youtube_url' );
-				$url_params  = parse_url( $youtube_url[0] );
-				parse_str( $url_params['query'] );
+				$embed = $this->get_embed_content(get_post(get_the_ID())->post_content);
+			if($embed):
 				?>
 				<section class="pensando-videos">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<header><h2><a href="/videos"><?php echo $title; ?></a></h2></header>
+							<header><h2><?php echo $title; ?></h2></header>
 							<section class="embed-responsive embed-responsive-16by9 mt-sm">
-								<iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo $v; ?>"
+								<iframe width="100%" height="100%" src="<?php echo $embed; ?>"
 								        frameborder="0" allowfullscreen>
 								</iframe>
 							</section>
 							<section class="video-description">
-								<h3><a href="<?php the_guid(); ?>"><?php the_title(); ?></a></h3>
+								<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
 								<p><?php the_excerpt(); ?></p>
 
@@ -66,8 +82,8 @@ class Video_Widget extends WP_Widget {
 						</div>
 					</div>
 				</section>
-			<?php endwhile;
-		//end of the loop
+			<?php
+			endif;
 		endif;
 	}
 
