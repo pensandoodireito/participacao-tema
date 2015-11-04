@@ -901,22 +901,24 @@ function participacao_load_widgets() {
 		'after_title'   => '</h4></div>',
 	) );
 
-    register_sidebar( array(
-        'name'          => 'Barra Lateral Interna',
-        'id'            => 'barra-lateral-interna',
-        'description'   => 'Itens a serem apresentados na barra lateral nas páginas internas',
-        'before_widget' => '<div class="panel panel-default">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<div class="panel-heading"><h4 class="red font-roboto">',
-        'after_title'   => '</h4></div>',
-    ) );
+	register_sidebar( array(
+		'name'          => 'Barra Lateral Interna',
+		'id'            => 'barra-lateral-interna',
+		'description'   => 'Itens a serem apresentados na barra lateral nas páginas internas',
+		'before_widget' => '<div class="panel panel-default">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<div class="panel-heading"><h4 class="red font-roboto">',
+		'after_title'   => '</h4></div>',
+	) );
 
-	if(!class_exists('Mais_Noticias'))
-	  require_once "class-mais-noticias-widget.php";
-    register_widget('Mais_Noticias');
+	if ( ! class_exists( 'Mais_Noticias' ) ) {
+		require_once "class-mais-noticias-widget.php";
+	}
+	register_widget( 'Mais_Noticias' );
 
-	if(!class_exists('Video_Widget'))
-	  require_once 'class-video-widget.php';
+	if ( ! class_exists( 'Video_Widget' ) ) {
+		require_once 'class-video-widget.php';
+	}
 	register_widget( 'Video_Widget' );
 }
 

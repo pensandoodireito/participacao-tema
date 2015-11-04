@@ -4,14 +4,15 @@
  * http://www.wpbeginner.com/wp-themes/how-to-add-dynamic-widget-ready-sidebars-in-wordpress/
  */
 
-if(!class_exists('simple_html_dom_node'))
-require_once "class/simple_html_dom.php";
+if ( ! class_exists( 'simple_html_dom_node' ) ) {
+	require_once "class/simple_html_dom.php";
+}
 
 class Video_Widget extends WP_Widget {
 
 	function __construct() {
 		parent::__construct(
-			// Base ID of your widget
+		// Base ID of your widget
 			'video_widget',
 			// Widget name will appear in UI
 			__( 'Vídeo', 'wpb_widget_domain' ),
@@ -21,20 +22,6 @@ class Video_Widget extends WP_Widget {
 		);
 	}
 
-	private function get_embed_content( $content ){
-		$dom = str_get_html( $content );
-		if($dom->find('iframe')){
-			foreach($dom->find('iframe') as $iframe){
-				if(strpos($iframe->src, 'youtube.com') !== false){
-					return $iframe->src;
-				}
-			}
-		}
-		return false;
-	}
-
-	// Creating widget front-end
-	// This is where the action happens
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance['title'] );
 		// before and after widget arguments are defined by themes
@@ -45,23 +32,23 @@ class Video_Widget extends WP_Widget {
 			'pagination'             => false,
 			'posts_per_page'         => '1',
 			'posts_per_archive_page' => '1',
-			'post__in'  => $sticky,
-			'post_type'=> 'post',
-			'post_status' => 'publish',
-			'tax_query' => array(
+			'post__in'               => $sticky,
+			'post_type'              => 'post',
+			'post_status'            => 'publish',
+			'tax_query'              => array(
 				array(
 					'taxonomy' => 'post_format',
-					'field' => 'slug',
-					'terms' => array( 'post-format-video' )
+					'field'    => 'slug',
+					'terms'    => array( 'post-format-video' )
 				)
 			)
 		);
 		$the_query = new WP_Query( $params );
 
-		if ( $the_query->have_posts() && isset($sticky[0])) :
-				$the_query->the_post();
-				$embed = $this->get_embed_content(get_post(get_the_ID())->post_content);
-			if($embed):
+		if ( $the_query->have_posts() && isset( $sticky[0] ) ) :
+			$the_query->the_post();
+			$embed = $this->get_embed_content( get_post( get_the_ID() )->post_content );
+			if ( $embed ):
 				?>
 				<section class="pensando-videos">
 					<div class="panel panel-default">
@@ -84,12 +71,29 @@ class Video_Widget extends WP_Widget {
 						</div>
 					</div>
 				</section>
-			<?php
+				<?php
 			endif;
 		endif;
 	}
 
+	// Creating widget front-end
+	// This is where the action happens
+
+	private function get_embed_content( $content ) {
+		$dom = str_get_html( $content );
+		if ( $dom->find( 'iframe' ) ) {
+			foreach ( $dom->find( 'iframe' ) as $iframe ) {
+				if ( strpos( $iframe->src, 'youtube.com' ) !== false ) {
+					return $iframe->src;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	// Widget Backend
+
 	public function form( $instance ) {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];

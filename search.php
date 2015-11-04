@@ -12,44 +12,46 @@ get_header(); ?>
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) : ?>
+			<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h4 class="page-title"><?php printf( __( 'Resultados da pesquisa por: <strong class="red"> %s </strong>', 'twentyfifteen' ), get_search_query() ); ?></h4>
-			</header><!-- .page-header -->
-
-			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post(); ?>
+				<header class="page-header">
+					<h4 class="page-title"><?php printf( __( 'Resultados da pesquisa por: <strong class="red"> %s </strong>', 'twentyfifteen' ), get_search_query() ); ?></h4>
+				</header><!-- .page-header -->
 
 				<?php
-				/*
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'content', 'search' );
+				// Start the loop.
+				while ( have_posts() ) : the_post(); ?>
 
-			// End the loop.
-			endwhile;
+					<?php
+					/*
+					 * Run the loop for the search to output the results.
+					 * If you want to overload this in a child theme then include a file
+					 * called content-search.php and that will be used instead.
+					 */
+					get_template_part( 'content', 'search' );
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => '<< ',
-				'next_text'          => ' >>',
-				'before_page_number' => '',
-				'screen_reader_text' => ' '
-			) );
+					// End the loop.
+				endwhile;
 
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'content', 'none' );
+				// Previous/next page navigation.
+				the_posts_pagination( array(
+					'prev_text'          => '<< ',
+					'next_text'          => ' >>',
+					'before_page_number' => '',
+					'screen_reader_text' => ' '
+				) );
 
-		endif;
-		?>
+			// If no content, include the "No posts found" template.
+			else :
+				get_template_part( 'content', 'none' );
 
-		</main><!-- .site-main -->
-	</section><!-- .content-area -->
+			endif;
+			?>
+
+		</main>
+		<!-- .site-main -->
+	</section>
+	<!-- .content-area -->
 </div>
 
 <?php get_footer(); ?>

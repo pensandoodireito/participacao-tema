@@ -1,8 +1,8 @@
-
 <section class="no-results not-found">
 	<header class="page-header">
 		<h1 class="page-title">Sua pesquisa não retornou resultados</h1>
-	</header><!-- .page-header -->
+	</header>
+	<!-- .page-header -->
 
 	<div class="page-content">
 
@@ -13,5 +13,6 @@
 
 		<?php endif; ?>
 
-	</div><!-- .page-content -->
+	</div>
+	<!-- .page-content -->
 </section><!-- .no-results -->

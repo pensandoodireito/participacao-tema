@@ -1,130 +1,127 @@
 .mu_register, .widecolumn {
-    .container-fixed();
+  .container-fixed();
+  @media (min-width: @screen-sm-min) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md-min) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    width: @container-lg;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  form#setupform, form#activateform {
+    .clearfix();
+    padding: 0 20px 20px 20px;
+    border: 1px solid #ccc;
+    background-color: #ececec;
+    margin: 20px auto 20px auto;
+    box-shadow: 0px 2px 10px -4px rgba(50, 50, 50, 1);
     @media (min-width: @screen-sm-min) {
-        width: @container-sm;
+      width: 100%;
     }
     @media (min-width: @screen-md-min) {
-        width: @container-md;
+      width: 80%;
     }
     @media (min-width: @screen-lg-min) {
-        width: @container-lg;
+      width: 60%;
     }
-    h2 {
-        font-size: 18px;
-        font-weight: 700;
+  }
+  form#activateform {
+    .submit {
+      width: auto;
+      float: none;
     }
-    form#setupform, form#activateform {
-        .clearfix();
-        padding: 0 20px 20px 20px;
-        border: 1px solid #ccc;
-        background-color: #ececec;
-        margin: 20px auto 20px auto;
-        box-shadow: 0px 2px 10px -4px rgba(50, 50, 50, 1);
-        @media (min-width: @screen-sm-min) {
-            width: 100%;
-        }
-        @media (min-width: @screen-md-min) {
-            width: 80%;
-        }
-        @media (min-width: @screen-lg-min) {
-            width: 60%;
-        }
+  }
+  .error {
+    font-weight: 700;
+    font-size: 12px;
+    padding: 5px;
+    color: #ff0000;
+    background: #FFEBE8;
+    //border: 1px solid #CC0000;
+  }
+  label {
+    font-weight: 700;
+    font-size: 15px;
+    display: block;
+    margin: 25px 0 0;
+  }
+  .mu_alert {
+    font-weight: 700;
+    padding: 10px;
+    color: #ff0000;
+    background: #ffffe0;
+    //border: 1px solid #e6db55;
+  }
+  .prefix_address, .suffix_address {
+    font-size: 18px;
+    display: inline;
+  }
+  /*#termos_uso {
+      float: left;
+      margin-top: 25px;
+  }
+  label[for="termos_uso"] {
+       margin-top: 20px;
+  }*/
+
+  input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 5px;
+  }
+  input[type="checkbox"] {
+    display: inline-table;
+    float: left;
+  }
+  input[type="submit"] {
+    margin-top: 17px;
+    float: right;
+    .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+    display: inline-block;
+    margin-bottom: 0; // For input.btn
+    font-weight: @btn-font-weight;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    border: 1px solid transparent;
+    white-space: nowrap;
+    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+    .user-select(none);
+    &, &:active, &.active {
+      &:focus {
+        .tab-focus();
+      }
     }
-    form#activateform {
-        .submit {
-            width: auto;
-            float: none;
-        }
+    &:hover, &:focus {
+      color: @btn-primary-color;
+      text-decoration: none;
     }
-    .error {
-        font-weight: 700;
-        font-size: 12px;
-        padding: 5px;
-        color: #ff0000;
-        background: #FFEBE8;
-        //border: 1px solid #CC0000;
+    &:active, &.active {
+      outline: 0;
+      background-image: none;
+      .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
     }
-    label {
-        font-weight: 700;
-        font-size: 15px;
-        display: block;
-        margin: 25px 0 0;
+    &.disabled, &[disabled], fieldset[disabled] & {
+      cursor: not-allowed;
+      pointer-events: none; // Future-proof disabling of clicks
+      .opacity(.65);
+      .box-shadow(none);
     }
-    .mu_alert {
-        font-weight: 700;
-        padding: 10px;
-        color: #ff0000;
-        background: #ffffe0;
-        //border: 1px solid #e6db55;
-    }
-    .prefix_address, .suffix_address {
-        font-size: 18px;
-        display: inline;
-    }
-    /*#termos_uso {
-        float: left;
-        margin-top: 25px;
-    }
-    label[for="termos_uso"] {
-         margin-top: 20px;
-    }*/
-    
-    input[type="text"], input[type="email"] {
-        width: 100%;
-        padding: 5px;
-    }
-    input[type="checkbox"] {
-        display: inline-table;
-        float: left;
-    }
-    input[type="submit"] {
-        margin-top: 17px;
-        float: right;
-        .button-variant(@btn-primary-color;
-        @btn-primary-bg;
-        @btn-primary-border);
-        display: inline-block;
-        margin-bottom: 0; // For input.btn
-        font-weight: @btn-font-weight;
-        text-align: center;
-        vertical-align: middle;
-        cursor: pointer;
-        background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-        border: 1px solid transparent;
-        white-space: nowrap;
-        .button-size(@padding-base-vertical;
-        @padding-base-horizontal;
-        @font-size-base;
-        @line-height-base;
-        @border-radius-base);
-        .user-select(none);
-        &, &:active, &.active {
-            &:focus {
-                .tab-focus();
-            }
-        }
-        &:hover, &:focus {
-            color: @btn-primary-color;
-            text-decoration: none;
-        }
-        &:active, &.active {
-            outline: 0;
-            background-image: none;
-            .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
-        }
-        &.disabled, &[disabled], fieldset[disabled] & {
-            cursor: not-allowed;
-            pointer-events: none; // Future-proof disabling of clicks
-            .opacity(.65);
-            .box-shadow(none);
-        }
-    }
+  }
 }
+
 #login {
-    width: auto;
+  width: auto;
 
 }
-#registrationModal .modal-content{
-    padding:2%;
+
+#registrationModal .modal-content {
+  padding: 2%;
 }
+
 // confirmação de cadastro para o login:
