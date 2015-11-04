@@ -833,10 +833,12 @@ function participacao_widgets_init() {
         'after_title'   => '</h4></div>',
     ) );
 
-	require_once "class-mais-noticias-widget.php";
+	if(!class_exists('Mais_Noticias'))
+	  require_once "class-mais-noticias-widget.php";
     register_widget('Mais_Noticias');
 
-	require_once 'class-video-widget.php';
+	if(!class_exists('Video_Widget'))
+	  require_once 'class-video-widget.php';
 	register_widget( 'Video_Widget' );
 }
 
