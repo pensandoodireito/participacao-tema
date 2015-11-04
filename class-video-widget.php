@@ -4,7 +4,9 @@
  * http://www.wpbeginner.com/wp-themes/how-to-add-dynamic-widget-ready-sidebars-in-wordpress/
  */
 
+if(!class_exists('simple_html_dom_node'))
 require_once "class/simple_html_dom.php";
+
 class Video_Widget extends WP_Widget {
 
 	function __construct() {
