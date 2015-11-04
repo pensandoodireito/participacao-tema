@@ -891,6 +891,25 @@ function display_latest_news( $ignore = array() ) {
 function participacao_load_widgets() {
 	require_once get_template_directory() . '/social_tabs_widget-class.php';
 	register_widget( 'social_tabs_widget' );
+
+	register_sidebar( array(
+		'name'          => 'Barra Lateral',
+		'id'            => 'sidebar_widgets',
+		'before_widget' => '<div class="panel panel-default">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<div class="panel-heading"><h4 class="red font-roboto">',
+		'after_title'   => '</h4></div>',
+	) );
+
+	register_sidebar( array(
+		'name'          => 'Barra Lateral Interna',
+		'id'            => 'barra-lateral-interna',
+		'description'   => 'Itens a serem apresentados na barra lateral nas páginas internas',
+		'before_widget' => '<div class="panel panel-default">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<div class="panel-heading"><h4 class="red font-roboto">',
+		'after_title'   => '</h4></div>',
+	) );
 }
 
 add_action( 'widgets_init', 'participacao_load_widgets' );
