@@ -845,12 +845,11 @@ function display_sticky_news() {
 	$ids  = array();
 	if ( $news->have_posts() ) {
 		echo '<ul class="not-list list-unstyled destaques">';
-		global $isFirstSticky;
 		$isFirstSticky = true; //usada no template content-sticky
 		while ( $news->have_posts() ) {
 			$news->the_post();
 			$ids[] = get_the_ID();
-			get_template_part( 'content', 'sticky' );
+			include( locate_template( 'content-sticky.php' ));
 			$isFirstSticky = false;
 		}
 		echo '</ul>';

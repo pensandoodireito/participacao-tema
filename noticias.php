@@ -33,67 +33,69 @@ if ( get_query_var( 'category_name' ) != 'geral' ) {
 } else {
 	unset( $args['category_name'] );
 }
+
+$ordinary_news = new WP_Query( $args );
+
 ?>
-<div class="noticias container">
-	<div class="row">
-		<div class="col-md-12">
-			<h2 class="font-roboto red pull-left">Notícias
-				<small>: <?php echo $categoria_atual; ?></small>
-			</h2>
-			<div class="dropdown pull-right">
-				<button class="btn btn-danger btn-sm dropdown-toggle" type="button" id="dropdownMenu1"
-				        data-toggle="dropdown" aria-expanded="true">
-					Filtrar notícia por categoria <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-					<?php
-					foreach ( $categorias as $category ) { ?>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-						                           href="<?php echo "/noticias/" . sanitize_title( $category ); ?>"><?php echo $category; ?></a>
+<div class="noticias-all">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="font-roboto red">Notícias</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="header-categories">
+					<ul class="list-inline list-categories">
+						<li class="categories-master">
+							<a href="#" class="categorie-link">Todas</a>
 						</li>
-					<?php } ?>
-					<li class="divider"></li>
-					<li><a href="/noticias">Todas</a></li>
-				</ul>
+						<li class="categories-master">
+							<a href="#" class="categorie-link active-box">Assuntos legislativos</a>
+						</li>
+						<li class="categories-master">
+							<a href="#" class="categorie-link">Debates públicos</a>
+						</li>
+						<li class="categories-master">
+							<a href="#" class="categorie-link">Editais</a>
+						</li>
+						<li class="categories-master">
+							<a href="#" class="categorie-link">Vídeos</a>
+						</li>
+						<li class="dropdown categories-master">
+							<a href="#" class="categorie-link" id="menu-mais" data-toggle="dropdown"
+							   aria-haspopup="true" aria-expanded="false">Mais <i class="fa fa-caret-down"></i></a>
+							<ul class="dropdown-menu" aria-labelledby="menu-mais">
+								<li class="categories-master">
+									<a href="#" class="categorie-link">Por data</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-md">
+			<div class="col-md-7">
+				<section class="noticias">
+					<?php if ( $ordinary_news->have_posts() ) { ?>
+						<ul class="not-list list-unstyled">
+							<?php
+							while ( $ordinary_news->have_posts() ) {
+								$ordinary_news->the_post();
+								get_template_part( 'content', 'archive' );
+							}
+							?>
+						</ul>
+					<?php } else {
+						echo 'Nenhuma notícia encontrada.';
+					}
+					?>
+				</section>
 			</div>
 		</div>
 	</div>
-	<div class="row ordinarynews">
-		<?php
-		$ordinary_news = new WP_Query( $args );
 
-		if ( $ordinary_news->have_posts() ) {
-			?>
-			<script>
-				<?php if (isset($args['category_name'])) { ?>
-				var categoriaAtual = "<?php echo $args['category_name']; ?>";
-				<?php } ?>
-			</script>
-			<?php
-
-			while ( $ordinary_news->have_posts() ) {
-				$ordinary_news->the_post();
-				get_template_part( 'content', 'archive' );
-			}
-		} else {
-			echo 'Nenhuma notícia encontrada.';
-		}
-		?>
-	</div>
-	<?php
-	if ( get_query_var( 'paged' ) < $ordinary_news->max_num_pages && $ordinary_news->max_num_pages > 1 ) {
-		?>
-		<div class="row text-center mt-lg">
-			<button id="mais-noticias" type="button" class="btn btn-danger"
-			        onclick="carregar_noticias('.container .ordinarynews', '<?php echo $ordinary_news->max_num_pages; ?>');">
-				Mostrar mais notícias
-			</button>
-		</div>
-		<?php
-	}
-	?>
 </div>
-<?php
-get_footer();
-?>
-
+<?php get_footer(); ?>
