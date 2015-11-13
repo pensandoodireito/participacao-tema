@@ -27,9 +27,11 @@
 					</strong>
 				</h1>
 
-				<h4 class="not-sutien">
-					<?php the_excerpt(); ?>
-				</h4>
+				<?php if ( has_excerpt() ) { ?>
+					<h4 class="not-sutien">
+						<?php the_excerpt(); ?>
+					</h4>
+				<?php } ?>
 			</header>
 			<article class="mt-md">
 				<?php the_content(); ?>
