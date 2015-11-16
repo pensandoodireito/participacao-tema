@@ -70,7 +70,7 @@ $ordinary_news = new WP_Query( $args );
 			</div>
 		</div>
 		<div class="row mt-md">
-			<div class="col-md-7">
+			<div class="col-md-8">
 				<section class="noticias">
 					<?php if ( $ordinary_news->have_posts() ) { ?>
 						<ul class="not-list list-unstyled">
@@ -87,8 +87,8 @@ $ordinary_news = new WP_Query( $args );
 					?>
 				</section>
 			</div>
+			<?php get_sidebar(); ?>
 		</div>
 	</div>
-
 </div>
 <?php get_footer(); ?>

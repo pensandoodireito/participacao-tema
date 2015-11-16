@@ -24,29 +24,30 @@ class Mais_Noticias extends WP_Widget {
 		echo "{$args['before_title']}{$instance['title']}{$args['after_title']}";
 		?>
 		<div class="panel-body">
-			<?php
-			while ( $mais_noticias->have_posts() ) {
-				$mais_noticias->the_post();
-				?>
-				<div class="row mb-md">
-					<div class="col-xs-5">
-						<?php
-						if ( has_post_thumbnail() ) {
-							the_post_thumbnail( 'noticia-lista', array( 'class' => "img-adptive" ) );
-						}
+			<section class="noticias">
+				<ul class="not-list list-unstyled">
+					<?php
+					while ( $mais_noticias->have_posts() ) {
+						$mais_noticias->the_post();
 						?>
-					</div>
-					<div class="col-xs-7 pl-0">
-						<p class="h6 red mt-0">
-							<strong>
-								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-							</strong>
-						</p>
-					</div>
-				</div>
-				<?php
-			}
-			wp_reset_query(); ?>
+						<li>
+							<article class="not-fill">
+								<div class="not-text">
+									<header class="not-titulo">
+										<h3>
+											<a href="<?php the_permalink(); ?>">
+												<?php the_title(); ?>
+											</a>
+										</h3>
+									</header>
+								</div>
+							</article>
+						</li>
+						<?php
+					}
+					wp_reset_query(); ?>
+				</ul>
+			</section>
 		</div>
 		<?php
 		echo $args['after_widget'];
@@ -89,4 +90,4 @@ class Mais_Noticias extends WP_Widget {
 
 		return $instance;
 	}
-}
+} ?>
