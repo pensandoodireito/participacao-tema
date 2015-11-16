@@ -11,12 +11,22 @@ $todas_categorias = get_categories(
 	array( 'taxonomy' => 'category', 'hide_empty' => 1 )
 );
 
+$categorias[] = array(
+	'name' => 'Todas',
+	'link' => '/noticias',
+	'slug' => '/noticias'
+);
+
 foreach ( $todas_categorias as $category ) {
 	if ( ! preg_match( '/^_apagar\w*/', $category->name )
 	     && $category->name != 'Sem categoria'
 	     && $category->name != '*RECATEGORIZAR'
 	) {
-		$categorias[ $category->slug ] = $category->name;
+		$categorias[] = array(
+			'slug' => $category->slug,
+			'name' => $category->name,
+			'link' => '/noticias/' . $category->slug
+		);
 	}
 }
 
@@ -24,15 +34,16 @@ $categoria_atual = 'Todas';
 $args            = $wp_query->query_vars;
 
 if ( get_query_var( 'category_name' ) != 'geral' ) {
-	foreach ( $categorias as $slug => $nome ) {
-		if ( $slug == $wp_query->query_vars['category_name'] ) {
-			$categoria_atual       = $nome;
-			$args['category_name'] = $slug; //$wp_query->query_vars['categoria'];
+	foreach ( $categorias as $cat ) {
+		if ( $cat['slug'] == $wp_query->query_vars['category_name'] ) {
+			$categoria_atual       = $cat['name'];
+			$args['category_name'] = $cat['slug']; //$wp_query->query_vars['categoria'];
 		}
 	}
 } else {
 	unset( $args['category_name'] );
 }
+
 
 $ordinary_news = new WP_Query( $args );
 
@@ -48,30 +59,12 @@ $ordinary_news = new WP_Query( $args );
 			<div class="col-lg-12">
 				<div class="header-categories">
 					<ul class="list-inline list-categories">
-						<li class="categories-master">
-							<a href="#" class="categorie-link">Todas</a>
-						</li>
-						<li class="categories-master">
-							<a href="#" class="categorie-link active-box">Assuntos legislativos</a>
-						</li>
-						<li class="categories-master">
-							<a href="#" class="categorie-link">Debates públicos</a>
-						</li>
-						<li class="categories-master">
-							<a href="#" class="categorie-link">Editais</a>
-						</li>
-						<li class="categories-master">
-							<a href="#" class="categorie-link">Vídeos</a>
-						</li>
-						<li class="dropdown categories-master">
-							<a href="#" class="categorie-link" id="menu-mais" data-toggle="dropdown"
-							   aria-haspopup="true" aria-expanded="false">Mais <i class="fa fa-caret-down"></i></a>
-							<ul class="dropdown-menu" aria-labelledby="menu-mais">
-								<li class="categories-master">
-									<a href="#" class="categorie-link">Por data</a>
-								</li>
-							</ul>
-						</li>
+						<?php foreach ( $categorias as $categoria ) { ?>
+							<li class="categories-master">
+								<a href="<?php echo $categoria['link']; ?>"
+								   class="categorie-link <?php echo $categoria['name'] == $categoria_atual ? 'active-box' : ''; ?>"><?php echo $categoria['name']; ?></a>
+							</li>
+						<?php } ?>
 					</ul>
 				</div>
 			</div>
