@@ -56,8 +56,8 @@ if ( is_singular() ) {
 						</a>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-3">
-					<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-3 mt-sm">
+					<div class="clearfix">
 						<ul class="list-inline social-icons white">
 							<li class="social-icons-rounded">
 								<a href="https://www.facebook.com/projetopd" target="_blank" class="btn btn-rounded"
