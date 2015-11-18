@@ -564,3 +564,19 @@ var Login = {
         return jQuery.get('/wp-admin/admin-ajax.php', {'action': 'logout_ajax_request'}, handler);
     }
 };
+
+jQuery(function ($) {
+
+    var menutop = $('.header-categories');
+
+    var position = 0;
+
+    if (menutop.length > 0) {
+        position = menutop.offset().top;
+    }
+
+    $(window).scroll(function () {
+        var fixing = $(this).scrollTop() > position;
+        menutop.toggleClass("fix-header", fixing);
+    });
+});
