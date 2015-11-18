@@ -834,7 +834,15 @@ function get_latest_news( $ignore = array(), $max_categories = 3, $max_news_per_
 			'post__not_in'   => $ignore,
 		);
 
-		$news[ $category ] = new WP_Query( $args );
+		$query = new WP_Query( $args );
+
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			$ignore[] = get_the_ID();
+		}
+		
+		$query->rewind_posts();
+		$news[ $category ] = $query;
 	}
 
 	return $news;
