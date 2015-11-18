@@ -58,14 +58,16 @@ $ordinary_news = new WP_Query( $args );
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="header-categories">
-					<ul class="list-inline list-categories">
-						<?php foreach ( $categorias as $categoria ) { ?>
-							<li class="categories-master">
-								<a href="<?php echo $categoria['link']; ?>"
-								   class="categorie-link <?php echo $categoria['name'] == $categoria_atual ? 'active-box' : ''; ?>"><?php echo $categoria['name']; ?></a>
-							</li>
-						<?php } ?>
-					</ul>
+					<div class="container">
+						<ul class="list-inline list-categories">
+							<?php foreach ( $categorias as $categoria ) { ?>
+								<li class="categories-master">
+									<a href="<?php echo $categoria['link']; ?>"
+									   class="categorie-link <?php echo $categoria['name'] == $categoria_atual ? 'active-box' : ''; ?>"><?php echo $categoria['name']; ?></a>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
