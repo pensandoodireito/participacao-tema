@@ -4,8 +4,10 @@
   font-size: 13px !important;
   .list-categories {
     margin: 0px 0 6px -5px;
+    .clearfix();
     .categories-master {
-      margin-top: 15px;
+      margin: 15px 15px 0 0;
+      float: left;
       .categorie-link {
         color: #c52128;
         text-transform: uppercase;
@@ -39,5 +41,14 @@
     .categories-master {
       margin-top: 0;
     }
+  }
+  &.fixed-categories {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 15px;
+    background-color: #fff;
+    width: 100%;
+    z-index: 2000;
   }
 }
