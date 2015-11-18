@@ -845,12 +845,11 @@ function display_sticky_news() {
 	$ids  = array();
 	if ( $news->have_posts() ) {
 		echo '<ul class="not-list list-unstyled destaques">';
-		global $isFirstSticky;
 		$isFirstSticky = true; //usada no template content-sticky
 		while ( $news->have_posts() ) {
 			$news->the_post();
 			$ids[] = get_the_ID();
-			get_template_part( 'content', 'sticky' );
+			include( locate_template( 'content-sticky.php' ));
 			$isFirstSticky = false;
 		}
 		echo '</ul>';
@@ -905,8 +904,8 @@ function participacao_load_widgets() {
 		'name'          => 'Barra Lateral Interna',
 		'id'            => 'barra-lateral-interna',
 		'description'   => 'Itens a serem apresentados na barra lateral nas páginas internas',
-		'before_widget' => '<div class="panel panel-default">',
-		'after_widget'  => '</div>',
+		'before_widget' => '<section class="custom-box"><div class="panel panel-default">',
+		'after_widget'  => '</div></section>',
 		'before_title'  => '<div class="panel-heading"><h4 class="red font-roboto">',
 		'after_title'   => '</h4></div>',
 	) );

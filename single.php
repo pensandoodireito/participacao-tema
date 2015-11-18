@@ -1,5 +1,4 @@
-<?php
-get_header(); ?>
+<?php get_header(); ?>
 	<div class="container">
 		<?php
 		// Start the Loop.
@@ -10,5 +9,4 @@ get_header(); ?>
 		endwhile;
 		?>
 	</div>
-<?php
-get_footer();
+<?php get_footer();

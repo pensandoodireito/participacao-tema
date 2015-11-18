@@ -1,0 +1,43 @@
+.header-categories {
+  border-bottom: 1px solid #b2b2b2;
+  margin-bottom: 15px;
+  font-size: 13px !important;
+  .list-categories {
+    margin: 0px 0 6px -5px;
+    .categories-master {
+      margin-top: 15px;
+      .categorie-link {
+        color: #c52128;
+        text-transform: uppercase;
+      }
+      .active-box {
+        padding: 7px 10px;
+        background-color: rgb(197, 33, 40);
+        color: rgb(255, 255, 255);
+        position: relative;
+        &:after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          width: 0;
+          height: 0;
+          border-top: solid 8px rgb(197, 33, 40);
+          border-left: solid 8px transparent;
+          border-right: solid 8px transparent;
+          line-height: 0px;
+          _border-color: #c52128 #000000 #000000 #000000;
+          _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+        }
+      }
+    }
+  }
+  .dropdown-menu {
+    font-size: 13px;
+    .categories-master {
+      margin-top: 0;
+    }
+  }
+}

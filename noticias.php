@@ -11,12 +11,22 @@ $todas_categorias = get_categories(
 	array( 'taxonomy' => 'category', 'hide_empty' => 1 )
 );
 
+$categorias[] = array(
+	'name' => 'Todas',
+	'link' => '/noticias',
+	'slug' => '/noticias'
+);
+
 foreach ( $todas_categorias as $category ) {
 	if ( ! preg_match( '/^_apagar\w*/', $category->name )
 	     && $category->name != 'Sem categoria'
 	     && $category->name != '*RECATEGORIZAR'
 	) {
-		$categorias[ $category->slug ] = $category->name;
+		$categorias[] = array(
+			'slug' => $category->slug,
+			'name' => $category->name,
+			'link' => '/noticias/' . $category->slug
+		);
 	}
 }
 
@@ -24,76 +34,61 @@ $categoria_atual = 'Todas';
 $args            = $wp_query->query_vars;
 
 if ( get_query_var( 'category_name' ) != 'geral' ) {
-	foreach ( $categorias as $slug => $nome ) {
-		if ( $slug == $wp_query->query_vars['category_name'] ) {
-			$categoria_atual       = $nome;
-			$args['category_name'] = $slug; //$wp_query->query_vars['categoria'];
+	foreach ( $categorias as $cat ) {
+		if ( $cat['slug'] == $wp_query->query_vars['category_name'] ) {
+			$categoria_atual       = $cat['name'];
+			$args['category_name'] = $cat['slug']; //$wp_query->query_vars['categoria'];
 		}
 	}
 } else {
 	unset( $args['category_name'] );
 }
+
+
+$ordinary_news = new WP_Query( $args );
+
 ?>
-<div class="noticias container">
-	<div class="row">
-		<div class="col-md-12">
-			<h2 class="font-roboto red pull-left">Notícias
-				<small>: <?php echo $categoria_atual; ?></small>
-			</h2>
-			<div class="dropdown pull-right">
-				<button class="btn btn-danger btn-sm dropdown-toggle" type="button" id="dropdownMenu1"
-				        data-toggle="dropdown" aria-expanded="true">
-					Filtrar notícia por categoria <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-					<?php
-					foreach ( $categorias as $category ) { ?>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-						                           href="<?php echo "/noticias/" . sanitize_title( $category ); ?>"><?php echo $category; ?></a>
-						</li>
-					<?php } ?>
-					<li class="divider"></li>
-					<li><a href="/noticias">Todas</a></li>
-				</ul>
+<div class="noticias-all">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="font-roboto red">Notícias</h1>
 			</div>
 		</div>
-	</div>
-	<div class="row ordinarynews">
-		<?php
-		$ordinary_news = new WP_Query( $args );
-
-		if ( $ordinary_news->have_posts() ) {
-			?>
-			<script>
-				<?php if (isset($args['category_name'])) { ?>
-				var categoriaAtual = "<?php echo $args['category_name']; ?>";
-				<?php } ?>
-			</script>
-			<?php
-
-			while ( $ordinary_news->have_posts() ) {
-				$ordinary_news->the_post();
-				get_template_part( 'content', 'archive' );
-			}
-		} else {
-			echo 'Nenhuma notícia encontrada.';
-		}
-		?>
-	</div>
-	<?php
-	if ( get_query_var( 'paged' ) < $ordinary_news->max_num_pages && $ordinary_news->max_num_pages > 1 ) {
-		?>
-		<div class="row text-center mt-lg">
-			<button id="mais-noticias" type="button" class="btn btn-danger"
-			        onclick="carregar_noticias('.container .ordinarynews', '<?php echo $ordinary_news->max_num_pages; ?>');">
-				Mostrar mais notícias
-			</button>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="header-categories">
+					<ul class="list-inline list-categories">
+						<?php foreach ( $categorias as $categoria ) { ?>
+							<li class="categories-master">
+								<a href="<?php echo $categoria['link']; ?>"
+								   class="categorie-link <?php echo $categoria['name'] == $categoria_atual ? 'active-box' : ''; ?>"><?php echo $categoria['name']; ?></a>
+							</li>
+						<?php } ?>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<?php
-	}
-	?>
+		<div class="row mt-md">
+			<div class="col-md-8">
+				<section class="noticias">
+					<?php if ( $ordinary_news->have_posts() ) { ?>
+						<ul class="not-list list-unstyled">
+							<?php
+							while ( $ordinary_news->have_posts() ) {
+								$ordinary_news->the_post();
+								get_template_part( 'content', 'archive' );
+							}
+							?>
+						</ul>
+					<?php } else {
+						echo 'Nenhuma notícia encontrada.';
+					}
+					?>
+				</section>
+			</div>
+			<?php get_sidebar(); ?>
+		</div>
+	</div>
 </div>
-<?php
-get_footer();
-?>
-
+<?php get_footer(); ?>
