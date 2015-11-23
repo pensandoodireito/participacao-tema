@@ -39,8 +39,6 @@ add_action( 'wp_ajax_nopriv_logout_ajax_request', 'logout_ajax_request' );
 function participacao_scripts() {
 	global $wp_query;
 
-	wp_enqueue_script( 'participacao-header', get_template_directory_uri() . '/js/participacao-header.js' );
-
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js', array( 'jquery' ), false, true );
 	wp_enqueue_script( 'validator', get_template_directory_uri() . '/js/validator.min.js', array(
 		'jquery',
