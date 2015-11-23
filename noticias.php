@@ -30,8 +30,8 @@ foreach ( $todas_categorias as $category ) {
 	}
 }
 
-$categoria_atual = 'Todas';
-$args            = $wp_query->query_vars;
+$categoria_atual        = 'Todas';
+$args['posts_per_page'] = get_option( 'posts_per_page' );
 
 if ( get_query_var( 'category_name' ) != 'geral' ) {
 	foreach ( $categorias as $cat ) {
@@ -43,7 +43,6 @@ if ( get_query_var( 'category_name' ) != 'geral' ) {
 } else {
 	unset( $args['category_name'] );
 }
-
 
 $ordinary_news = new WP_Query( $args );
 
