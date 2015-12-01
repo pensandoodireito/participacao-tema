@@ -62,6 +62,16 @@ function participacao_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'participacao_scripts' );
 
+
+function participacao_header_scripts() {
+	/**
+	 * este script contém apenas workaround para garantir que seja feito redirecionamento para a URL pensando.mj.gov.br
+	 * ele é carregado antes de qualquer script então nenhuma biblioteca estará disponível.
+	 */
+	wp_enqueue_script( 'participacao-header', get_template_directory_uri() . '/js/participacao-header.js' );
+}
+
+add_action( 'wp_enqueue_scripts', 'participacao_header_scripts', 1 );
 /**
  * Retorna o bloco de texto para usuários logados ou não, com
  * seus respectivos links de cadastro, login e logout.
@@ -840,7 +850,7 @@ function get_latest_news( $ignore = array(), $max_categories = 3, $max_news_per_
 			$query->the_post();
 			$ignore[] = get_the_ID();
 		}
-		
+
 		$query->rewind_posts();
 		$news[ $category ] = $query;
 	}
@@ -857,7 +867,7 @@ function display_sticky_news() {
 		while ( $news->have_posts() ) {
 			$news->the_post();
 			$ids[] = get_the_ID();
-			include( locate_template( 'content-sticky.php' ));
+			include( locate_template( 'content-sticky.php' ) );
 			$isFirstSticky = false;
 		}
 		echo '</ul>';
