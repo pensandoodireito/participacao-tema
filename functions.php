@@ -44,19 +44,24 @@ function participacao_scripts() {
 		'jquery',
 		'bootstrap'
 	), false, true );
+
 	wp_enqueue_script( 'participacao', get_template_directory_uri() . '/js/participacao.js', array(
 		'jquery',
 		'bootstrap'
 	), false, true );
 
+	wp_enqueue_script( 'noticias', get_template_directory_uri() . '/js/noticias.js', array( 'jquery' ) );
+
 	$participacao_data = array(
-		'ajaxurl'        => admin_url( 'admin-ajax.php' ),
-		'paginaAtual'    => 2,
-		'ajaxgif'        => get_template_directory_uri() . '/images/ajax-loader.gif',
-		'isHome'         => is_home() ? 'true' : 'false',
-		'paginasMaximas' => $wp_query->max_num_pages
+		'ajaxurl'           => admin_url( 'admin-ajax.php' ),
+		'paginaAtual'       => 2,
+		'ajaxgif'           => get_template_directory_uri() . '/images/ajax-loader.gif',
+		'isHome'            => is_home() ? 'true' : 'false',
+		'paginasMaximas'    => $wp_query->max_num_pages,
+		'categoriaNoticias' => get_query_var( 'cat' )
 	);
 
+	wp_localize_script( 'participacao', 'participacao', $participacao_data );
 	wp_localize_script( 'participacao', 'participacao', $participacao_data );
 }
 
@@ -510,6 +515,37 @@ function participacao_paginacao_infinita() {
 
 add_action( 'wp_ajax_participacao_paginacao_infinita', 'participacao_paginacao_infinita' );
 add_action( 'wp_ajax_nopriv_participacao_paginacao_infinita', 'participacao_paginacao_infinita' );
+
+
+/**
+ * Função ajax pra paginação infinita
+ */
+function noticias_carregamento_scroll() {
+	$args['posts_per_page'] = get_option( 'posts_per_page' );
+
+	$args = array(
+		'paged'          => $_POST['paged'],
+		'posts_per_page' => get_option( 'posts_per_page' )
+	);
+
+	if ( $_POST['categoria'] ) {
+		$args['cat'] = $_POST['categoria'];
+	}
+
+	$ordinary_news = new WP_Query( $args );
+
+	if ( $ordinary_news->have_posts() ) {
+		while ( $ordinary_news->have_posts() ) {
+			$ordinary_news->the_post();
+			get_template_part( 'content', 'archive' );
+		}
+	}
+
+	exit;
+}
+
+add_action( 'wp_ajax_noticias_carregamento_scroll', 'noticias_carregamento_scroll' );
+add_action( 'wp_ajax_nopriv_noticias_carregamento_scroll', 'noticias_carregamento_scroll' );
 
 /* MENUS DO TEMA PRINCIPAL */
 // Menu principal, que fica abaixo da barra 'vermelha' aonde tem a busca
