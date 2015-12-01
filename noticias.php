@@ -13,7 +13,7 @@ $todas_categorias = get_categories(
 
 $categorias[] = array(
 	'name' => 'Todas',
-	'link' => '/noticias',
+	'link' => get_site_url() . '/noticias',
 	'slug' => '/noticias'
 );
 
@@ -25,7 +25,7 @@ foreach ( $todas_categorias as $category ) {
 		$categorias[] = array(
 			'slug' => $category->slug,
 			'name' => $category->name,
-			'link' => '/noticias/' . $category->slug
+			'link' => get_site_url() . '/noticias/' . $category->slug
 		);
 	}
 }
