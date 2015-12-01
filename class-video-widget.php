@@ -47,15 +47,18 @@ class Video_Widget extends WP_Widget {
 
 		if ( $the_query->have_posts() && isset( $sticky[0] ) ) :
 			$the_query->the_post();
-			$embed = $this->get_embed_content( get_post( get_the_ID() )->post_content );
-			if ( $embed ):
-				?>
+
+			$postContent = $this->filter_text( get_the_content() );
+			$videoID     = $this->get_video_id( $postContent );
+
+			if ( $videoID ) { ?>
 				<section class="pensando-videos">
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<header><h2><?php echo $title; ?></h2></header>
 							<section class="embed-responsive embed-responsive-16by9 mt-sm">
-								<iframe width="100%" height="100%" src="<?php echo $embed; ?>"
+								<iframe width="100%" height="100%"
+								        src="https://www.youtube.com/embed/<?php echo $videoID; ?>"
 								        frameborder="0" allowfullscreen>
 								</iframe>
 							</section>
@@ -72,7 +75,7 @@ class Video_Widget extends WP_Widget {
 					</div>
 				</section>
 				<?php
-			endif;
+			}
 		endif;
 	}
 
@@ -90,6 +93,44 @@ class Video_Widget extends WP_Widget {
 		}
 
 		return false;
+	}
+
+	function filter_text( $text ) {
+		$patterns  = array( '/</', '/>/', '/"/', '/\'/' );
+		$cleanText = preg_replace( $patterns, " ", $text );
+
+		return $cleanText;
+	}
+
+	function get_video_id( $text ) {
+		preg_match( '~
+        https?://         # Required scheme. Either http or https.
+        (?:[0-9A-Z-]+\.)? # Optional subdomain.
+        (?:               # Group host alternatives.
+          youtu\.be/      # Either youtu.be,
+        | youtube         # or youtube.com or
+          (?:-nocookie)?  # youtube-nocookie.com
+          \.com           # followed by
+          \S*             # Allow anything up to VIDEO_ID,
+          [^\w\s-]       # but char before ID is non-ID char.
+        )                 # End host alternatives.
+        ([\w-]{11})      # $1: VIDEO_ID is exactly 11 chars.
+        (?=[^\w-]|$)     # Assert next char is non-ID or EOS.
+        (?!               # Assert URL is not pre-linked.
+          [?=&+%\w.-]*    # Allow URL (query) remainder.
+          (?:             # Group pre-linked alternatives.
+            [\'"][^<>]*>  # Either inside a start tag,
+          | </a>          # or inside <a> element text contents.
+          )               # End recognized pre-linked alts.
+        )                 # End negative lookahead assertion.
+        [?=&+%\w.-]*        # Consume any URL (query) remainder.
+        ~ix', $text, $matches );
+
+		if ( $matches ) {
+			return $matches[1];
+		}
+
+		return null;
 	}
 
 	// Widget Backend
