@@ -65,14 +65,18 @@
   .not-list {
     li {
       border-bottom: 1px dashed #cecece;
-      margin: 0 0 15px 0;
-      padding: 0 0 15px 0;
+      margin: 0 0 20px 0;
+      padding: 0 0 20px 0;
     }
     .not-fill {
       .clearfix();
 
       .not-text {
         .not-titulo {
+          h3{
+            letter-spacing: -0.03em;
+            line-height: 0.9;
+          }
           a {
             font-size: 20px;
             font-weight: 700;
@@ -80,6 +84,9 @@
             &:hover {
               color: @text-color-red;
             }
+          }
+          @media (max-width: @screen-md) {
+            margin-top: 15px;
           }
         }
         .not-tag {
@@ -90,23 +97,35 @@
       }
       &.has-image {
         .not-image {
-          padding-top: 15px;
           float: left;
-          width: 30%;
+          width: 48%;
           display: block;
+          height: 100%;
           @media (max-width: @screen-md) {
-            width: 20%;
+            width: 38%;
           }
           @media (max-width: @screen-sm) {
+            width: 100%;
+          }
+          .fill-image{
+            box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.1);
+            background-color: @color-vermelho-pd;
+            background-position: center;
+            background-size: cover;
+            border-radius: 4px;
+            height: 0;
+            padding-top: 56.25%;
+            position: relative;
             width: 100%;
           }
         }
         .not-text {
           float: left;
-          width: 67%;
-          margin-left: 3%;
+          width: 48%;
+          margin-left: 2%;
+
           @media (max-width: @screen-md) {
-            width: 57%;
+            width: 58%;
           }
           @media (max-width: @screen-sm) {
             width: 100%;
