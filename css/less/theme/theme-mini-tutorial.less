@@ -1,23 +1,109 @@
 #mini-tuto {
-  .tuto-pass {
-    padding: 10px 0 0 0;
-    box-shadow: 0px 1px 6px 1px rgba(50, 50, 50, 0.31);
-    @media (max-width: @screen-md) {
-      margin-top: 20px;
-    }
-    .tuto-text {
-      padding: 10px 20px 5px 20px;
-      font-size: 12px;
-      //font-weight: bold;
+  .tuto {
+    &-content {
       text-align: center;
-      background-color: @text-color-red;
-      color: #fff;
-      min-height: 60px;
-      a, a:active {
-        text-decoration: underline;
-        color: #fff;
-        &:hover {
-          color: #fff600;
+      padding: 20px;
+      box-shadow: 0px 1px 6px 1px rgba(50, 50, 50, 0.31);
+      color: @text-color-red;
+    }
+    &-image {
+    }
+    &-fill-image {
+      background-color: #fff;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 0;
+      padding-top: 56.25%;
+      position: relative;
+      width: 100%;
+    }
+    &-text-destaque {
+      position: relative;
+      width: 70%;
+      border-top: 1px solid #aeaeae;
+      margin: 40px auto;
+      .inner {
+        position: absolute;
+        top: -40px;
+        left: 30%;
+        right: 30%;
+        height: 60px;
+        width: 60px;
+        border-radius: 60px;
+        font-weight: 700;
+        border: 1px solid #aeaeae;
+        box-shadow: 0px 1px 6px 1px rgba(50, 50, 50, 0.31);
+        background-color: #fff;
+        padding: 14px 0 0 0;
+        @media (max-width: @screen-sm) {
+          left: 40%;
+        }
+      }
+    }
+    &-text {
+      margin-top: 40px;
+    }
+  }
+
+  &.tuto-one {
+    font-family: @font-family-roboto;
+    .tuto {
+      &-content {
+      }
+      &-image {
+        margin-bottom: 20px;
+      }
+      &-fill-image {
+        &.passo-um {
+          background-image: url("../images/tuto/tuto-01-b.png");
+        }
+        &.passo-dois {
+          background-image: url("../images/tuto/tuto-02-b.png");
+        }
+        &.passo-tres {
+          background-image: url("../images/tuto/tuto-03-b.png");
+        }
+        &.passo-quatro {
+          background-image: url("../images/tuto/tuto-04-b.png");
+        }
+      }
+      &-text-destaque {
+        .inner {
+          font-size: 30px;
+        }
+
+      }
+      &-text {
+      }
+    }
+  }
+  &.tuto-two {
+    font-family: @font-family-amatic;
+    .tuto {
+      &-fill-image {
+        &.passo-um {
+          background-image: url("../images/tuto/tuto-01.png");
+        }
+        &.passo-dois {
+          background-image: url("../images/tuto/tuto-02.png");
+        }
+        &.passo-tres {
+          background-image: url("../images/tuto/tuto-03.png");
+        }
+        &.passo-quatro {
+          background-image: url("../images/tuto/tuto-04.png");
+        }
+      }
+      &-text-destaque {
+        margin-top: 40px;
+        .inner {
+          font-size: 30px;
+        }
+      }
+      &-text {
+        h4 {
+          font-size: 40px;
         }
       }
     }
