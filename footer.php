@@ -49,6 +49,10 @@
 						   data-toggle="tooltip" data-placement="top" title="Siga-nos no GitHub"><i
 								class="fa fa-github"></i></a>
 					</li>
+					<li class="social-icons-rounded">
+						<a href="https://www.flickr.com/photos/pensandoodireito" target="_blank" class="btn btn-rounded"
+						   data-toggle="tooltip" data-placement="top" title="Siga-nos no Flickr"><i class="fa fa-flickr"></i></a>
+					</li>
 				</ul>
 			</div>
 			<div class="col-sm-5">
