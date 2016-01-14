@@ -974,7 +974,10 @@ function participacao_load_widgets() {
     }
     register_widget( 'Video_Widget' );
 
-    
+    require_once get_template_directory() . '/widgets/class-realizacao-widget.php';
+    register_widget( 'participacao_realizacao_widget' );
+
+
 }
 
 add_action( 'widgets_init', 'participacao_load_widgets' );
