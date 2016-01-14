@@ -974,7 +974,9 @@ function participacao_load_widgets() {
     }
     register_widget( 'Video_Widget' );
 
-    
+    require_once get_template_directory() . '/widgets/class-ultimos-comentarios-widget.php';
+    register_widget( 'participacao_ultimos_comentarios_widget' );
+
 }
 
 add_action( 'widgets_init', 'participacao_load_widgets' );
