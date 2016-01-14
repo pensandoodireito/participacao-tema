@@ -974,7 +974,9 @@ function participacao_load_widgets() {
     }
     register_widget( 'Video_Widget' );
 
-    
+    require_once get_template_directory() . '/widgets/class-como-participar-widget.php';
+    register_widget( 'participacao_como_participar_widget' );
+
 }
 
 add_action( 'widgets_init', 'participacao_load_widgets' );
