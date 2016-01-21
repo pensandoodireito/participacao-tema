@@ -5,6 +5,13 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'noticia-destaque', 555, 290, true );
 add_image_size( 'noticia-lista', 214, 137, true );
 
+function add_video_support() {
+    add_post_type_support( 'posts', 'post-formats' );
+    add_theme_support( 'post-formats', array( 'video' ) );
+}
+
+add_action( 'init', 'add_video_support' );
+
 function logout_ajax_request() {
     header( "Content-type: application/json", true );
     wp_logout();
