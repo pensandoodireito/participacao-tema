@@ -984,6 +984,8 @@ function participacao_load_widgets() {
     require_once get_template_directory() . '/widgets/class-imagem-widget.php';
     register_widget( 'participacao_imagem_widget' );
 
+    require_once get_template_directory() . '/widgets/class-como-participar-widget.php';
+    register_widget( 'participacao_como_participar_widget' );
 
 }
 
