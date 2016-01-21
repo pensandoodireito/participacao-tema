@@ -993,6 +993,8 @@ function participacao_load_widgets() {
     require_once get_template_directory() . '/widgets/class-realizacao-widget.php';
     register_widget( 'participacao_realizacao_widget' );
 
+    require_once get_template_directory() . '/widgets/class-noticias-widget.php';
+    register_widget( 'participacao_noticias_widget' );
 
 }
 
