@@ -5,7 +5,7 @@
  */
 
 if ( ! class_exists( 'simple_html_dom_node' ) ) {
-	require_once "class/simple_html_dom.php";
+    require_once get_template_directory() . "/class/simple_html_dom.php";
 }
 
 class Video_Widget extends WP_Widget {
