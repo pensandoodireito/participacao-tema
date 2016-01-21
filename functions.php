@@ -990,6 +990,10 @@ function participacao_load_widgets() {
     require_once get_template_directory() . '/widgets/class-ultimos-comentarios-widget.php';
     register_widget( 'participacao_ultimos_comentarios_widget' );
 
+    require_once get_template_directory() . '/widgets/class-realizacao-widget.php';
+    register_widget( 'participacao_realizacao_widget' );
+
+
 }
 
 add_action( 'widgets_init', 'participacao_load_widgets' );
