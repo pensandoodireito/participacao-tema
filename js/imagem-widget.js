@@ -5,8 +5,7 @@
 jQuery(document).ready(function ($) {
     var uploader;
 
-    $('.pick_image_widget_button').click(function (e) {
-
+    $(document).on('click', '.pick_image_widget_button', function (e) {
         var target = $(this).prev();
 
         e.preventDefault();
