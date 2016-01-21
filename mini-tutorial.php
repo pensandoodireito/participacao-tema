@@ -41,7 +41,7 @@
                         <h2 class="inner">3</h2>
                     </div>
                     <div class="tuto-text">
-                        <h4>Escolha o debate de sua preferência</h4>
+                        <h4>Escolha um debate</h4>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <h2 class="inner">4</h2>
                     </div>
                     <div class="tuto-text">
-                        <h4>Pronto! Participe, ajude!</h4>
+                        <h4>Pronto! Participe!</h4>
                     </div>
                 </div>
             </div>
