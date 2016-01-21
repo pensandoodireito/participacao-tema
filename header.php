@@ -112,13 +112,13 @@ if ( is_singular() ) {
 <div id="navegacao-destaque">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<?php wp_nav_menu( array(
 					'theme_location' => 'menu-primario',
 					'menu_class'     => 'navegacao-destaque-list'
 				) ); ?>
 			</div>
-			<div class="col-md-4 text-right">
+			<div class="col-md-3 text-right">
 				<div class="login-content">
 					<?php echo participacao_get_logged_user(); ?>
 				</div>
