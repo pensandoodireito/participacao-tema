@@ -4,9 +4,6 @@
  * http://www.wpbeginner.com/wp-themes/how-to-add-dynamic-widget-ready-sidebars-in-wordpress/
  */
 
-if ( ! class_exists( 'simple_html_dom_node' ) ) {
-    require_once get_template_directory() . "/class/simple_html_dom.php";
-}
 
 class Video_Widget extends WP_Widget {
 
@@ -77,22 +74,6 @@ class Video_Widget extends WP_Widget {
 				<?php
 			}
 		endif;
-	}
-
-	// Creating widget front-end
-	// This is where the action happens
-
-	private function get_embed_content( $content ) {
-		$dom = str_get_html( $content );
-		if ( $dom->find( 'iframe' ) ) {
-			foreach ( $dom->find( 'iframe' ) as $iframe ) {
-				if ( strpos( $iframe->src, 'youtube.com' ) !== false ) {
-					return $iframe->src;
-				}
-			}
-		}
-
-		return false;
 	}
 
 	function filter_text( $text ) {
