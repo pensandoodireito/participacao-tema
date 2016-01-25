@@ -1,7 +1,6 @@
 <div class="container mt-md">
+    <h2 class="font-roboto red">Como participar?</h2>
     <div id="mini-tuto" class="tuto-one">
-        <h2 class="font-roboto red">Como participar?</h2>
-
         <div class="row mt-md">
             <div class="col-md-3 col-sm-6 col-xs-12 mt-md">
                 <div class="tuto-content">
