@@ -510,7 +510,7 @@ jQuery(function ($) {
         var senha = _this.find('#senha').val();
 
         if (_this.find('.modal-body button').html() == 'Renovar senha') {
-            Login.remember();
+            Login.remember(usuario);
             setTimeout(function () {
                 _this.modal('toggle');
             }, 3000);
